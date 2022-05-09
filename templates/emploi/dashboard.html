@@ -4,7 +4,349 @@
 {% block title %} Planning | Dashboard {% endblock %}
 
 {% block content %}
-  <br><br>
-  <h1>Dashboard</h1>
+
+<style>
+	@font-face {
+		font-family: Poppins;
+		src: url(fonts/Poppins-Regular.ttf);
+	}
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: 'Poppins', sans-serif;
+	}
+	body{
+		min-height: 100vh;
+		background: rgba(var(--bs-light-rgb),var(--bs-bg-opacity));
+	}
+
+	.navigation{
+		position: fixed;
+		background: #FF0036;
+		top: 0px;
+		left: 0px;
+		bottom: 0px;
+		width: 70px;
+		box-sizing: initial;
+		border-left: #FF0036 solid 5px;
+		transition: 0.3s;
+		overflow-x: hidden;
+		/* scrollbar-width: none; */
+	}
+	.navigation.active{
+		width: 288px;
+	}
+	.navigation ul li a .title{
+		width: 0;
+	}
+	.navigation ul{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		padding-left: 5px;
+		padding-top: 10px;
+	}
+	.navigation ul .lien{
+		padding-top: 40px;
+	}
+	.navigation ul li{
+		position: relative;
+		list-style: none;
+		width: 100%;
+		border-top-left-radius: 30px;
+		border-bottom-left-radius: 30px;
+	}
+	/* menu actif >background */
+
+	.navigation ul li.active{
+		background: rgba(var(--bs-light-rgb),var(--bs-bg-opacity));
+	}
+	
+	.navigation ul li b:nth-child(1){
+		position: absolute;
+		top: -17px;
+		height: 17px;
+		width: 100%;
+		background: rgba(var(--bs-light-rgb),var(--bs-bg-opacity));
+		display: none;
+	}
+	.navigation ul li b:nth-child(1)::before{
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: #FF0036;
+		border-bottom-right-radius: 30px;
+	}
+	.navigation ul li b:nth-child(2){
+		position: absolute;
+		bottom: -17px;
+		height: 17px;
+		width: 100%;
+		background: rgba(var(--bs-light-rgb),var(--bs-bg-opacity));
+		display: none;
+	}
+	.navigation ul li b:nth-child(2)::before{
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: #FF0036;
+		border-top-right-radius: 30px;
+	}
+	.navigation ul li.active b:nth-child(1),
+	.navigation ul li.active b:nth-child(2){
+		display: block;
+	}
+
+	.navigation ul li a{
+		position: relative;
+		display: block;
+		width: 100%;
+		display: flex;
+		text-decoration: none;
+		color: #fff;
+	}
+
+	/* menu actif >lien */
+
+	.navigation ul li.active a{
+		color: #FF0036;
+	}
+
+	.navigation ul li a .icon{
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 54px;
+		height: 54px;
+		line-height: 54px;
+		text-align: center;
+	}
+	/* .navigation ul .logo a .icon i{
+		font-size: 2rem;
+	} */
+	.navigation ul .logo a .title{
+		font-weight: bold;
+		font-size: 1.7rem;
+	}
+	.navigation ul li a .icon i{
+		font-size: 1.5rem;
+	}
+
+
+	.navigation ul li a{
+		z-index: 12;
+	}
+	.navigation ul .lien li:hover a{
+		border-radius: 30px;
+		background: #f55678e1;
+		transition: .3s;
+		z-index: 12;
+	}
+	.navigation ul li.active:hover a{
+		border-radius: 30px;
+		background: none;
+		transition: .3s;
+	}
+
+	
+	.navigation ul li a .title{
+		position: relative;
+		display: block;
+		padding-left: 10px;
+		height: 54px;
+		line-height: 54px;
+		white-space: normal;
+	}
+
+	.toggle{
+		position: fixed;
+		background: transparent;
+		top: 20px;
+		left: 70px;
+		width: 34px;
+		height: 34px;
+		border-radius: 50%;
+		cursor: pointer;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: 0.3s;
+	}
+	.toggle.active{
+		left: 290px;
+	}
+	.toggle i{
+		position: absolute;
+		color: #FF0036;
+		font-size: 34px;
+	}
+	.toggle i.open,
+	.toggle.active i.close{
+		display: block;
+	}
+	.toggle i.close,
+	.toggle.active i.open{
+		display: none;
+	}
+
+	@media screen and (max-width:767px) {
+		.navigation{
+			width: 40px;
+			scrollbar-width: none;
+		}
+		.navigation ul li a .icon i{
+			font-size: 1.3rem;
+			transition: .3s;
+		}
+		.navigation ul li.active a .icon i{
+			font-size: 1.5rem;
+			transition: .3s;
+			padding-left: 6px;
+		}
+		.navigation.active ul li.active a .icon i{
+			padding-left: 0px;
+		}
+		.navigation.active ul li a .icon i{
+			font-size: 1.5rem;
+			transition: 0.3s;
+		}
+
+		.toggle{
+			left: 40px;
+			width: 34px;
+			height: 34px;
+		}
+		.toggle i{
+			font-size: 30px;
+		}
+	}
+</style>
+
+
+<div class="navigation active">
+	<ul>
+		<li class="logo">
+			<a href="">
+				<span class="icon"><i class="fas fa-calendar-alt"></i></span>
+				<span class="title">Planning</span>
+			</a>
+		</li>
+		<div class="lien">
+			<li class="list active">
+				<b></b>
+				<b></b>
+				<a href="#">
+					<span class="icon"><i class="fas fa-home"></i></span>
+					<span class="title">Dashboard</span>
+				</a>
+			</li>
+			<li class="list">
+				<b></b>
+				<b></b>
+				<a href="#">
+					<span class="icon"><i class="fas fa-user-tie"></i></span>
+					<span class="title">Enseignants</span>
+				</a>
+			</li>
+			<li class="list">
+				<b></b>
+				<b></b>
+				<a href="#">
+					<span class="icon"><i class="fas fa-book-reader"></i></span>
+					<span class="title">UEs</span>
+				</a>
+			</li>
+			<li class="list">
+				<b></b>
+				<b></b>
+				<a href="#">
+					<span class="icon"><i class="far fa-flag"></i></span>
+					<span class="title">Filières</span>
+				</a>
+			</li>
+			<li class="list">
+				<b></b>
+				<b></b>
+				<a href="#">
+					<span class="icon"><i class="fas fa-bookmark"></i></span>
+					<span class="title">Spécialités</span>
+				</a>
+			</li>
+			<li class="list">
+				<b></b>
+				<b></b>
+				<a href="#">
+					<span class="icon"><i class="fas fa-chart-line"></i></span>
+					<span class="title">Niveaux</span>
+				</a>
+			</li>
+			<li class="list">
+				<b></b>
+				<b></b>
+				<a href="#">
+					<span class="icon"><i class="fas fa-door-closed"></i></span>
+					<span class="title">Salles</span>
+				</a>
+			</li>
+			<li class="list">
+				<b></b>
+				<b></b>
+				<a href="#">
+					<span class="icon"><i class="fas fa-cubes"></i></span>
+					<span class="title">Classes</span>
+				</a>
+			</li>
+			<li class="list">
+				<b></b>
+				<b></b>
+				<a href="#">
+					<span class="icon"><i class="fas fa-users"></i></span>
+					<span class="title">Groupes</span>
+				</a>
+			</li>
+		</div>
+	</ul>
+</div>
+
+<div class="toggle active">
+	<i class="fas fa-chevron-circle-left close"></i>
+	<i class="fas fa-chevron-circle-right open"></i>
+</div>
+
+
+<script>
+    // changer le bg d'un element du menu après le clic
+
+    let list = document.getElementsByClassName('list');
+    for (let i = 0; i < list.length; i++) {
+        list[i].addEventListener('click', function(){
+            // alert("hello");
+            let j = 0;
+            while (j < list.length) {
+                list[j++].className = 'list';
+            }
+            list[i].className = 'list active';
+        });
+    }
+
+    // collapse le menu
+
+    let menuToggle = document.querySelector('.toggle');
+    let navigation = document.querySelector('.navigation');
+    menuToggle.addEventListener('click', function(){
+        menuToggle.classList.toggle('active');
+        navigation.classList.toggle('active');
+    });
+
+</script>
 
 {% endblock %}
