@@ -1,10 +1,10 @@
 {% extends 'dash.html' %}
 {% load static %}
 
-{% block title %} SPLANNING | Dashboard {% endblock %}
+{% block title %} SPLANNING |  {% endblock %}
 
 {% block content %}
 
-<h1>Accueil Dashboard</h1>
+  <h1>contenu de la page</h1>
 
 {% endblock %}
