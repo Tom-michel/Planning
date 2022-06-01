@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
+        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/dash.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-icons.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+        
+        <title> {% block title %}  {% endblock %} </title>
+
+    </head>
+    <body class="bg-light">
+        {% block header %} 
+        
+            <!-- ============== SIDEBAR ================= -->
+            <div class="navigation active">
+                <ul>
+                    <li class="logo">
+                        <a href="">
+                            <span class="icon"><i class="uil uil-calendar-alt"></i></span>
+                            <span class="title">Planning</span>
+                        </a>
+                    </li>
+                    <div class="lien">
+                        <li class="list active">
+                            <b></b>
+                            <b></b>
+                            <a href="#">
+                                <span class="icon"><i class="uil uil-home"></i></span>
+                                <span class="title">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <b></b>
+                            <b></b>
+                            <a href="#">
+                                <span class="icon"><i class="uil uil-user"></i></span>
+                                <span class="title">Enseignants</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <b></b>
+                            <b></b>
+                            <a href="#">
+                                <span class="icon"><i class="uil uil-book-open"></i></span>
+                                <span class="title">UEs</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <b></b>
+                            <b></b>
+                            <a href="#">
+                                <span class="icon"><i class="uil uil-meeting-board"></i></span>
+                                <span class="title">Filières</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <b></b>
+                            <b></b>
+                            <a href="#">
+                                <span class="icon"><i class="uil uil-bookmark-full"></i></span>
+                                <span class="title">Spécialités</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <b></b>
+                            <b></b>
+                            <a href="#">
+                                <span class="icon"><i class="uil uil-chart-line"></i></span>
+                                <span class="title">Niveaux</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <b></b>
+                            <b></b>
+                            <a href="#">
+                                <span class="icon"><i class="uil uil-building"></i></span>
+                                <span class="title">Salles</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <b></b>
+                            <b></b>
+                            <a href="#">
+                                <span class="icon"><i class="uil uil-airplay"></i></span>
+                                <span class="title">Classes</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <b></b>
+                            <b></b>
+                            <a href="#">
+                                <span class="icon"><i class="uil uil-users-alt"></i></span>
+                                <span class="title">Groupes</span>
+                            </a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+
+            <div class="toggle active">
+                <i class="uil uil-angle-left-b close"></i>
+                <i class="uil uil-angle-right-b open"></i>
+            </div>
+
+            <!-- ============= MAIN =================== -->
+            <div class="main active">
+                <div class="topbar shadow">
+                    <div></div>
+                    <div class="welcome">
+                        <h5>Bienvenue, <span style="color: #FF0036;">Michel</span></h5>
+                    </div>
+                    <div class="user">
+                        <div class="photo">
+                            <img src="{% static 'img/pp.jpg' %}" alt="">
+                        </div>
+                        <a href="" style="color: #FF0036;">logout</span></a>
+                    </div>
+                </div>
+
+                <!-- =========== CONTENU DE LA PAGE ============== -->
+	        
+                <div class="contenu">
+                    
+                    {% block content %}
+
+                    {% endblock %} 
+                </div>
+            </div>
+
+        {% endblock %}
+
+
+        
+
+        {% block footer %}
+
+        {% endblock %}
+
+        
+
+
+
+        <!-- Bootstrap core JS-->
+        
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
+        <script src="../static/js/script.js"></script>
+        <script src="../static/js/clipboard.min.js"></script>
+        <script src="../static/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+        <script>
+            // changer le bg d'un element du menu après le clic
+
+            let list = document.getElementsByClassName('list');
+            for (let i = 0; i < list.length; i++) {
+                list[i].addEventListener('click', function(){
+                    // alert("hello");
+                    let j = 0;
+                    while (j < list.length) {
+                        list[j++].className = 'list';
+                    }
+                    list[i].className = 'list active';
+                });
+            }
+
+            // collapse le menu
+
+            let mainPage = document.querySelector('.main');
+            let menuToggle = document.querySelector('.toggle');
+            let navigation = document.querySelector('.navigation');
+            menuToggle.addEventListener('click', function(){
+                menuToggle.classList.toggle('active');
+                navigation.classList.toggle('active');
+                mainPage.classList.toggle('active');
+            });
+
+        </script>
+        
+    </body>
+</html>
