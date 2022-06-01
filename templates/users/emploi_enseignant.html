@@ -1,0 +1,273 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Planning | Mon emploi de temps {% endblock %}
+
+{% block content %}
+ 
+  <style type="text/css">
+
+    /* barrede navigation */
+
+    nav{
+
+      position: absolute;
+      width: 1440px;
+      height: 77px;
+      left: 0px;
+      top: 0px;
+      display: flex;
+      background: #FFFFFF;
+      box-shadow: 0px 0px 22px -2px rgba(0, 0, 0, 0.25);
+    }
+
+    nav img{
+      box-sizing: border-box;
+      position: absolute;
+      width: 52px;
+      height: 52px;
+      left: 88%;
+      top: 10px;
+      
+    }
+    nav a{
+      position: fixed;
+      width: 81px;
+      height: 38px;
+      left: 91%;
+      top: 19px;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 25px;
+      line-height: 38px;
+      display: flex;
+      align-items: center;
+      text-decoration-line: underline;
+      color: #FF0036;
+   }
+
+   nav h2{
+  position: absolute;
+  width: 227px;
+  height: 38px;
+  left: 573px;
+  top: 19px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 38px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+
+
+   }
+   nav h2 p{
+    color: #FF0036;
+    margin-bottom: -3px;
+    font-weight: bold;
+   }
+   #logout{
+    margin-left: 15px;
+
+   }
+   ul{
+    list-style-type: none;
+   }
+
+    /* Fin Barre de navigation
+
+    /* titre du tableau de l'emploi de temps */
+    span{
+      position: absolute;
+      width: 100%;
+      height: 23px;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 113%;
+      left: 8%;
+      color: #000000;
+
+
+    }
+    /* titre du tableau */
+    .rect_title{
+      position: absolute;
+      width: 480px;
+      height: 30px;
+      left: 490px;
+      top: 124px;
+      z-index: 1;
+      background: #FFFFFF;
+    }
+    .rect_title h2{
+      position: absolute;
+      left: 10px;
+      top: -5px;
+      bottom: 8.7%;
+      font-weight: bold;
+      font-size: 2rem;
+
+      color: #FF0036;
+    }
+    /* rectangle entourant le tableau */
+    .emploi {
+      position: relative;
+      width: 848px;
+      height: 466px;
+      margin: 140px 395px;
+      
+      
+    }
+    .table-rect {
+      box-sizing: border-box;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      justify-content: center;
+      align-items: center;
+
+      border: 2px solid #FF0036;
+      border-radius: 20px;
+    }
+
+    /* fin rectangle */
+
+    /* tableau */
+
+    .table{
+      box-sizing: border-box;
+      position: absolute;
+      width: 65%;
+      height: 351px;
+      left: 10%;
+      top: 48px;
+      border: 1px solid #FF0036;
+      border-radius: 30px 30px 0px 0px;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 113%;
+    }
+    .table-head{
+      position: absolute;
+      width: 81.3%;
+      height: 60px;
+      left: 10%;
+      top: 50px;
+      
+
+      background: #FF0036;
+      border-radius: 30px 30px 0px 0px;
+    }
+    .row1{
+    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 113%;
+    color: #FFFFFF;
+    }
+
+ 
+ 
+  </style>
+
+  <nav class="container-fluid">
+    <ul>
+      <li><img src="{% static 'image/pp.png' %}"> </li>
+      <li><h2>Bienvenue, <p>yves</p></h2></li>
+      <li id="logout"><a href="#">logout<a></li>
+    </ul>
+  </nav>
+  <div class="rect_title">
+    <h2> <-</h2>
+    <span> votre emlpoi de temps: Semestre II</span>
+  </div>
+  <div class="emploi">
+    <div class="table-rect">
+      <table class="table table-bordered">
+      <div class="table-head">
+         <thead>
+              <tr class="row1">
+                <th scope="col">heure</th>
+                <th scope="col">lundi</th>
+                <th scope="col">mardi</th>
+                <th scope="col">mercredi</th>
+                <th scope="col">jeudi</th>
+                <th scope="col">vendredi</th>
+                <th scope="col">samedi</th>
+            </tr>
+        </thead>
+      </div>
+       
+        <tbody>
+          <tr>
+            <th scope="row">7h-9h55</th>
+            <td>Inf3102</td>
+            <td>phy110</td>
+            <td>bios312</td>
+            <td>bios312</td>
+            <td>bios312</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">10h5-12h55</th>
+            <td></td>
+            <td>Inf315</td>
+            <td>Inf315</td>
+            <td>bios312</td>
+            <td></td>
+            <td>bios312</td>
+          </tr>
+          <tr>
+            <th scope="row">13h05-15h55</th>
+            <td>Math2013</td>
+            <td>Inf314</td>
+            <td>Inf312</td>
+            <td>bios312</td>
+            <td>bios312</td>
+            <td>bios312</td>
+          </tr>
+          <tr>
+            <th scope="row">16h05-18h55</th>
+            <td>Math2013</td>
+            <td>Inf314</td>
+            <td>Inf312</td>
+            <td>bios312</td>
+            <td>bios312</td>
+            <td>bios312</td>
+          </tr>
+          <tr>
+            <th scope="row">19h05-20h55</th>
+            <td>Math2013</td>
+            <td>Inf314</td>
+            <td>Inf312</td>
+            <td>bios312</td>
+            <td>bios312</td>
+            <td>bios312</td>
+          </tr>
+          <tr>
+            <th scope="row">21h05-22h55</th>
+            <td>Math2013</td>
+            <td>Inf314</td>
+            <td>Inf312</td>
+            <td>bios312</td>
+            <td>bios312</td>
+            <td>bios312</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  </div>
+ 
+
+{% endblock %}
