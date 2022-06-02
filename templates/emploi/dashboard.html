@@ -5,6 +5,255 @@
 
 {% block content %}
 
-<h1>Accueil Dashboard</h1>
+<style>
 
+    :root{
+        --card-border-radius: 15px;
+    }
+    .table{
+        --bs-table-striped-bg: rgba(255, 0, 54, 0.12) !important;
+    }
+
+    /* ============ BOXES ================ */
+
+    .boxes{
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+    }
+    .boxes a{
+        text-decoration: none;
+    }
+    .box{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 15px;
+        width: 240px;
+        border-radius: var(--card-border-radius);
+        transition: 0.3s;
+    }
+
+    .box .count{
+        position: relative;
+    }
+    .box .count span{
+        color: #FF0036;
+        font-size: 2.5rem;
+    }
+    .box .count p{
+        position: relative;
+        top: -10px;
+        left: 5px;
+        font-size: 1rem;
+    }
+
+    .box i{
+        font-size: 2.5rem;
+    }
+
+    .box:hover{
+        background: #FF0036;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.35) !important;
+        color: #fff !important;
+        transform: scale(1.08);
+        transition: 0.3s;
+    }
+    .box:hover .count span{
+        color: #fff;
+    }
+
+    @media screen and (max-width:767px) {
+        .box{
+            padding: 5px 15px;
+            width: 150px;
+        }
+
+        .box .count span{
+            color: #FF0036;
+            font-size: 1.5rem;
+        }
+        .box .count p{
+            position: relative;
+            top: -8px;
+            left: 1px;
+            font-size: 0.8rem;
+        }
+
+        .box i{
+            font-size: 1.8rem;
+        }
+    }
+
+    /* ============= RENCENTS ============== */
+
+    .recents{
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .recents .col-tab {
+        border-radius: var(--card-border-radius);
+        width: 100%;
+    }
+
+    .recents .col-con{
+        width: 100%;
+    }
+
+
+    .hearder{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hearder p, .connect-title p{
+        margin-bottom: 0;
+        color: #FF0036;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    .hearder a{
+        text-decoration: none;
+        background: #FF0036;
+        color: #fff;
+        padding: 7px 13px;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+    .hearder a span{
+        font-size: 1rem;
+    }
+
+    .hearder a:hover{
+        opacity: 0.9;
+        transform: scale(1.01);
+        transition: 0.3s;
+    }
+
+</style>
+
+<div class="boxes">
+    <a href="">
+        <div class="box shadow text-secondary">
+            <div class="count">
+                <span>15</span><br>
+                <p class="mb-0">Enseignants</p>
+            </div>
+            <i class="uil uil-user"></i>
+        </div>
+    </a>
+    <a href="">
+        <div class="box shadow text-secondary">
+            <div class="count">
+                <span>78</span><br>
+                <p class="mb-0">UEs</p>
+            </div>
+            <i class="uil uil-book-open"></i>
+        </div>
+    </a>
+    <a href="">
+        <div class="box shadow text-secondary">
+            <div class="count">
+                <span>80</span><br>
+                <p class="mb-0">Filières</p>
+            </div>
+            <i class="uil uil-meeting-board"></i>
+        </div>
+    </a>
+    <a href="">
+        <div class="box shadow text-secondary">
+            <div class="count">
+                <span>15</span><br>
+                <p class="mb-0">Spécialités</p>
+            </div>
+            <i class="uil uil-bookmark-full"></i>
+        </div>
+    </a>
+    <a href="">
+        <div class="box shadow text-secondary">
+            <div class="count">
+                <span>15</span><br>
+                <p class="mb-0">Niveaux</p>
+            </div>
+            <i class="uil uil-chart-line"></i>
+        </div>
+    </a>
+    <a href="">
+        <div class="box shadow text-secondary">
+            <div class="count">
+                <span>15</span><br>
+                <p class="mb-0">Salles</p>
+            </div>
+            <i class="uil uil-building"></i>
+        </div>
+    </a>
+    <a href="">
+        <div class="box shadow text-secondary">
+            <div class="count">
+                <span>15</span><br>
+                <p class="mb-0">Classes</p>
+            </div>
+            <i class="uil uil-airplay"></i>
+        </div>
+    </a>
+    <a href="">
+        <div class="box shadow text-secondary">
+            <div class="count">
+                <span>15</span><br>
+                <p class="mb-0">Groupes</p>
+            </div>
+            <i class="uil uil-users-alt"></i>
+        </div>
+    </a>
+</div>
+
+<!-- <div class="container"> -->
+    <div class="row">
+        <div class="col-lg-10 col-tab offset-md-1 mt-5 shadow py-3 px-2">
+            <div class="hearder mb-4">
+                <p>Plannings Récents</p>
+                <a class="rounded-pill text-center" href="">
+                    Ajouter un planning 
+                    <span>+</span>
+                </a>
+            </div>
+            <div class=" tresp table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Niveau</th>
+                            <th scope="col">Filière</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row">Licence 1</td>
+                            <td>Informatique</td>
+                            <td>02/06/2022</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">Licence 2</td>
+                            <td>Mathématiques</td>
+                            <td>30/05/2022</td>
+                        </tr>
+                        <tr>
+                            <td>Licence 3</td>
+                            <td>Informatique</td>
+                            <td>02/06/2022</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+<!-- </div> -->
 {% endblock %}

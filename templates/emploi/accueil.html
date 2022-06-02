@@ -4,6 +4,500 @@
 {% block title %} SPLANNING | Accueil {% endblock %}
 
 {% block content %}
-  <h1>Accueil</h1>
+  
+<style type="text/css">
+  @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@400;500;600;700&family=Pacifico&family=Righteous&family=Merienda&display=swap');
+
+   @font-face {
+       font-family: Poppins;
+       src: url(../fonts/Poppins-Regular.ttf);
+   }
+
+   *{
+       font-family: 'Poppins', sans-serif !important;
+   }
+ 
+ @media screen and (max-width: 767px){
+   #mainMenu.show{
+     border-top: #ff0036 solid 2px;
+     margin-top: .5rem;
+     padding-top: .5rem;
+   }
+ }
+
+ /* .main-nav .navbar-toggler {
+       color: orange !important;
+       font-size: 25px !important;
+   } */
+   
+   .main-nav .navbar-toggler {
+       border: none !important;
+   }
+
+   @media screen and (max-width: 991px) {
+     .navbar-toggler i{
+         font-size: 1.3rem !important;
+         color: #ff0036 !important;
+         border: #ff0036 solid 2px !important;
+         padding: 0rem .5rem;
+         border-radius: 10px;
+     }
+   }
+
+
+ /* banière page d'accueil DÉBUT */
+
+ #hero {
+   width: 100%;
+   height: 100vh;
+   background: url("../img/hero-bg.jpg") top center;
+   background-size: cover;
+   position: relative;
+ }
+ #hero:before {
+   content: "";
+   background: rgba(0, 0, 0, 0.6);
+   position: absolute;
+   bottom: 0;
+   top: 0;
+   left: 0;
+   right: 0;
+ }
+ #hero .hero-container {
+   position: absolute;
+   bottom: 0;
+   top: 0;
+   left: 0;
+   right: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   text-align: center;
+   padding: 45px 13px 0 13px;
+ }
+
+ #hero .ban-text h1 {
+   margin: 0 0 10px 0;
+   font-size: 35px;
+   font-weight: 700;
+   line-height: 56px;
+   text-transform: uppercase;
+   color: #fff;
+ }
+ #hero .ban-text h2 {
+   color: #eee;
+   margin-bottom: 40px;
+   font-size: 24px;
+ }
+
+ #hero .ban-text p{
+   font-size: 1.1rem;
+ }
+
+ @media screen and (min-width: 992px) {
+   #hero .ban-text{
+     width: 70%;
+   }
+ }
+
+ @media screen and (max-width: 991px) {
+   #hero .ban-text{
+     width: 100%;
+   }
+ }
+
+ @media screen and (max-width: 767px) {
+   #hero .ban-text{
+     width: 100%;
+   }
+   #hero .ban-text h1{
+     line-height: 38px;
+     font-size: 23px;
+   }
+   #hero .ban-text p {
+     font-size: 15px;
+   }
+ }
+
+ .btn-get-started {
+   font-weight: 400;
+   font-size: 14px;
+   display: inline-block;
+   padding: 9px 15px;
+   border-radius: 20px;
+   transition: 0.5s;
+   border: 2px solid #fff;
+   color: #fff;
+   text-decoration: none;
+ }
+ .btn-get-started:hover {
+   background: #ff0036;
+   border: 2px solid #ff0036;
+   color: #000;
+ }
+
+ .btn-get-started.rec:hover {
+   background: #ff0036;
+   border: 2px solid #ff0036;
+   color: #fff;
+ }
+
+
+ /* banière page d'accueil FIN */
+
+ 
+
+ /* Bienvenue après baniere début */
+
+ .nom_appli{
+   font-size: 1.5rem;
+   color: #ff0036;
+   /* color: rgb(56, 51, 133); */
+   font-weight: bold;
+   position: relative;
+   z-index: 1;
+   text-transform: uppercase;
+ }
+ .nom_appli::before{
+   content: '';
+   background: linear-gradient(#ff0036, #fff);
+   height: 40px;
+   width: 60px;
+   position: absolute;
+   top: -20px;
+   z-index: -1;
+   transform: rotate(-10deg);
+   border-bottom-right-radius: 40px;
+   border-top-left-radius: 40px;
+ }
+ 
+ #missions .missionBox .brand h3{
+   font-size: 1.5rem;
+   opacity: .8;
+ }
+ #missions .missionBox .brand h1{
+   font-size: 2.5rem;
+ }
+ #missions .missionBox .brand p{
+   margin-top: 1rem;
+   font-size: 1rem;
+ }
+
+ @media screen and (min-width: 992px) {
+   #missions .missionBox{
+     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+     position: relative;
+     padding: 30px 40px 20px;
+     margin-bottom: 30px;
+     top: -60px;
+     background: #fff;
+     border-radius: 10px;
+     border-bottom: #ff0036 solid 4px;
+   }
+ }
+
+ @media screen and (max-width: 991px) {
+   #missions .missionBox{
+     /* margin: 25px 0; */
+
+     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+     position: relative;
+     padding: 30px 40px 20px;
+     margin-bottom: 20px;
+     top: -100px;
+     background: #fff;
+     border-radius: 10px;
+     border-bottom: #ff0036 solid 4px;
+   }
+ }
+
+ @media screen and (max-width: 767px) {
+   #missions .missionBox{
+     /* margin: 25px 20px; */
+
+     padding: 30px 10px 20px;
+     margin-left: 2px;
+     margin-right: 2px;
+     top: -100px;
+   }
+   #missions .missionBox p{
+     font-size: 15px;
+   }
+ }
+
+ /* Buttons */ 
+
+ .border-primary.bout{
+   border-color: #ff0036 !important;
+ }
+ .border-warning.bout{
+   border-color: #ff0036 !important;
+ }
+
+ .border-primary.bout:hover{
+   color: #fff !important;
+   background: #ff0036 !important;
+   transition: .2s;
+   transform: scale(1.05);
+ }
+ .border-primary.active.bout{
+   color: #fff !important;
+   background: #ff0036 !important;
+   transition: .2s;
+ }
+
+ .border-primary.active.bout:hover{
+   color: #ff0036 !important;
+   background: #fff !important;
+   transition: .2s;
+ }
+ .border-warning.bout:hover{
+   color: #fff !important;
+   background: #ff0036 !important;
+   transition: .2s;
+   transform: scale(1.05);
+ }
+ .border-warning.active.bout{
+   color: #ff0036 !important;
+   background: #fff !important;
+   transition: .2s;
+ }
+ .border-warning.active.bout:hover{
+   color: #fff !important;
+   background: #ff0036 !important;
+   transition: .2s;
+ }
+
+ @media screen and (max-width: 991px) {
+   .border-primary.active.bout,
+   .border-warning.active.bout{
+     padding: .5rem 2rem !important;
+   }
+ }
+
+ /* Bienvenue après baniere fin */
+
+ /* A propos début */
+
+ #about{
+   position: relative;
+ }
+ #about .about-desc{
+   box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+   padding: 30px 20px;
+   background: #fff;
+   border-radius: 10px;
+   border-bottom: #ff0036e solid 4px;
+ }
+
+ #about .about-desc p{
+   font-size: 1.1rem;
+ }
+
+ @media screen and (max-width: 991px) {
+   #about{
+     position: relative;
+     top: -80px;
+   }
+ }
+
+
+
+
+
+ /* footer DÉBUT */
+
+ footer{
+   padding: 30px 0;
+   background: #121212;
+ }
+
+ footer #contacts i{
+   font-size: 1.5rem;
+   color: #ff0036;
+   transition: .5s;
+ }
+ footer #contacts i:hover{
+   transform: scale(1.05);
+   color: #ff0036;
+ }
+
+
+
+ /* footer FIN */
+
+</style>
+
+<!-- nav -->
+
+<nav class="navbar navbar-expand-md  main-nav fixed-top shadow" style="background-color:#121212 ;">
+   <div class="container-fluid">
+     <!--Horizontal Nav-->
+       <a class="navbar-brand text-warning" href="/#hero">
+           <img src="">
+       </a>
+       <span class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu" aria-controls="mainMenu" aria-expanded="true" aria-label="Toggle navigation">
+           <!-- <span class="navbar-toggler-icon pt-2"><i class="bi-list"></i></span> -->
+           <span id="menuO" class="navbar-toggler-icon pt-1">
+             <i class="bi-list"></i>
+         </span>
+         <span id="menuC" class="navbar-toggler-icon pt-1">
+             <i class="bi-x-lg"></i>
+         </span>
+       </span>
+       <div class="navbar-collapse collapse" id="mainMenu">
+           <ul class="navbar-nav ms-auto">
+         <li class="nav-item">
+           <a href="" class="nav-link active mx-1 " style="color: white;">Acceuil</a>
+         </li>
+
+      
+           </ul>
+           <div class="linkBtn me-5 my-2">   
+               <a href="/#inscription" class="mx-1 text-dark text-decoration-none border border-primary border-2 bg-light  py-1 px-4 rounded-pill shadow bout">Connexion</a>
+               <a href="" class="ms-1 mt-3 text-dark text-decoration-none border border-warning border-2 bg-light py-1 px-3 rounded-pill shadow bout">Recherche</a>
+           </div>
+       </div>
+   </div><!-- /.container -->
+</nav>
+
+<!-- baniere -->
+
+<section id="hero" class="img-fluid bg-secondary" style="background-image:url(../../static/img/baniere.JPG); background-attachment: fixed; background-repeat:no-repeat; background-size: cover;">
+ <div class="hero-container">
+ <div class="ban-text">
+   <h1 class="text-center">Recherche d'emploi de temps pour étudiant, enseignant, salle, ue...</h1>
+   <p class="text-center text-white pb-2">SPLANNING est une plateforme qui permet aux étudiants et aux enseignants de rechercher un emploi de temps par niveau, filière , salle .... 
+     
+   </p>
+   </div>
+   <p>
+     <a href="/#inscription" class="btn-get-started mt-3">Commencer</a>&emsp;
+   </p>
+ </div>
+</section>
+
+<!-- bienvenue -->
+
+<section  id="missions">
+ <div class="container">
+   <div class="row missionBox">
+     <div class="col-md-6 my-auto brand">
+       <h3 class="mb-4 title-text"><b>Bienvenu sur</b></h3>
+       <h1 class="mb-0 text-uppercase" style="font-weight: 700; opacity: .8;">SPLANNING</h1>
+       <p class="mt-0">Plateforme de recherche d'emploide temps pour étudiants et enseignants.</p>
+       <div class="">
+         <div class="d-flex flex-row flex-wrap">
+           <a class="btn me-4 mb-3 border-2 border-primary text-uppercase px-5 py-3 rounded-pill active bout" href="/#inscription">Inscription</a>
+           <a class="btn mb-3 border-2 border-warning text-uppercase px-5 py-3 rounded-pill active bout" href="">Connexion</a>
+         </div>
+       </div>
+     </div>
+     <div class="col-md-6">
+       <img class="img-fluid" src="../../static/img/IMG_5050.jpg" alt="">
+     </div>
+   </div>
+ </div>
+</section>
+
+<!-- a propos -->
+
+<section id="about" class="bg-white">
+ <div class="container">
+   <div class="row py-5">
+     <div class="col-lg-12 mb-4">
+       <h1 class="nom_appli text-center text-uppercase">C'est quoi SPLANNING ?</h1>
+     </div>
+     <div class="col-lg-6 my-auto">
+       <img class="img-fluid" src="../../static/img/4584.jpg" alt="">
+     </div>
+     <div class="col-lg-6 mb-3 about-desc my-auto mx-auto">
+       <p>
+         <b style="color: #ff0036;">&emsp;&emsp;SPLANNING</b> est une plateforme regroupant des <b>étudiants</b> et des <b>enseignants</b> qui auront la possibilité de rechercher des emploi de temps de leur faculté.
+       </p>
+     </div>
+   </div>
+ </div>
+</section>
+
+
+
+<!-- footer -->
+
+<footer id="footer">
+   <div class="footer-top">
+   <div class="container">
+     <div class="row">
+       <div class="col-lg-3 col-md-5  py-3">
+         <div class="mb-3">
+           <!-- <a href="/#hero"><img src="" alt="logo"></a> -->
+           <h2>
+             <a  style="text-decoration: none; color: white;" href="/#hero">SPLANNING</a>
+           </h2>
+         </div>
+         <p style="color: rgba(255, 255, 255, 0.3);">
+           Application de recherche d'emploi de temps
+            de l'<b>UNIVERSITÉ DE YAOUNDÉ 1.</b>
+         </p>
+       </div>
+       <div class="col-lg-3 col-md-4 py-3" id="contacts">
+         <h4 style="text-decoration: none; color: white;">Contactez nous</h4>
+         
+         <ul style="padding-left: 15px !important;">
+           <li><a style="text-decoration: none; color: #ff0036;"href="">Équipe de développement</a></li>
+           <li><a style="text-decoration: none; color: #ff0036;" href="">Conditions d'utilisateion</a></li>
+         </ul>
+         
+       </div>
+       <div class="col-lg-2 col-md-3 py-3 footer-links">
+         <h4 style="text-decoration: none; color: white;">Liens utiles</h4>
+         <ul>
+           <li><a  style="text-decoration: none;color: #ff0036; " href="/#hero">Acceuil</a></li>
+           <li><a style="text-decoration: none; color: #ff0036;" href="">Connexion</a></li>
+           <li><a style="text-decoration: none; color: #ff0036;" href="/#inscription">Inscription</a></li>
+         </ul>
+       </div>
+       <div class="col-lg-4 col-md-8 py-3">
+         <h4 style="text-decoration: none; color: white;">Rejoignez nous</h4>
+         <p style="color: rgba(255, 255, 255, 0.3);">
+           Vous êtes un étudiant ou enseignant qui souhaite rechercher un emploi de temps
+            ? <a  style="text-decoration: none; color: #ff0036;" href="/#inscription" class="btn-orange">Je m'inscris</a>
+         </p>
+       </div>
+     </div>
+     <div class="row mt-2">
+       <div class="col-lg-12 text-center" style="font-size: .8rem;color: rgba(255, 255, 255, 0.3);">
+         &copy; Copyright <strong><span>SPLANNING</span></strong> 2022, Développeé par un groupe de 5 étudiants de l'UY1.
+       </div>
+     </div>
+   </div>
+   </div>
+</footer>
+<script src="script.js" ></script>
+   <!--  Jquery js file  -->
+   
+
+   <!--  Bootstrap js file  -->
+ <script src="bootstrap.min.js"></script>
+ <script src="bootstrap.bundle.min.js"></script>
+
+
+<script type="text/javascript">
+ // changement du bouton menu après click
+
+   var menuO = document.getElementById('menuO');
+   var menuC = document.getElementById('menuC');
+   menuC.style.display = "none";
+
+   menuO.addEventListener('click', function(){
+       menuO.style.display = "none";
+       menuC.style.display = "";
+   });
+   menuC.addEventListener('click', function(){
+       menuO.style.display = "";
+       menuC.style.display = "none";
+   });
+</script>
 
 {% endblock %}
