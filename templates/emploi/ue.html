@@ -6,4 +6,16 @@
 {% block content %}
   <h1>Liste des UEs</h1>
 
+
+<script>
+
+    // Rendre le lien actif
+    
+    let list = document.getElementsByClassName('list');
+    for (let i = 0; i < list.length; i++) {
+        list[i].className = 'list';
+    }
+    document.getElementById('ue').className = 'list active';
+</script>
+
 {% endblock %}

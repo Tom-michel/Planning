@@ -7,4 +7,17 @@
 
   <h1>Liste des Filières</h1>
 
+
+
+<script>
+
+    // Rendre le lien actif
+    
+    let list = document.getElementsByClassName('list');
+    for (let i = 0; i < list.length; i++) {
+        list[i].className = 'list';
+    }
+    document.getElementById('filiere').className = 'list active';
+</script>
+
 {% endblock %}

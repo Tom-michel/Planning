@@ -89,18 +89,12 @@
 
     /* ============= RENCENTS ============== */
 
-    .recents{
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .recents .col-tab {
+    .col-tab {
         border-radius: var(--card-border-radius);
-        width: 100%;
+        /* width: 100%; */
     }
 
-    .recents .col-con{
+    .col-con{
         width: 100%;
     }
 
@@ -214,46 +208,61 @@
     </a>
 </div>
 
-<!-- <div class="container"> -->
-    <div class="row">
-        <div class="col-lg-10 col-tab offset-md-1 mt-5 shadow py-3 px-2">
-            <div class="hearder mb-4">
-                <p>Plannings Récents</p>
-                <a class="rounded-pill text-center" href="">
-                    Ajouter un planning 
-                    <span>+</span>
-                </a>
-            </div>
-            <div class=" tresp table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Niveau</th>
-                            <th scope="col">Filière</th>
-                            <th scope="col">Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td scope="row">Licence 1</td>
-                            <td>Informatique</td>
-                            <td>02/06/2022</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">Licence 2</td>
-                            <td>Mathématiques</td>
-                            <td>30/05/2022</td>
-                        </tr>
-                        <tr>
-                            <td>Licence 3</td>
-                            <td>Informatique</td>
-                            <td>02/06/2022</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
+<div class="row">
+    <div class="col-lg-10 mx-auto col-tab mt-5 shadow py-3 px-2">
+        <div class="hearder mb-4">
+            <p>Plannings Récents</p>
+            <a class="rounded-pill text-center" href="">
+                consulter 
+                <i class="uil uil-eye"></i>
+            </a>
+            <a class="rounded-pill text-center" href="">
+                Ajouter 
+                <span>+</span>
+            </a>
         </div>
+        <div class=" tresp table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Niveau</th>
+                        <th scope="col">Filière</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">Licence 1</td>
+                        <td>Informatique</td>
+                        <td>02/06/2022</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Licence 2</td>
+                        <td>Mathématiques</td>
+                        <td>30/05/2022</td>
+                    </tr>
+                    <tr>
+                        <td>Licence 3</td>
+                        <td>Informatique</td>
+                        <td>02/06/2022</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
     </div>
-<!-- </div> -->
+</div>
+
+
+<script>
+
+    // Rendre le lien actif
+    
+    let list = document.getElementsByClassName('list');
+    for (let i = 0; i < list.length; i++) {
+        list[i].className = 'list';
+    }
+    document.getElementById('dash').className = 'list active';
+</script>
+
 {% endblock %}

@@ -34,74 +34,74 @@
                         </a>
                     </li>
                     <div class="lien">
-                        <li class="list active">
+                        <li id="dash" class="list">
                             <b></b>
                             <b></b>
-                            <a href="#">
+                            <a href="{% url 'dashboard' %}">
                                 <span class="icon"><i class="uil uil-home"></i></span>
                                 <span class="title">Dashboard</span>
                             </a>
                         </li>
-                        <li class="list">
+                        <li id="enseignant" class="list">
                             <b></b>
                             <b></b>
-                            <a href="#">
+                            <a href="{% url 'enseignant' %}">
                                 <span class="icon"><i class="uil uil-user"></i></span>
                                 <span class="title">Enseignants</span>
                             </a>
                         </li>
-                        <li class="list">
+                        <li id="ue" class="list">
                             <b></b>
                             <b></b>
-                            <a href="#">
+                            <a href="{% url 'unite_enseignements' %}">
                                 <span class="icon"><i class="uil uil-book-open"></i></span>
                                 <span class="title">UEs</span>
                             </a>
                         </li>
-                        <li class="list">
+                        <li id="filiere" class="list">
                             <b></b>
                             <b></b>
-                            <a href="#">
+                            <a href="{% url 'filieres' %}">
                                 <span class="icon"><i class="uil uil-meeting-board"></i></span>
                                 <span class="title">Filières</span>
                             </a>
                         </li>
-                        <li class="list">
+                        <li id="specialite" class="list">
                             <b></b>
                             <b></b>
-                            <a href="#">
+                            <a href="{% url 'specialites' %}">
                                 <span class="icon"><i class="uil uil-bookmark-full"></i></span>
                                 <span class="title">Spécialités</span>
                             </a>
                         </li>
-                        <li class="list">
+                        <li id="niveau" class="list">
                             <b></b>
                             <b></b>
-                            <a href="#">
+                            <a href="{% url 'niveaux' %}">
                                 <span class="icon"><i class="uil uil-chart-line"></i></span>
                                 <span class="title">Niveaux</span>
                             </a>
                         </li>
-                        <li class="list">
+                        <li id="salle" class="list">
                             <b></b>
                             <b></b>
-                            <a href="#">
+                            <a href="{% url 'salles' %}">
                                 <span class="icon"><i class="uil uil-building"></i></span>
                                 <span class="title">Salles</span>
                             </a>
                         </li>
-                        <li class="list">
+                        <li id="classe" class="list">
                             <b></b>
                             <b></b>
-                            <a href="#">
+                            <a href="{% url 'classes' %}">
                                 <span class="icon"><i class="uil uil-airplay"></i></span>
                                 <span class="title">Classes</span>
                             </a>
                         </li>
-                        <li class="list">
+                        <li id="groupe" class="list">
                             <b></b>
                             <b></b>
-                            <a href="#">
+                            <a href="{% url 'groupes' %}">
                                 <span class="icon"><i class="uil uil-users-alt"></i></span>
                                 <span class="title">Groupes</span>
                             </a>
@@ -163,17 +163,16 @@
         <script>
             // changer le bg d'un element du menu après le clic
 
-            let list = document.getElementsByClassName('list');
-            for (let i = 0; i < list.length; i++) {
-                list[i].addEventListener('click', function(){
-                    // alert("hello");
-                    let j = 0;
-                    while (j < list.length) {
-                        list[j++].className = 'list';
-                    }
-                    list[i].className = 'list active';
-                });
-            }
+            // let list = document.getElementsByClassName('list');
+            // for (let i = 0; i < list.length; i++) {
+            //     list[i].addEventListener('click', function(){
+            //         let j = 0;
+            //         while (j < list.length) {
+            //             list[j++].className = 'list';
+            //         }
+            //         list[i].className = 'list active';
+            //     });
+            // }
 
             // collapse le menu
 

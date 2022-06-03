@@ -64,7 +64,7 @@ def filieres(request):
 
 # page d'accueil des specialites
 
-def specialite(request):
+def specialites(request):
     return render(request, 'emploi/specialite.html')
 
 
