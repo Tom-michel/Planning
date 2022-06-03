@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render
 
 # Create your views here.
@@ -37,7 +38,30 @@ def accueil(request):
 # page d'accueil du dashboard
 
 def dashboard(request):
+
+    if request.method == 'POST':
+        classe = request.POST.get('classe')
+        # context = {'classe':classe}
+        # return render(request, 'emploi/ajout_planning.html', context)
+        msg = "salut"
+        return ajout_planning(request, classe)
+
     return render(request, 'emploi/dashboard.html')
+
+
+
+# ajouter un emploi de temps
+
+def ajout_planning(request, classe):
+    context = {'classe':classe}
+    return render(request, 'emploi/ajout_planning.html', context)
+
+
+
+# modifier un emploi de temps
+
+def modifier_planning(request):
+    return render(request, 'emploi/modifier_planning.html')
 
 
 

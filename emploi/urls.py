@@ -11,6 +11,8 @@ urlpatterns = [
 
     # ======= PAGES DU DASBOARD =================
     path('dashboard/', dashboard, name="dashboard"),
+    path('ajout_planning/', ajout_planning, name="ajout_planning"),
+    path('modifier_planning/', modifier_planning, name="modifier_planning"),
     path('enseignant/', enseignant, name="enseignant"),
     path('unite_enseignements/', unite_enseignements, name="unite_enseignements"),
     path('unite_enseignements/', unite_enseignements, name="unite_enseignements"),

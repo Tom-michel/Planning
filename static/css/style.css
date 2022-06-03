@@ -9,3 +9,38 @@
 *{
     font-family: 'Poppins'!important;
 }
+
+.table{
+    --bs-table-striped-bg: rgba(255, 0, 54, 0.12) !important;
+}
+
+.border-rouge {
+    border-color: #FF0036 !important;
+}
+
+
+/* les boutons */
+
+.btn-rouge, .btn-bleu {
+    border: none;
+    color: #fff;
+    padding: 7px 15px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-radius: 50rem !important;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-rouge{
+    background: #FF0036;
+}
+.btn-bleu{
+    background: #0b5ed7;
+}
+
+.btn-rouge:hover, .btn-bleu:hover{
+    opacity: 0.8;
+    color: #fff;
+}
+

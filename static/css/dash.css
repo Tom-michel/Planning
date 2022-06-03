@@ -19,7 +19,7 @@ body{
 
 .navigation{
     position: fixed;
-    background: #ff0037;
+    background: #FF0036;
     top: 0px;
     left: 0px;
     bottom: 0px;
@@ -331,4 +331,72 @@ body{
 
 .contenu{
     padding: 20px;
+}
+
+
+
+
+
+/* ========= tableau =============== */
+
+tbody th{
+    border-right: #212529 solid 2px !important;
+}
+
+tbody tr td a i{
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.uil-trash-alt {
+    color: red;
+}
+
+.uil-edit{
+    color: green;
+}
+
+/* tbody td::before{
+    position: relative;
+    content: "+";
+    font-size: 1.7rem;
+    color: rgba(0, 0, 0, 0.096);
+    justify-content: center;
+    align-items: center;
+    left: 34%;
+    top: 0.3rem;
+    padding: 0;
+    margin: 0;
+    transition: 0.5s;
+}
+
+tbody td:hover::before{
+    color: #fff;
+    transition: 0.3s;
+    font-size: 2rem;
+} */
+
+/* ======= modal ============= */
+
+select{
+    border: none !important;
+    border-bottom: #FF0036 solid 1px !important;
+    font-size: 0.9rem !important;
+    /* color: rgb(34, 34, 34) !important; */
+}
+
+select:hover,
+select:focus{
+    border: none !important;
+    border-bottom: #FF0036 solid 2px !important;
+    box-shadow: none !important;
+
+}
+select optgroup{
+    color: #000 !important;
+}
+select option{
+    font-size: 0.95rem !important;
+    color: rgb(85, 85, 85) !important;
+    /* color: rgb(34, 34, 34) !important; */
 }

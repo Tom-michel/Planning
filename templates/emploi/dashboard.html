@@ -58,7 +58,7 @@
         background: #FF0036;
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.35) !important;
         color: #fff !important;
-        transform: scale(1.08);
+        transform: scale(1.02);
         transition: 0.3s;
     }
     .box:hover .count span{
@@ -113,28 +113,38 @@
         font-weight: 500;
     }
 
-    .hearder a{
-        text-decoration: none;
-        background: #FF0036;
-        color: #fff;
-        padding: 7px 13px;
-        font-weight: 500;
-        font-size: 0.9rem;
-    }
     .hearder a span{
         font-size: 1rem;
     }
 
-    .hearder a:hover{
-        opacity: 0.9;
-        transform: scale(1.01);
-        transition: 0.3s;
+    .btn-rouge, .btn-bleu {
+        border: none;
+        color: #fff;
+        padding: 7px 15px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        border-radius: 50rem !important;
+        text-align: center;
+        text-decoration: none;
     }
+
+    .btn-rouge{
+        background: #FF0036;
+    }
+    .btn-bleu{
+        background: #0b5ed7;
+    }
+
+    .btn-rouge:hover, .btn-bleu:hover{
+        opacity: 0.8;
+        color: #fff;
+    }
+
 
 </style>
 
 <div class="boxes">
-    <a href="">
+    <a href="{% url 'enseignant' %}">
         <div class="box shadow text-secondary">
             <div class="count">
                 <span>15</span><br>
@@ -143,7 +153,7 @@
             <i class="uil uil-user"></i>
         </div>
     </a>
-    <a href="">
+    <a href="{% url 'unite_enseignements' %}">
         <div class="box shadow text-secondary">
             <div class="count">
                 <span>78</span><br>
@@ -152,7 +162,7 @@
             <i class="uil uil-book-open"></i>
         </div>
     </a>
-    <a href="">
+    <a href="{% url 'filieres' %}">
         <div class="box shadow text-secondary">
             <div class="count">
                 <span>80</span><br>
@@ -161,7 +171,7 @@
             <i class="uil uil-meeting-board"></i>
         </div>
     </a>
-    <a href="">
+    <a href="{% url 'specialites' %}">
         <div class="box shadow text-secondary">
             <div class="count">
                 <span>15</span><br>
@@ -170,7 +180,7 @@
             <i class="uil uil-bookmark-full"></i>
         </div>
     </a>
-    <a href="">
+    <a href="{% url 'niveaux' %}">
         <div class="box shadow text-secondary">
             <div class="count">
                 <span>15</span><br>
@@ -179,7 +189,7 @@
             <i class="uil uil-chart-line"></i>
         </div>
     </a>
-    <a href="">
+    <a href="{% url 'salles' %}">
         <div class="box shadow text-secondary">
             <div class="count">
                 <span>15</span><br>
@@ -188,7 +198,7 @@
             <i class="uil uil-building"></i>
         </div>
     </a>
-    <a href="">
+    <a href="{% url 'classes' %}">
         <div class="box shadow text-secondary">
             <div class="count">
                 <span>15</span><br>
@@ -197,7 +207,7 @@
             <i class="uil uil-airplay"></i>
         </div>
     </a>
-    <a href="">
+    <a href="{% url 'groupes' %}">
         <div class="box shadow text-secondary">
             <div class="count">
                 <span>15</span><br>
@@ -210,16 +220,19 @@
 
 <div class="row">
     <div class="col-lg-10 mx-auto col-tab mt-5 shadow py-3 px-2">
-        <div class="hearder mb-4">
-            <p>Plannings Récents</p>
-            <a class="rounded-pill text-center" href="">
+        <div class="hearder">
+            <p class="mb-4">Plannings Récents</p>
+            <p class="mb-4">
+                <a class="btn-bleu" href="{% url 'planning' %}">
                 consulter 
                 <i class="uil uil-eye"></i>
-            </a>
-            <a class="rounded-pill text-center" href="">
-                Ajouter 
-                <span>+</span>
-            </a>
+                </a>
+                &emsp;
+                <a class="btn-rouge" class="btn-rouge" data-bs-toggle="modal" data-bs-target="#choisirCours" href="{% url 'ajout_planning' %}">
+                    Ajouter 
+                    <span>+</span>
+                </a>
+            </p>
         </div>
         <div class=" tresp table-responsive">
             <table class="table table-striped">
@@ -228,6 +241,7 @@
                         <th scope="col">Niveau</th>
                         <th scope="col">Filière</th>
                         <th scope="col">Date</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -235,21 +249,67 @@
                         <td scope="row">Licence 1</td>
                         <td>Informatique</td>
                         <td>02/06/2022</td>
+                        <td>
+                            <a href=""><i class="uil uil-trash-alt"></i></a>
+                            <a href=""><i class="uil uil-edit"></i></a>
+                        </td>
                     </tr>
                     <tr>
                         <td scope="row">Licence 2</td>
                         <td>Mathématiques</td>
                         <td>30/05/2022</td>
+                        <td>
+                            <a href=""><i class="uil uil-trash-alt"></i></a>
+                            <a href=""><i class="uil uil-edit"></i></a>
+                        </td>
                     </tr>
                     <tr>
                         <td>Licence 3</td>
                         <td>Informatique</td>
                         <td>02/06/2022</td>
+                        <td>
+                            <a href=""><i class="uil uil-trash-alt"></i></a>
+                            <a href=""><i class="uil uil-edit"></i></a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
         
+    </div>
+</div>
+  
+  <!-- Modal -->
+<div class="modal fade" id="choisirCours" data-bs-backdrop="static" tabindex="-1" aria-labelledby="choisirCoursLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="choisirCoursLabel" style="color: #0b5ed7;">Ajout d'un cours</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3 mt-3">
+                                <div class="form-group">
+                                    <label for="salle">Veuillez choisir une classe</label><br><br>
+                                    <select class="form-select" name="classe" id="classe">
+                                        <option value="classe">classe</option>
+                                        <option value="INF-L3">INF-L3</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-bleu" data-bs-dismiss="modal">Annuler</button>
+                    <input class="btn-rouge" type="submit" value="Envoyer">
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
