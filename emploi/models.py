@@ -8,11 +8,14 @@ class Enseignant(models.Model):
 	telephone = models.CharField(max_length=14)
 	user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="enseignant")
  
+    
  
  
-class UniteEneseignement(models.Model):
+ 
+class UniteEnseignement(models.Model):
     
     nom_ue = models.CharField(max_length=40)
+    enseignant = models.ForeignKey(Enseignant, on_delete=models.CASCADE)
     
     
 
@@ -45,7 +48,7 @@ class Specialite(models.Model):
     
     nom_specialite = models.CharField(max_length=30)
     
-    enseignant = models.ForeignKey(Enseignant, on_delete=models.CASCADE)
+    classe = models.ForeignKey(Classes, on_delete=models.CASCADE)
 
 
  
@@ -56,13 +59,13 @@ class Salle(models.Model):
     
 class Cours(models.Model):
     
-    Salle = models.ForeignKey(Salle, on_delete=models.CASCADE)
+    salle = models.ForeignKey(Salle, on_delete=models.CASCADE)
     
     groupe = models.ForeignKey(Groupe, on_delete=models.CASCADE)
     
     classe = models.ForeignKey(Classes, on_delete=models.CASCADE)
     
-    ue = models.ForeignKey(UniteEneseignement, on_delete=models.CASCADE)
+    ue = models.ForeignKey(UniteEnseignement, on_delete=models.CASCADE)
     
 
 
