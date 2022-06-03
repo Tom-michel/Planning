@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 
@@ -20,8 +21,10 @@ def planning(request):
 
 
 # ========================== PAGES DES NON ADMIN FIN =======================
+# page de connexion admin
 
-
+def connexion_admin(request):
+    return render(request, 'emploi/connexion.html')
 
 
 # ========================== DASHBOARD DEBUT =======================

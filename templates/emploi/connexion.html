@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} SPLANNING | connexion {% endblock %}
+
+{% block content %}
+
+
+<style>
+  .container{
+    border-radius: 30px;
+   
+  }
+  .btn-lg{
+    align-items: center;
+    background-color: #FF0036;
+  }
+  
+  .modal-header{
+    justify-content: center;
+    align-content: center;
+    color: black;
+    background-color: #ff0037f3;
+  }
+  .form-control{
+    color: #ff00377e;
+  }
+  .btn-warning{
+    background-color: #FF0036;
+    color: antiquewhite;
+  }
+
+</style>
+<div class="container">
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg"  data-toggle="modal" data-target="#myModal">se connecter</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">connexion</h3>
+        </div>
+        <div class="modal-body">
+          <label>username</label>
+          <input type="text" name="username" id="username"  class="form-control" placeholder="email">
+          <br>
+          <label>password</label>
+          <input type="password" name="password" id="password" class="form-control"  placeholder="votre mot de passe">
+          <br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" id="login-button" name="login-button" class="btn btn-warning"><a href="/"> connexion</a></button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+
+{% endblock %}

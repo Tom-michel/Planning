@@ -7,7 +7,7 @@ urlpatterns = [
     path('', accueil, name="accueil"),
     path('mon_planning', mon_planning, name="mon_planning"),
     path('planning', planning, name="planning"),
-
+    path('connexion/', connexion_admin, name="connexion"),
 
     # ======= PAGES DU DASBOARD =================
     path('dasboard/', dashboard, name="dashboard"),
