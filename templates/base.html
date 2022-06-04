@@ -5,12 +5,16 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+       
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-        
+
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
         <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+
+        {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/dash.css' %}"> {% endcomment %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-icons.css' %}">
@@ -18,9 +22,129 @@
         
         <title> {% block title %}  {% endblock %} </title>
 
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@400;500;600;700&family=Pacifico&family=Righteous&family=Merienda&display=swap');
+
+            @font-face {
+                font-family: Poppins;
+                src: url(../fonts/Poppins-Regular.ttf);
+            }
+
+            *{
+                font-family: 'Poppins', sans-serif !important;
+            }
+            
+            @media screen and (max-width: 767px){
+                #mainMenu.show{
+                    border-top: #ff0036 solid 2px;
+                    margin-top: .5rem;
+                    padding-top: .5rem;
+                }
+            }
+
+            
+            .main-nav .navbar-toggler {
+                border: none !important;
+            }
+
+            @media screen and (max-width: 991px) {
+                .navbar-toggler i{
+                    font-size: 1.3rem !important;
+                    color: #ff0036 !important;
+                    border: #ff0036 solid 2px !important;
+                    padding: 0rem .5rem;
+                    border-radius: 10px;
+                }
+            }
+
+            /* Buttons */ 
+
+            .border-primary.bout{
+            border-color: #ff0036 !important;
+            }
+            .border-warning.bout{
+            border-color: #ff0036 !important;
+            }
+
+            .border-primary.bout:hover{
+            color: #fff !important;
+            background: #ff0036 !important;
+            transition: .2s;
+            transform: scale(1.05);
+            }
+            .border-primary.active.bout{
+            color: #fff !important;
+            background: #ff0036 !important;
+            transition: .2s;
+            }
+
+            .border-primary.active.bout:hover{
+            color: #ff0036 !important;
+            background: #fff !important;
+            transition: .2s;
+            }
+            .border-warning.bout:hover{
+            color: #fff !important;
+            background: #ff0036 !important;
+            transition: .2s;
+            transform: scale(1.05);
+            }
+            .border-warning.active.bout{
+            color: #ff0036 !important;
+            background: #fff !important;
+            transition: .2s;
+            }
+            .border-warning.active.bout:hover{
+            color: #fff !important;
+            background: #ff0036 !important;
+            transition: .2s;
+            }
+
+            @media screen and (max-width: 991px) {
+            .border-primary.active.bout,
+            .border-warning.active.bout{
+                padding: .5rem 2rem !important;
+            }
+            }
+        </style>
+
     </head>
     <body class="bg-light">
         {% block header %} 
+
+            <!-- nav -->
+
+            <nav class="navbar navbar-expand-md  main-nav fixed-top shadow" style="background-color:#121212 ;">
+                <div class="container-fluid">
+                    <!--Horizontal Nav-->
+                    <a class="navbar-brand text-warning" href="/#hero">
+                        <img src="">
+                    </a>
+                    <span class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu" aria-controls="mainMenu" aria-expanded="true" aria-label="Toggle navigation">
+                        <!-- <span class="navbar-toggler-icon pt-2"><i class="bi-list"></i></span> -->
+                        <span id="menuO" class="navbar-toggler-icon pt-1">
+                            <i class="bi-list"></i>
+                        </span>
+                        <span id="menuC" class="navbar-toggler-icon pt-1">
+                            <i class="bi-x-lg"></i>
+                        </span>
+                    </span>
+                    <div class="navbar-collapse collapse" id="mainMenu">
+                        <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                        <a href="/" class="nav-link active mx-1 " style="color: white;">Acceuil</a>
+                        </li>
+
+                    
+                        </ul>
+                        <div class="linkBtn me-5 my-2">   
+                            <a href="/#inscription" class="mx-1 text-dark text-decoration-none border border-primary border-2 bg-light  py-1 px-4 rounded-pill shadow bout">Connexion</a>
+                            <a href="" class="ms-1 mt-3 text-dark text-decoration-none border border-warning border-2 bg-light py-1 px-3 rounded-pill shadow bout">Recherche</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <br><br><br>
 
         {% endblock %}
 
@@ -43,5 +167,23 @@
         <script src="../static/js/clipboard.min.js"></script>
         <script src="../static/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         
+
+        <script type="text/javascript">
+        // changement du bouton menu après click
+        
+            var menuO = document.getElementById('menuO');
+            var menuC = document.getElementById('menuC');
+            menuC.style.display = "none";
+        
+            menuO.addEventListener('click', function(){
+                menuO.style.display = "none";
+                menuC.style.display = "";
+            });
+            menuC.addEventListener('click', function(){
+                menuO.style.display = "";
+                menuC.style.display = "none";
+            });
+        </script>
+
       </body>
 </html>

@@ -1,0 +1,11 @@
+enseignant = (Matricule VARCHAR(50), Nom VARCHAR(50), Prenom VARCHAR(15), Telephone INT);
+UE = (code VARCHAR(50), intitulé VARCHAR(50), #Matricule);
+Salle = (nom VARCHAR(10), capacite BYTE);
+Classe = (Id_Classe COUNTER, effectif INT);
+groupe = (code VARCHAR(10));
+specialite = (Id_specialite COUNTER, Nom_specialité VARCHAR(15));
+filiere = (code CHAR(8), nom_filiere VARCHAR(50));
+Niveau = (Id_Niveau COUNTER, nom_niveau VARCHAR(15));
+Etudiant = (matricule VARCHAR(50), nom VARCHAR(50), Email VARCHAR(50), #Id_specialite, #Id_Niveau);
+Cours = (#code, #code_1, #Id_Classe, #nom, heure TIME, jours DATE, Type VARCHAR(50));
+appartenir = (#Id_Classe, #Id_specialite, #code, #Id_Niveau);

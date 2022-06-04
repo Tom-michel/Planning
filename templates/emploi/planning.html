@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-  {% block title %} Planning || consulter emploi de temps enseignant{% endblock%}
+  {% block title %} Planning || emploi de temps{% endblock%}
 
   {% block content %}
-              <form action="" method="post">
+              <form action="{% url 'mon_planning' %}" method="post">
                 {% csrf_token %}
 
                 <div class="modal-body">
@@ -30,7 +30,7 @@
                         <div class="form-group">
                           <label for="">Filiere</label>
                           <select class="form-control" name="matiere2" id="matiere2">
-                            {% for filier in filieres %}
+                            {% for filiere in filieres %}
                             <option value="{{filiere}}">{{filiere}}</option>
                             {% endfor %} 
                           </select>
@@ -125,9 +125,23 @@
                     </div>
                   </div>
                 </div>
+                      <style>
+                        .btn-connexion{
+                          background-color: #FF0036;
+                          height: 50px;
+                          width: 200px;
+                          margin-left: 40%;
+                          border-radius: 10px;
+                        }
+                       .form-group{
+                         
+                         border-radius: 10px;
+                         height: 55px;
+                      
+                        }
+                      </style>
 
-                  <input class="btn-connexion" type="submit" value="Rechercher">
-                  <button type="button" class="btn-register annuler" data-bs-dismiss="modal">Annuler</button>
+                  <input class="btn-connexion" type="submit" value="Rechercher" >
                 </div>
               </form>
               
@@ -190,6 +204,3 @@
 
          
 {% endblock %}
-
-
-

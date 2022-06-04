@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} SPLANNING |  {% endblock %}
+
+{% block content %}
+
+  <h1>contenu de la page</h1>
+
+{% endblock %}
