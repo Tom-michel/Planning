@@ -10,7 +10,7 @@ class AdminUe(admin.ModelAdmin):
     list_display = ['nom_ue', 'enseignant']
     
 class AdminCours(admin.ModelAdmin):
-    list_display = ['salle', 'groupe', 'classe', 'ue']
+    list_display = ['classe','ue', 'salle', 'groupe', 'jour', 'heure']
     
 class AdminClasse(admin.ModelAdmin):
     list_display = ['nom_classe', 'effectif_classe']
@@ -26,10 +26,11 @@ class AdminGroupe(admin.ModelAdmin):
     
 class AdminSalle(admin.ModelAdmin):
     
-    list_display = ['capacite_salle']
+    list_display = ['nom_salle', 'capacite_salle']
     
 class AdminSpecilite(admin.ModelAdmin):
-    list_display = ['nom_specialite']
+    list_display = ['nom_specialite', 'classe']
+
 
 
 admin.site.register(Enseignant, AdminEnseignant)

@@ -9,7 +9,73 @@
    
     /* barrede navigation */
 
+    nav{
 
+      position: absolute;
+      width: 1440px;
+      height: 77px;
+      left: 0px;
+      top: 0px;
+      display: flex;
+      background: #FFFFFF;
+      box-shadow: 0px 0px 22px -2px rgba(0, 0, 0, 0.25);
+    }
+
+    nav img{
+      box-sizing: border-box;
+      position: absolute;
+      width: 52px;
+      height: 52px;
+      left: 88%;
+      top: 10px;
+      
+    }
+    nav a{
+      position: fixed;
+      width: 81px;
+      height: 38px;
+      left: 91%;
+      top: 19px;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 25px;
+      line-height: 38px;
+      display: flex;
+      align-items: center;
+      text-decoration-line: underline;
+      color: #FF0036;
+   }
+
+   nav h2{
+  position: absolute;
+  width: 227px;
+  height: 38px;
+  left: 573px;
+  top: 19px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 38px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+
+
+   }
+   nav h2 p{
+    color: #FF0036;
+    margin-bottom: -3px;
+    font-weight: bold;
+   }
+   #logout{
+    margin-left: 15px;
+
+   }
+   ul{
+    list-style-type: none;
+   }
 
     /* Fin Barre de navigation
     /* titre du tableau de l'emploi de temps */
@@ -122,43 +188,16 @@
   
  
   </style>
-  
-            {% block header %} 
-
-            <!-- nav -->
-
-            <nav class="navbar navbar-expand-md  main-nav fixed-top shadow" style="background-color:#121212 ;">
-                <div class="container-fluid">
-                    <!--Horizontal Nav-->
-                    <a class="navbar-brand text-warning" href="/#hero">
-                        <img src="">
-                    </a>
-                    <span class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu" aria-controls="mainMenu" aria-expanded="true" aria-label="Toggle navigation">
-                        <!-- <span class="navbar-toggler-icon pt-2"><i class="bi-list"></i></span> -->
-                        <span id="menuO" class="navbar-toggler-icon pt-1">
-                            <i class="bi-list"></i>
-                        </span>
-                        <span id="menuC" class="navbar-toggler-icon pt-1">
-                            <i class="bi-x-lg"></i>
-                        </span>
-                    </span>
-                    <div class="navbar-collapse collapse" id="mainMenu">
-                        <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                        <a href="/" class="nav-link active mx-1 " style="color: white;">Acceuil</a>
-                        </li>
-
-                    
-                        </ul>
-                        <div class="linkBtn me-5 my-2">   
-                            <a href="/#inscription" class="mx-1 text-dark text-decoration-none border border-primary border-2 bg-light  py-1 px-4 rounded-pill shadow bout">Connexion</a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <br><br><br>
-
-        {% endblock %}
+  {% block header %}
+  <div class="big-content">
+    <nav class="container-fluid">
+      <ul>
+          <<img class="imag" src="../../static/img/pp.jpg"> </li>
+          <li><h2>Bienvenue, <p>yves</p></h2></li>
+        <li id="logout" class="log"><a href="#">logout<a></li>
+      </ul>
+    </nav>
+  {% blockend %}  <
     <div class="rect_title">
       <h2> </h2>
       <span> votre emlpoi de temps: Semestre II</span>

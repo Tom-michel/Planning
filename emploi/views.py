@@ -21,74 +21,40 @@ def mon_planning(request):
 
 def planning(request):
     
-     
-    list_class = []
-    liste_ue = []
-    list_filiere = []
-    list_niveau = []
-    list_ens = []
+    # obtenir la liste des cours 
     list_cours = []
-    list_salle = []
-    list_specialite = []
-    list_group = []
-    list_fil = []
-    
-    
-    classes = Classes.objects.all()
-    ues = UniteEnseignement.objects.all()
-    filieres = Filiere.objects.all()
-    niveaux = Niveau.objects.all()
-    enseignants = Enseignant.objects.all()
+    list_class = []
+
+    # liste qui va eliminer les doublons la la liste des classe
+    new_list_class = []
+
     cours = Cours.objects.all()
-    salles = Salle.objects.all()
-    specialite = Specialite.objects.all()
-    groupes = Groupe.objects.all()
-    filieres = Filiere.objects.all()
-    
-    
-    for cour in cours:
-        list_cours.append(cour)
-        
+    classes = Classes.objects.all()
+
     for classe in classes:
-        list_class.append(classe)
-        
-    for ue in ues:
-        liste_ue.append(ue)
-        
-    for ens in enseignants:
-        list_ens.append(ens)
-        
-    for niv in niveaux:
-        list_niveau.append(niv)
-    
-    for sal in salles:
-        list_salle.append(sal)
-        
-    for spec in specialite:
-        list_specialite.append(spec)
-        
-    for group in groupes:
-        list_group.append(group)
-        
-    for fil in filieres:
-        list_fil.append(fil)
-        
-        
+        for cour in cours:
+            if cour.classe == classe:
+
+                list_class.append(classe)
+                list_cours.append(cour)
+
+
+    for i in list_class:
+        if i not in new_list_class:
+            new_list_class.append(i)
+
+
     context = {
         'cours':list_cours,
-        'classes': list_class,
-        'ues': liste_ue,
-        'enseignants': list_ens,
-        'niveaux': list_niveau,
-        'salles': list_salle,
-        'specialites': list_specialite,
-        'groupes': list_group,
-        'filieres': list_fil
+        'classes': new_list_class,
+        
     }
 
     return render(request, 'emploi/planning.html', context)
 
+def resultat_recherche(request):
 
+    return render(request, 'emploi/resultat_recherche.html')
 
 
 # ========================== PAGES DES NON ADMIN FIN =======================
@@ -102,7 +68,128 @@ def planning(request):
 # page d'accueil
 
 def accueil(request):
-    return render(request, 'emploi/accueil.html')
+
+    search = False
+    new_list_class = []
+
+    list_niveau = []
+    list_filiere = []
+    list_class = []
+    list_salle = []
+    
+    
+    list_cours = []
+    
+    
+    classes = Classes.objects.all()
+    filieres = Filiere.objects.all()
+    niveaux = Niveau.objects.all()
+    cours = Cours.objects.all()
+    salles = Salle.objects.all()
+    filieres = Filiere.objects.all()
+    
+    if request.method == "POST":
+        search = True
+
+        typeRech = request.POST.get('typeRech')
+        if typeRech == "1":
+            return planning(request)
+        elif typeRech == "2":
+            filiere = request.POST.get('filiere2')
+            nb = 0
+            for classe in classes:
+                for cour in cours:
+                    if cour.classe == classe:
+                        if cour.classe.filiere.nom_filiere == filiere:
+                            list_cours.append(cour)
+                            list_class.append(classe)
+
+
+            for i in list_class:
+                if i not in new_list_class:
+                    new_list_class.append(classe)
+            nb = len(new_list_class)
+
+            context={'search':search, 'cours':new_list_class, 'nb':nb}
+
+        elif typeRech == "3":
+            nb= 0;
+            filiere = request.POST.get('filiere3')
+            niveau = request.POST.get('niveau1')
+            for classe in classes:
+                for cour in cours:
+                    if cour.classe == classe:
+                        if classe.filiere.nom_filiere == filiere and classe.niveau.nom_niveau == niveau:
+                            list_class.append(cour)
+                            list_class.append(classe)
+            for i in list_class:
+                if i not in new_list_class:
+                    new_list_class.append(classe)
+            nb = len(new_list_class)
+            context={'search':search, 'cours':new_list_class, 'nb':nb}
+
+        elif typeRech == "4":
+            nb= 0;
+            classe = request.POST.get('classe1')
+            salle = request.POST.get('salle1')
+            for classe in classes:
+                for cour in cours:
+                    if cour.classe == classe:
+                        if classe.nom_classe == classe and cour.salle.nom_salle == salle:
+                            list_class.append(cour)
+                            list_class.append(classe)
+            for i in list_class:
+                if i not in new_list_class:
+                    new_list_class.append(classe)
+            nb = len(new_list_class)
+            context={'search':search, 'cours':new_list_class, 'nb':nb}
+
+        elif typeRech == "5":
+            nb= 0;
+            filiere = request.POST.get('filiere4')
+            niveau = request.POST.get('niveau2')
+            classe = request.POST.get('classe2')
+            salle = request.POST.get('salle2')
+
+            for classe in classes:
+                for cour in cours:
+                    if cour.classe == classe:
+                        if classe.filiere.nom_filiere == filiere and classe.niveau.nom_niveau == niveau and cour.salle.nom_salle == salle and cour.classe.nom_classe == classe:
+                            list_class.append(cour)
+                            list_class.append(classe)
+            for i in list_class:
+                if i not in new_list_class:
+                    new_list_class.append(classe)
+            nb = len(new_list_class)
+            context={'search':search, 'cours':new_list_class, 'nb':nb}
+        
+        return  render(request, 'emploi/accueil.html', context)
+    
+    
+
+    for c in cours:
+        if c.classe.filiere not in list_filiere:
+            list_filiere.append(c.classe.filiere)
+        if c.classe.niveau not in list_niveau:
+            list_niveau.append(c.classe.niveau)
+
+        if c.salle not in list_salle:
+            list_salle.append(c.salle)
+
+
+        if c.classe not in list_class:
+            list_class.append(c.classe)
+        
+
+        
+        
+    context = {
+        'classes': list_class,
+        'niveaux': list_niveau,
+        'salles': list_salle,
+        'filieres': list_filiere
+    }
+    return render(request, 'emploi/accueil.html', context)
 
 
 

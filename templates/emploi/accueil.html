@@ -354,11 +354,349 @@
    </div>
 </footer>
 <script src="script.js" ></script>
-   <!--  Jquery js file  -->
-   
+             <style>
+                /* The Modal (background) */
+        .modal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          padding-top: 100px; /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
 
-   <!--  Bootstrap js file  -->
- <script src="bootstrap.min.js"></script>
- <script src="bootstrap.bundle.min.js"></script>
+        /* Modal Content */
+        .modal-content {
+          background-color: #040E15;
+          margin: auto;
+          border: 1px solid #888;
+          width: 540px;
+          border-radius: 25px;
+        }
+
+        /* le bouton x de fermeture du modal */
+        .close {
+          color: #aaaaaa;
+          font-size: 2em;
+          float: right;
+        }
+        /* titre du modal de l'application */
+        .titre_modal{
+            text-align: center;
+            font-size: 2rem;
+            color: white;
+            margin-top: -45px;
+        }
+
+        .trait{
+            margin-top: 15px;
+            height: 1px;
+            background: #cacaca;
+            opacity: 0.5;
+        }
+
+
+        /* formulaire */
+        .form{
+            margin: 10px;
+        }
+
+        .champs{
+            margin-left: 10%;
+        }
+
+        /* fermuture du modale */
+        .close{
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            margin-left: 475px;
+            margin-top: 12px;
+            background: #0F202C;
+            color: #cacaca;
+            font-size: 2rem;
+        }
+        .close span{
+            padding: 18px;
+        }
+
+        .close:hover {
+          background: #1C293C;
+          opacity: 1.9;
+          transform: scale(1.1);
+          transform: .3s;
+          cursor: pointer;
+        }
+
+        @media screen and (min-width: 740px) and (max-width: 992px){
+          .modal-content{
+            margin-top: 10%;
+          }
+        }
+     
+        @media screen and (max-width: 739px){
+            .modal-content{
+                width: 500px;
+                margin-top: 20%;
+            }
+            .close{
+                margin-left: 430px;
+            }
+        }
+ </style>
+
+<!-- la div  Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="close"><span>x</span></div>
+    <h3 class="titre_modal"> rechercher</h3>
+    <div class="trait"></div>
+        <div class="form">
+            <form action="{% url 'planning' %}" method="post">
+                {% csrf_token %}
+
+                <div class="modal-body">
+                  <div class="container-fluid text-center">
+                    <div class="row">
+                      <div class="col-md-8 offset-md-2">
+                        <div class="form-group">
+                          <label for="typeRech">Critères de recherche</label>
+                          <select class="form-control" name="typeRech" id="typeRech">
+                            <option value="1">Tous les emplois de temps</option>
+                            <option value="2">Filiere</option>
+                            <option value="3">Filiere + Niveau</option>
+                            <option value="4">Classe + Salle</option>
+                            <option value="5">Filiere +  Niveau + Classe + salle</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <p id="indication" style="color: white !important; font-style: italic; font-size: 13px;" class="text-center align-items-center mt-4">
+                      <i style="font-size: 20px;" class="bi-question-circle"></i> 
+                        Si une <b> Filiere ou une classe ou specialite</b> n'apparaît pas dans la liste, alors leurs planning n'est pas encore disponible !
+                    </p>
+                    <div class="row mt-2" id="form2">
+                      <div class="col-md-5 offset-md-1 mt-3">
+                        <div class="form-group">
+                          <label for="filiere2">Filiere</label>
+                          <select class="form-control" name="filiere2" id="filiere2">
+                            {% for filiere in filieres %}
+                            <option value="{{filiere}}">{{filiere}}</option>
+                            {% endfor %} 
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mt-2" id="form3">
+                      <div class="col-md-5 offset-md-1 mt-3">
+                        <div class="form-group">
+                          <label for="filiere3">Filiere</label>
+                          <select class="form-control" name="filiere3" id="filiere3">
+                            {% for filiere in filieres %}
+                            <option value="{{filiere}}">{{filiere}}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-5 mt-3">
+                        <div class="form-group">
+                          <label for="niveau1">Niveaux</label>
+                          <select class="form-control" name="niveau1" id="niveau1">
+                            {% for niv in niveaux %}
+                            <option value="{{niv}}">{{niv}}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mt-2" id="form4">
+                      <div class="col-md-5 offset-md-1 mt-3">
+                        <div class="form-group">
+                          <label for="classe1">Classe</label>
+                          <select class="form-control" name="classe1" id="classe1">
+                            {% for classe in classes %}
+                            <option value="{{classe}}">{{classe}}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-5 mt-3">
+                        <div class="form-group">
+                          <label for="salle1">Salle</label>
+                          <select class="form-control" name="salle1" id="salle1">
+                            {% for salle in salles %}
+                            <option value="{{spec}}">{{salle}}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mt-2" id="form5">
+                      <div class="col-md-5 offset-md-1 mt-3">
+                        <div class="form-group">
+                          <label for="filiere4">Filiere</label>
+                          <select class="form-control" name="filiere4" id="filiere4">
+                            {% for filiere in filieres %}
+                            <option value="{{filiere}}">{{filiere}}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-5 mt-3">
+                        <div class="form-group">
+                          <label for="niveau2">Niveau</label>
+                          <select class="form-control" name="niveau2" id="niveau2">
+                            {% for niv in niveaux %}
+                            <option value="{{niv}}">{{niv}}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-5 offset-md-1 mt-3">
+                        <div class="form-group">
+                          <label for="classe2">Classe</label>
+                          <select class="form-control" name="classe2" id="classe2">
+                            {% for classe in classes %}
+                            <option value="{{classe}}">{{classe}}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-5 mt-3">
+                        <div class="form-group">
+                          <label for="salle2">Salle</label>
+                          <select class="form-control" name="salle2" id="salle2">
+                            {% for sal in salles %}
+                            <option value="{{sal}}">{{sal}}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                      <style>
+                        .btn-connexion{
+                          background-color: #FF0036;
+                          height: 50px;
+                          width: 200px;
+                          margin-left: 30%;
+                          border-radius: 10px;
+                        }
+                       .form-group{
+                         
+                         border-radius: 10px;
+                         height: 60px;
+                         width: 100%;
+                      
+                        }
+                        label{
+                          color: white;
+                        }
+                      </style>
+
+                  <input class="btn-connexion" type="submit" value="Rechercher" >
+                </div>
+              </form>
+              
+        </div>
+  </div>
+
+
+<script>
+
+
+
+// obtenir le modal
+var modal = document.getElementById("myModal");
+
+// obtnenir le bouton qui ouvre le modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// quand l'utilisateur click sur le bouton le modal s'ouvre 
+btn.onclick = function() {
+  modal.style.display = "block";
+
+}
+
+
+// quans l'utilisateur clic sur le span x ou sur annuler le modals se ferme
+span.onclick = function() {
+  modal.style.display = "none";
+}
+btn2.onclick = function(){
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+ </script>
+ <script>
+            var form2 = document.getElementById('form2');
+            var form3 = document.getElementById('form3');
+            var form4 = document.getElementById('form4');
+            var form5 = document.getElementById('form5');
+            var indication = document.getElementById('indication');
+
+            form2.style.display = "none";
+            form3.style.display = "none";
+            form4.style.display = "none";
+            form5.style.display = "none";
+            indication.style.display = "none";
+
+            document.getElementById('typeRech').addEventListener('change', function(e) {
+            var selectUser = e.target.value;
+            if (selectUser == 1) {
+              form2.style.display = "none";
+              form3.style.display = "none";
+              form4.style.display = "none";
+              form5.style.display = "none";
+              indication.style.display = "none";
+            }
+            if (selectUser == 2) {
+              form2.style.display = "";
+              form3.style.display = "none";
+              form4.style.display = "none";
+              form5.style.display = "none";
+              indication.style.display = "";
+            }
+            if (selectUser == 3) {
+              form2.style.display = "none";
+              form3.style.display = "";
+              form4.style.display = "none";
+              form5.style.display = "none";
+              indication.style.display = "";
+            }
+            if (selectUser == 4) {
+              form2.style.display = "none";
+              form3.style.display = "none";
+              form4.style.display = "";
+              form5.style.display = "none";
+              indication.style.display = "";
+            }
+            if (selectUser == 5) {
+              form2.style.display = "none";
+              form3.style.display = "none";
+              form4.style.display = "none";
+              form5.style.display = "";
+              indication.style.display = "";
+            }
+          });
+
+</script>
 
 {% endblock %}
