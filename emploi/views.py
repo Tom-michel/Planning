@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from requests import request
 from .models import *
+from django.http import HttpResponse
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -25,19 +26,36 @@ def planning(request):
     list_cours = []
     list_class = []
 
+    # liste des specialites
+    list_spec = []
+
+    #liste des classe ayant des specialite
+    list_class_spec = []
+    #liste qui va eliminer les doublons la la liste des specialite
+    new_list_spec = []
+
     # liste qui va eliminer les doublons la la liste des classe
     new_list_class = []
 
     cours = Cours.objects.all()
     classes = Classes.objects.all()
+    specialites = Specialite.objects.all()
 
     for classe in classes:
-        for cour in cours:
-            if cour.classe == classe:
-
+        for spec in specialites:
+            for cour in cours:
+                if spec.classe == cour.classe:
+                    list_spec.append(spec)
+                    list_class_spec.append(spec.classe)
+        for cou in cours:
+            if cou.classe == classe:
                 list_class.append(classe)
-                list_cours.append(cour)
+                list_cours.append(cou)
 
+
+    for s in list_spec:
+        if s not in new_list_spec:
+            new_list_spec.append(s)
 
     for i in list_class:
         if i not in new_list_class:
@@ -45,8 +63,10 @@ def planning(request):
 
 
     context = {
+        'specialites': new_list_spec,
         'cours':list_cours,
         'classes': new_list_class,
+        'classe_spec': list_class_spec,
         
     }
 
@@ -110,7 +130,7 @@ def accueil(request):
                     new_list_class.append(classe)
             nb = len(new_list_class)
 
-            context={'search':search, 'cours':new_list_class, 'nb':nb}
+            context={'search':search, 'classes':new_list_class, 'nb':nb, 'cours':list_cours}
 
         elif typeRech == "3":
             nb= 0;
@@ -126,7 +146,7 @@ def accueil(request):
                 if i not in new_list_class:
                     new_list_class.append(classe)
             nb = len(new_list_class)
-            context={'search':search, 'cours':new_list_class, 'nb':nb}
+            context={'search':search, 'classes':new_list_class, 'nb':nb}
 
         elif typeRech == "4":
             nb= 0;
@@ -163,7 +183,7 @@ def accueil(request):
             nb = len(new_list_class)
             context={'search':search, 'cours':new_list_class, 'nb':nb}
         
-        return  render(request, 'emploi/accueil.html', context)
+        return  render(request, 'emploi/planning.html', context)
     
     
 

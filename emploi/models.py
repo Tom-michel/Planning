@@ -6,16 +6,21 @@ from django.utils import timezone
 
 # Create your models here.
 
-
 class Enseignant(models.Model):
-	telephone = models.CharField(max_length=14)
-	user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="enseignant")
+    telephone = models.CharField(max_length=14)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+
+        return self.user.username
+
     
  
  
 class UniteEnseignement(models.Model):
     
     nom_ue = models.CharField(max_length=40)
+    intitule = models.CharField(max_length=100, blank=True)
     enseignant = models.ForeignKey(Enseignant, on_delete=models.CASCADE)
     
     def __str__(self):

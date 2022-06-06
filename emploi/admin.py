@@ -7,13 +7,15 @@ class AdminEnseignant(admin.ModelAdmin):
     list_display = ['user', 'telephone']
     
 class AdminUe(admin.ModelAdmin):
-    list_display = ['nom_ue', 'enseignant']
+    list_display = ['nom_ue', 'intitule', 'enseignant']
     
 class AdminCours(admin.ModelAdmin):
     list_display = ['classe','ue', 'salle', 'groupe', 'jour', 'heure']
+    list_filter = ['classe']
     
 class AdminClasse(admin.ModelAdmin):
     list_display = ['nom_classe', 'effectif_classe']
+    list_filter = ['nom_classe']
     
 class AdminFiliere(admin.ModelAdmin):
     list_display = ['nom_filiere']
