@@ -59,7 +59,9 @@
         color: #fff;
     }
 
-
+    .form-control{
+      width: 100% !important;
+    }
 </style>
 
 
@@ -83,17 +85,21 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Nom de la filière</th>
+                        <th scope="col">Niveau</th>
+                        <th scope="col">Filière</th>
+                        <th scope="col">Effectif</th>
                         <th scope="col">Date de création</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for fil in filList %}
+                    {% for classe in classeList %}
         
                     <tr>
-                        <td scope="row">{{fil.nom_filiere}}</td>
-                        <td>{{fil.date}}</td>
+                        <td scope="row">{{classe.niveau}}</td>
+                        <td scope="row">{{classe.filiere}}</td>
+                        <td scope="row">{{classe.effectif_classe}}</td>
+                        <td>{{classe.date}}</td>
                         <td>
                             <a href=""><i class="uil uil-trash-alt"></i></a>
                             <a href=""><i class="uil uil-edit"></i></a>
@@ -123,12 +129,22 @@
                         <div class="row">
                             <div class="col-md-6 my-3 offset-md-3">
                                 <div class="form-group">
-                                    {{fil_form.nom_filiere}}
+                                    {{classe_form.niveau}}
+                                </div>
+                            </div>
+                            <div class="col-md-6 my-3 offset-md-3">
+                                <div class="form-group">
+                                    {{classe_form.filiere}}
+                                </div>
+                            </div>
+                            <div class="col-md-6 my-3 offset-md-3">
+                                <div class="form-group">
+                                    {{classe_form.effectif_classe}}
                                 </div>
                             </div>
                             <div class="col-md-6 mt-3" style="display: none;">
                                 <div class="form-group">
-                                    {{fil_form.date}}
+                                    {{classe_form.date}}
                                 </div>
                             </div>
                         </div>
@@ -146,28 +162,27 @@
 <script>
 
     champs = document.getElementsByTagName('input');
-    for (let i = 0; i < (champs.length-1); i++) {
-        champs[i].classList.add('form-control');
-        champs[i].addEventListener("keypress", function(event) {
-			if (event.key === "Enter") {
-			    event.preventDefault();
-			    document.getElementById("btn-sub").click();
-			}
-		});
+      for (let i = 0; i < (champs.length-1); i++) {
+          champs[i].classList.add('form-control');
+          champs[i].addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("btn-sub").click();
+        }
+      });
     }
-    champs[1].placeholder = "Nom de la filère";
-
-    // Rendre le lien actif
-    
-    let list = document.getElementsByClassName('list');
-    for (let i = 0; i < list.length; i++) {
-        list[i].className = 'list';
+    champSel = document.getElementsByTagName('select');
+        for (let i = 0; i < (champSel.length); i++) {
+            champSel[i].classList.add('form-select');
+            champSel[i].addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("btn-sub").click();
+            }
+        });
     }
-    document.getElementById('filiere').className = 'list active';
-</script>
-
-
-<script>
+   
+    champs[1].placeholder = "Effectif";
 
     // Rendre le lien actif
     

@@ -188,7 +188,7 @@ def specialites(request):
         if spe_form.is_valid():
             spe = spe_form.save()
             spe.save()
-            return HttpResponseRedirect('../specialite')
+            return HttpResponseRedirect('../specialites')
     context = {
         'speList':speList, 'spe_form':spe_form
     }        
@@ -235,7 +235,18 @@ def salles(request):
 # page d'accueil des classes
 
 def classes(request):
-    return render(request, 'emploi/classes.html')
+    classeList = Classe.objects.all()
+    classe_form = ClasseForm()
+    if request.method == 'POST':
+        classe_form = ClasseForm(data=request.POST)
+        if classe_form.is_valid():
+            classe = classe_form.save()
+            classe.save()
+            return HttpResponseRedirect('../classes')
+    context = {
+        'classeList':classeList, 'classe_form':classe_form
+    }        
+    return render(request, 'emploi/classes.html', context)
 
 
 

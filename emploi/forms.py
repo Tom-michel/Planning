@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Enseignant, Filiere, Niveau, Salle, Specialite, UniteEnseignement
+from .models import Classe, Enseignant, Filiere, Niveau, Salle, Specialite, UniteEnseignement
 
 
 # formulaire pour DJANGO user
@@ -78,6 +78,17 @@ class SalleForm(forms.ModelForm):
         fields = [
             'nom_salle',
             'capacite_salle',
+            'date'
+        ]
+
+# classe
+class ClasseForm(forms.ModelForm):
+    class Meta():
+        model = Classe
+        fields = [
+            'effectif_classe',
+            'filiere',
+            'niveau',
             'date'
         ]
 

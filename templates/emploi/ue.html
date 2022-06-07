@@ -166,8 +166,17 @@
 			}
 		});
     }
+    champSel = document.getElementsByTagName('select');
+        for (let i = 0; i < (champSel.length); i++) {
+            champSel[i].classList.add('form-select');
+            champSel[i].addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("btn-sub").click();
+            }
+        });
+    }
     champs[1].placeholder = "UE";
-    champs[2].placeholder = "enseignant";
 
     // Rendre le lien actif
     
