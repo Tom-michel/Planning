@@ -88,6 +88,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Intitulé</th>
+                        <th scope="col">Classe</th>
                         <th scope="col">Enseignant</th>
                         <th scope="col">Date de création</th>
                         <th></th>
@@ -98,6 +99,7 @@
         
                     <tr>
                         <td scope="row">{{ue.intitule}}</td>
+                        <td>{{ue.classe}}</td>
                         <td>{{ue.enseignant}}</td>
                         <td>{{ue.date}}</td>
                         <td>
@@ -127,14 +129,28 @@
                 <div class="modal-body">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-6 my-3 offset-md-3">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    {{ue_form.intitule}}
+                                    <p>
+                                        <label for="id_intitule">Intitule&nbsp;:</label>
+                                        {{ue_form.intitule}}
+                                    </p>
                                 </div>
                             </div>
-                            <div class="col-md-6 offset-md-3 my-3">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    {{ue_form.enseignant}}
+                                    <p>
+                                        <label for="id_classe">Classe&nbsp;:</label>
+                                        {{ue_form.classe}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <p>
+                                        <label for="id_enseignant">Enseignant&nbsp;:</label>
+                                        {{ue_form.enseignant}}
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-md-6 mt-3" style="display: none;">

@@ -228,7 +228,7 @@
                 <i class="uil uil-eye"></i>
                 </a>
                 &emsp;
-                <a class="btn-rouge" class="btn-rouge" data-bs-toggle="modal" data-bs-target="#choisirCours" href="{% url 'ajout_planning' %}">
+                <a class="btn-rouge" class="btn-rouge" data-bs-toggle="modal" data-bs-target="#choisirCours" href="">
                     Ajouter 
                     <span>+</span>
                 </a>
@@ -274,13 +274,13 @@
                 <div class="modal-body">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-6 offset-md-3 mt-3">
+                            <div class="col-md-10 offset-md-1 mt-3">
                                 <div class="form-group">
-                                    <label for="salle">Veuillez choisir une classe</label><br><br>
-                                    <select class="form-select" name="classe" id="classe">
-                                        <option value="" selected>classe</option>
+                                    <label for="id_salle">Veuillez choisir une classe</label><br><br>
+                                    <select class="form-select" size="1"  onChange="location = this.options[this.selectedIndex].value;">
+                                        <option value="">classe</option>
                                         {% for classe in classeList %}
-                                            <option value="{{classe}}">{{classe}}</option>
+                                            <option value="{% url 'ajout_planning' classe.id %}">{{classe}}</option>
                                         {% endfor %}
                                     </select>
                                 </div>
@@ -290,7 +290,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-bleu" data-bs-dismiss="modal">Annuler</button>
-                    <input class="btn-rouge" type="submit" value="Envoyer">
+                    <!-- <input class="btn-rouge" type="submit" value="Envoyer"> -->
                 </div>
             </form>
         </div>
@@ -299,8 +299,11 @@
 
 
 <script>
-
-    classe = document.getElementById('classe');
+    // envoie = document.getElementById('envoie')
+    // classe = document.getElementById('id_classe');
+    // envoie.addEventListener('click', () => {
+    //     alert(classe.value);
+    // })
 
     // Rendre le lien actif
     

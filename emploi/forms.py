@@ -40,6 +40,7 @@ class UeForm(forms.ModelForm):
         model = UniteEnseignement
         fields = [
             'intitule',
+            'classe',
             'enseignant',
             'date'
         ]
@@ -103,7 +104,6 @@ class CoursForm(forms.ModelForm):
             'date',
             'salle',
             'groupe',
-            'classe',
             'ue'
         ]
 

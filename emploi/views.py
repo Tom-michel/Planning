@@ -52,14 +52,22 @@ def dashboard(request):
 
 # ajouter un emploi de temps
 
-def ajout_planning(request, classe):
+def ajout_planning(request, id_clas):
+    classeList = Classe.objects.all()
     coursList = Cours.objects.all()
     cours_form = CoursForm()
+    classe = Classe.objects.get(id=id_clas)
+    ueList = UniteEnseignement.objects.all()
+    
     context = {
         'coursList':coursList,
         'cours_form':cours_form,
+        'classeList':classeList,
+        'ueList':ueList,
         'classe':classe
     }
+    if request.method == 'POST':
+        pass
     return render(request, 'emploi/ajout_planning.html', context)
 
 

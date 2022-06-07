@@ -124,24 +124,43 @@
                         <div class="row">
                             <div class="col-md-6 mt-3">
                                 <div class="form-group">
-                                    <!-- <label for="jour">Jour</label> -->
-                                    <select class="form-select jour" name="jour" id="jour" disabled>
+                                    <select class="form-select jour" name="jour" id="id_jour" disabled>
                                         <option id="ini" value="">Jour</option>
                                     </select>
+                                    <!-- <p>
+                                        <label for="id_jour">Jour&nbsp;:</label>
+                                        <select name="jour" required="" id="id_jour" class="form-select">
+                                            <option value="" selected="">---------</option>
+                                            
+                                            <option value="lundi">lundi</option>
+                                            
+                                            <option value="mardi">mardi</option>
+                                            
+                                            <option value="mercredi">mercredi</option>
+                                            
+                                            <option value="jeudi">jeudi</option>
+                                            
+                                            <option value="vendredi">vendredi</option>
+                                            
+                                            <option value="samedi">samedi</option>
+                                            
+                                            <option value="dimanche">dimanche</option>
+                                            
+                                        </select>
+                                    </p> -->
                                 </div>
                             </div>
                             <div class="col-md-6 mt-3">
                                 <div class="form-group">
-                                    <!-- <label for="jour">Plage horaire</label> -->
-                                    <select class="form-select heure" name="heure" id="heure" disabled>
+                                    <select class="form-select heure" name="heure" id="id_heure" disabled>
                                         <option value="">Plage horaire</option>
                                     </select>
+                                    <!-- <input type="text" name="heure" maxlength="12" required="" id="id_heure" class="form-control"> -->
                                 </div>
                             </div>
                             <div class="col-md-6 mt-3">
                                 <div class="form-group">
-                                    <!-- <label for="ue">Intitulé</label> -->
-                                    <select class="form-select" name="ue" id="ue">
+                                    <!-- <select class="form-select" name="ue" id="ue">
                                         <optgroup label="Licence 1">
                                             <option value="">Intitulé</option>
                                         </optgroup>
@@ -154,45 +173,69 @@
                                         <optgroup label="Master 1">
                                             <option value="">Intitulé</option>
                                         </optgroup>
-                                    </select>
+                                    </select> -->
+
+                                    <p>
+                                        <label for="id_ue">Ue&nbsp;:</label>
+                                        <select name="ue" required="" id="id_ue" class="form-select">
+                                            <option value="" selected="">---------</option>
+                                            {% for ue in ueList %}
+                                            {% if ue.classe == classe %}
+                                                <option value="{{ue.id}}">{{ue}}</option>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-md-6 mt-3">
                                 <div class="form-group">
-                                    <!-- <label for="type">Type</label> -->
-                                    <select class="form-select" name="type" id="type">
+                                    <!-- <select class="form-select" name="type" id="type">
                                         <option value="">Type de cours</option>
-                                        
-                                    </select>
+                                    </select> -->
+                                    <p>
+                                        <label for="id_type">Type&nbsp;:</label>
+                                        <select name="type" required="" id="id_type" class="form-select">
+                                            <option value="" selected="">---------</option>
+                                            <option value="CM">CM</option>
+                                            <option value="TD">TD</option>
+                                        </select>
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-md-6 mt-3">
                                 <div class="form-group">
-                                    <!-- <label for="salle">Salle</label> -->
-                                    <select class="form-select" name="salle" id="salle">
+                                    <!-- <select class="form-select" name="salle" id="salle">
                                         <option value="">Salle</option>
-                                    </select>
+                                    </select> -->
+                                    <p>
+                                        <label for="id_salle">Salle&nbsp;:</label>
+                                        <select name="salle" required="" id="id_salle" class="form-select">
+                                            <option value="" selected="">---------</option>
+                                            <option value="1">A250</option>
+                                            <option value="2">AI</option>
+                                        </select>
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-md-6 mt-3">
                                 <div class="form-group">
-                                    <!-- <label for="classe">Classe</label> -->
-                                    <select class="form-select" name="classe" id="classe">
-                                        <option value="{{classe}}">{{classe}}</option>
-                                    </select>
+                                    <p>
+                                        <label for="id_groupe">Groupe&nbsp;:</label>
+                                        <select name="groupe" required="" id="id_groupe" class="form-select">
+                                            <option value="" selected="">---------</option>
+                                        </select>
+                                    </p>
                                 </div>
                             </div>
-
-                            <p>form</p>
-                            
-
-                            {% for field in cours_form %}
-                                <div class="col-md-6 mt-3">
-                                    <div class="form-group">
-                                        {{field}}
-                                    </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    <p>
+                                        <label for="id_date">Date&nbsp;:</label>
+                                        {{cours_form.date}}
+                                    </p>
                                 </div>
-                            {% endfor %}
+                            </div>
                         </div>
                     </div>
                 </div>

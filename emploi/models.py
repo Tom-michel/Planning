@@ -11,16 +11,6 @@ class Enseignant(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='enseignant')
     def __str__(self):
         return f'{self.user.username}'   
- 
- 
-class UniteEnseignement(models.Model):
-    intitule = models.CharField(max_length=100, unique=True)
-    date = models.DateField(default=timezone.now)
-    enseignant = models.ForeignKey(Enseignant, on_delete=models.SET_DEFAULT, default='prof-inconu')
-    
-    def __str__(self):
-        return self.intitule
-    
     
 
 class  Filiere(models.Model):
@@ -77,6 +67,19 @@ class Salle(models.Model):
         return self.nom_salle
 
 
+ 
+class UniteEnseignement(models.Model):
+    intitule = models.CharField(max_length=100, unique=True)
+    date = models.DateField(default=timezone.now)
+    enseignant = models.ForeignKey(Enseignant, on_delete=models.SET_NULL, null=True)
+    classe = models.ForeignKey(Classe, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return self.intitule
+    
+
+
+
 class Cours(models.Model):
     JOURS = [
         ('lundi', 'lundi'),
@@ -100,9 +103,7 @@ class Cours(models.Model):
     salle = models.ForeignKey(Salle, on_delete=models.CASCADE)
     
     groupe = models.ForeignKey(Groupe, on_delete=models.CASCADE)
-    
-    classe = models.ForeignKey(Classe, on_delete=models.CASCADE)
-    
+        
     ue = models.ForeignKey(UniteEnseignement, on_delete=models.CASCADE)
     
     
