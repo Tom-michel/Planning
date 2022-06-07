@@ -24,6 +24,9 @@
 </div>
 
 <div class=" tresp table-responsive">
+
+    <p class="errornotes text-center my-4">{{err}}</p>
+
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -41,11 +44,14 @@
             <tr>
                 <th id="h_1">7h-9h55</th>
                 <td id="lun_1">
-                    INF_3196 <br>
-                    S006 <br>
-                    Dr. MONTHE Valery <br>
-                    <a href=""><i class="uil uil-trash-alt"></i></a>
-                    <a href="{% url 'modifier_planning' %}"><i class="uil uil-edit"></i></a>
+                    {% for cours in coursList %}
+                        {% if cours.jour == "lundi" and cours.heure == "7h-9h55" %}
+                            {{cours.type}}
+                            {{cours.ue.intitule}} <br>
+                            {{cours.salle}} <br>
+                            {{cours.ue.enseignant.user.last_name}} <br>
+                        {% endif %}
+                    {% endfor %}
                 </td>
                 <td id="mard_1"></td>
                 <td id="mer_1"></td>
@@ -124,8 +130,8 @@
                         <div class="row">
                             <div class="col-md-6 mt-3">
                                 <div class="form-group">
-                                    <select class="form-select jour" name="jour" id="id_jour" disabled>
-                                        <option id="ini" value="">Jour</option>
+                                    <select class="form-select jour" name="jour" id="id_jour">
+                                        <option value="">Jour</option>
                                     </select>
                                     <!-- <p>
                                         <label for="id_jour">Jour&nbsp;:</label>
@@ -152,7 +158,7 @@
                             </div>
                             <div class="col-md-6 mt-3">
                                 <div class="form-group">
-                                    <select class="form-select heure" name="heure" id="id_heure" disabled>
+                                    <select class="form-select heure" name="heure" id="id_heure">
                                         <option value="">Plage horaire</option>
                                     </select>
                                     <!-- <input type="text" name="heure" maxlength="12" required="" id="id_heure" class="form-control"> -->
@@ -195,11 +201,7 @@
                                     </select> -->
                                     <p>
                                         <label for="id_type">Type&nbsp;:</label>
-                                        <select name="type" required="" id="id_type" class="form-select">
-                                            <option value="" selected="">---------</option>
-                                            <option value="CM">CM</option>
-                                            <option value="TD">TD</option>
-                                        </select>
+                                        {{cours_form.type}}
                                     </p>
                                 </div>
                             </div>
@@ -210,25 +212,19 @@
                                     </select> -->
                                     <p>
                                         <label for="id_salle">Salle&nbsp;:</label>
-                                        <select name="salle" required="" id="id_salle" class="form-select">
-                                            <option value="" selected="">---------</option>
-                                            <option value="1">A250</option>
-                                            <option value="2">AI</option>
-                                        </select>
+                                        {{cours_form.salle}}
                                     </p>
                                 </div>
                             </div>
                             <div class="col-md-6 mt-3">
                                 <div class="form-group">
                                     <p>
-                                        <label for="id_groupe">Groupe&nbsp;:</label>
-                                        <select name="groupe" required="" id="id_groupe" class="form-select">
-                                            <option value="" selected="">---------</option>
-                                        </select>
+                                        <label for="id_groupe">Nombre_groupe&nbsp;:</label>
+                                        {{cours_form.groupe}}
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-md-6 mt-3">
+                            <div class="col-md-6 mt-3" style="display: none;">
                                 <div class="form-group">
                                     <p>
                                         <label for="id_date">Date&nbsp;:</label>
@@ -305,7 +301,7 @@
 
             if(caseId == "lun_1"){
                 initChamps("lundi", "7h-9h55")
-            }else if(caseId == "mar_1"){
+            }else if(caseId == "mard_1"){
                 initChamps("mardi", "7h-9h55")
             }else if(caseId == "mer_1"){
                 initChamps("mercredi", "7h-9h55")
@@ -322,7 +318,7 @@
 
             if(caseId == "lun_2"){
                 initChamps("lundi", "10h05-12h55")
-            }else if(caseId == "mar_2"){
+            }else if(caseId == "mard_2"){
                 initChamps("mardi", "10h05-12h55")
             }else if(caseId == "mer_2"){
                 initChamps("mercredi", "10h05-12h55")
@@ -339,7 +335,7 @@
 
             if(caseId == "lun_3"){
                 initChamps("lundi", "13h05-15h55")
-            }else if(caseId == "mar_3"){
+            }else if(caseId == "mard_3"){
                 initChamps("mardi", "13h05-15h55")
             }else if(caseId == "mer_3"){
                 initChamps("mercredi", "13h05-15h55")
@@ -356,7 +352,7 @@
 
             if(caseId == "lun_4"){
                 initChamps("lundi", "16h05-18h55")
-            }else if(caseId == "mar_4"){
+            }else if(caseId == "mard_4"){
                 initChamps("mardi", "16h05-18h55")
             }else if(caseId == "mer_4"){
                 initChamps("mercredi", "16h05-18h55")
@@ -373,7 +369,7 @@
 
             if(caseId == "lun_5"){
                 initChamps("lundi", "19h05-21h55")
-            }else if(caseId == "mar_5"){
+            }else if(caseId == "mard_5"){
                 initChamps("mardi", "19h05-21h55")
             }else if(caseId == "mer_5"){
                 initChamps("mercredi", "19h05-21h55")

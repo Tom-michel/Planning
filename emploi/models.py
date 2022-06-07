@@ -79,6 +79,7 @@ class UniteEnseignement(models.Model):
     
 
 
+from multiselectfield import MultiSelectField
 
 class Cours(models.Model):
     JOURS = [
@@ -102,7 +103,10 @@ class Cours(models.Model):
     
     salle = models.ForeignKey(Salle, on_delete=models.CASCADE)
     
-    groupe = models.ForeignKey(Groupe, on_delete=models.CASCADE)
+    GROUPES = (
+        ('G1','G1'), ('G2','G2'), ('G3','G3'), ('G4','G4'),
+    )
+    groupe = MultiSelectField(choices=GROUPES)
         
     ue = models.ForeignKey(UniteEnseignement, on_delete=models.CASCADE)
     

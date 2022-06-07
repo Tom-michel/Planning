@@ -96,6 +96,11 @@
                             </div>
                             <div class="col-md-6 mt-3">
                                 <div class="form-group">
+                                    {{user_form.last_name}}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
                                     {{user_form.username}}
                                     {% for err in user_form.username.errors %}
                                     <p class="errorform">{{err}}</p>
@@ -135,7 +140,8 @@
 		});
     }
     champs[1].placeholder = "matricule";
-    champs[2].placeholder = "addresse mail";
+    champs[2].placeholder = "Nom et Prénom";
+    champs[3].placeholder = "addresse mail";
 
 
     // controler et envoyer le formulair

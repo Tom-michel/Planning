@@ -59,6 +59,23 @@ def ajout_planning(request, id_clas):
     classe = Classe.objects.get(id=id_clas)
     ueList = UniteEnseignement.objects.all()
     
+    if request.method == 'POST':
+        cours_form = CoursForm(data=request.POST)
+        if cours_form.is_valid():
+            cours = cours_form.save()
+            cours.save()
+            return HttpResponseRedirect('ajout_planning')
+        else:
+            err = cours_form.errors
+            context = {
+                'coursList':coursList,
+                'cours_form':cours_form,
+                'classeList':classeList,
+                'ueList':ueList,
+                'classe':classe,
+                'err':err
+            }
+            return render(request, 'emploi/ajout_planning.html', context)
     context = {
         'coursList':coursList,
         'cours_form':cours_form,
@@ -66,8 +83,6 @@ def ajout_planning(request, id_clas):
         'ueList':ueList,
         'classe':classe
     }
-    if request.method == 'POST':
-        pass
     return render(request, 'emploi/ajout_planning.html', context)
 
 
