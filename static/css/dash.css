@@ -381,6 +381,7 @@ tbody td:hover::before{
 select,
 input[type="text"],
 input[type="password"],
+input[type="number"],
 input[type="email"]{
     border: none !important;
     border-bottom: #FF0036 solid 1px !important;
@@ -392,9 +393,11 @@ select:hover,
 select:focus,
 input[type="text"]:focus,
 input[type="password"]:focus,
+input[type="number"]:focus,
 input[type="email"]:focus,
 input[type="text"]:hover,
 input[type="password"]:hover,
+input[type="number"]:hover,
 input[type="email"]:hover{
     border: none !important;
     border-bottom: #FF0036 solid 2px !important;
@@ -407,6 +410,7 @@ select optgroup{
 select option,
 input[type="text"],
 input[type="password"],
+input[type="number"],
 input[type="email"]{
     font-size: 0.95rem !important;
     color: rgb(85, 85, 85) !important;

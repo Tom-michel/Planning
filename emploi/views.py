@@ -217,7 +217,18 @@ def niveaux(request):
 # page d'accueil des salles
 
 def salles(request):
-    return render(request, 'emploi/salles.html')
+    salList = Salle.objects.all()
+    sal_form = SalleForm()
+    if request.method == 'POST':
+        sal_form = SalleForm(data=request.POST)
+        if sal_form.is_valid():
+            sal = sal_form.save()
+            sal.save()
+            return HttpResponseRedirect('../salles')
+    context = {
+        'salList':salList, 'sal_form':sal_form
+    }        
+    return render(request, 'emploi/salles.html', context)
 
 
 
