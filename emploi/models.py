@@ -6,7 +6,7 @@ from django.utils import timezone
 
  
 class Enseignant(models.Model):
-    matricule = models.CharField(max_length=7)
+    matricule = models.CharField(max_length=7, unique=True)
     date = models.DateField(default=timezone.now)
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='enseignant')
     def __str__(self):
@@ -24,7 +24,7 @@ class UniteEnseignement(models.Model):
     
 
 class  Filiere(models.Model):
-    nom_filiere = models.CharField(max_length=30)
+    nom_filiere = models.CharField(max_length=30, unique=True)
     date = models.DateField(default=timezone.now)
     
     def __str__(self):
@@ -32,7 +32,7 @@ class  Filiere(models.Model):
     
     
 class Niveau(models.Model):
-    nom_niveau = models.CharField(max_length=10)
+    nom_niveau = models.CharField(max_length=10, unique=True)
     date = models.DateField(default=timezone.now)
     
     def __str__(self) :
@@ -59,7 +59,7 @@ class Classe(models.Model):
 
 
 class Specialite(models.Model):
-    nom_specialite = models.CharField(max_length=30)
+    nom_specialite = models.CharField(max_length=30, unique=True)
     date = models.DateField(default=timezone.now)
     classe = models.ForeignKey(Classe, on_delete=models.CASCADE)
     
@@ -69,7 +69,7 @@ class Specialite(models.Model):
 
  
 class Salle(models.Model):
-    nom_salle = models.CharField(max_length=50, blank=True)
+    nom_salle = models.CharField(max_length=50, unique=True)
     capacite_salle = models.IntegerField('capacite')
     date = models.DateField(default=timezone.now)
 

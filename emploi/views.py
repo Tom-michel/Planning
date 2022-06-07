@@ -41,23 +41,25 @@ def accueil(request):
 # page d'accueil du dashboard
 
 def dashboard(request):
-
+    classeList = Classe.objects.all()
     if request.method == 'POST':
         classe = request.POST.get('classe')
-        # context = {'classe':classe}
-        # return render(request, 'emploi/ajout_planning.html', context)
-        msg = "salut"
         return ajout_planning(request, classe)
-
-    return render(request, 'emploi/dashboard.html')
+    context = {'classeList':classeList}
+    return render(request, 'emploi/dashboard.html', context)
 
 
 
 # ajouter un emploi de temps
 
 def ajout_planning(request, classe):
-
-    context = {'classe':classe}
+    coursList = Cours.objects.all()
+    cours_form = CoursForm()
+    context = {
+        'coursList':coursList,
+        'cours_form':cours_form,
+        'classe':classe
+    }
     return render(request, 'emploi/ajout_planning.html', context)
 
 

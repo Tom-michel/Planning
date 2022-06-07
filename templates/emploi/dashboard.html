@@ -254,24 +254,6 @@
                             <a href=""><i class="uil uil-edit"></i></a>
                         </td>
                     </tr>
-                    <tr>
-                        <td scope="row">Licence 2</td>
-                        <td>Mathématiques</td>
-                        <td>30/05/2022</td>
-                        <td>
-                            <a href=""><i class="uil uil-trash-alt"></i></a>
-                            <a href=""><i class="uil uil-edit"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Licence 3</td>
-                        <td>Informatique</td>
-                        <td>02/06/2022</td>
-                        <td>
-                            <a href=""><i class="uil uil-trash-alt"></i></a>
-                            <a href=""><i class="uil uil-edit"></i></a>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>
@@ -296,8 +278,10 @@
                                 <div class="form-group">
                                     <label for="salle">Veuillez choisir une classe</label><br><br>
                                     <select class="form-select" name="classe" id="classe">
-                                        <option value="classe">classe</option>
-                                        <option value="INF-L3">INF-L3</option>
+                                        <option value="" selected>classe</option>
+                                        {% for classe in classeList %}
+                                            <option value="{{classe}}">{{classe}}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>
@@ -315,6 +299,8 @@
 
 
 <script>
+
+    classe = document.getElementById('classe');
 
     // Rendre le lien actif
     

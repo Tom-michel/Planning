@@ -81,6 +81,9 @@
         {% for err in user_form.password2.errors %}
         <p class="errornotes text-center my-4">{{err}}</p>
         {% endfor %}
+        {% for err in ens_form.matricule.errors %}
+        <p class="errornotes text-center my-4">{{err}}</p>
+        {% endfor %}
 
         <div class=" tresp table-responsive">
             <table class="table table-striped">

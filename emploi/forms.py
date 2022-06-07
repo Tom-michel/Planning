@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Classe, Enseignant, Filiere, Niveau, Salle, Specialite, UniteEnseignement
+from .models import Classe, Cours, Enseignant, Filiere, Niveau, Salle, Specialite, UniteEnseignement
 
 
 # formulaire pour DJANGO user
@@ -90,6 +90,21 @@ class ClasseForm(forms.ModelForm):
             'filiere',
             'niveau',
             'date'
+        ]
+
+# cours
+class CoursForm(forms.ModelForm):
+    class Meta():
+        model = Cours
+        fields = [
+            'jour',
+            'type',
+            'heure',
+            'date',
+            'salle',
+            'groupe',
+            'classe',
+            'ue'
         ]
 
 
