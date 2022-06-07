@@ -1,5 +1,8 @@
 from multiprocessing import context
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from .forms import *
+from .models import *
 
 # Create your views here.
 
@@ -53,6 +56,7 @@ def dashboard(request):
 # ajouter un emploi de temps
 
 def ajout_planning(request, classe):
+
     context = {'classe':classe}
     return render(request, 'emploi/ajout_planning.html', context)
 
@@ -65,38 +69,148 @@ def modifier_planning(request):
 
 
 
+
+# ============================ LES TABLES ==========================
+
+
+
 # page d'accueil des enseignants sur le dashbord
 
 def enseignant(request):
-    return render(request, 'emploi/enseignants.html')
+    ensList = Enseignant.objects.all()
+    ens_form = EnsForm()
+    user_form = UserForm()
+    if request.method == 'POST':
+        user_form = UserForm(data=request.POST)
+        ens_form = EnsForm(data=request.POST)
+        if user_form.is_valid() and ens_form.is_valid():
+            user = user_form.save()
+            user.save()
+            ens = ens_form.save(commit=False)
+            ens.user = user
+            ens.save()
+            ensList = Enseignant.objects.all()
+            return HttpResponseRedirect('../enseignant')
+        else:
+            err1 = user_form.errors
+            err2 = ens_form.errors
+            context = {'ens_form':ens_form, 'user_form':user_form, 'ensList':ensList, 'err1':err1, 'err2':err2}
+            return render(request, 'emploi/enseignants.html', context)
+    else:        
+        context = {'ens_form':ens_form, 'user_form':user_form, 'ensList':ensList}
+        return render(request, 'emploi/enseignants.html', context)
+
+
+
+# modifier un enseignant
+
+def edit_enseignant(request, id_e):
+    ens = Enseignant.objects.get(id=id_e)
+    ens_form = EnsForm(instance=ens)
+    user_form = UpdateUserForm(instance=ens.user)
+    if request.method == 'POST':
+        ens_form = EnsForm(data=request.POST, instance=ens)
+        user_form = UpdateUserForm(data=request.POST, instance=ens.user)
+        if user_form.is_valid() and ens_form.is_valid():
+            user = user_form.save()
+            user.save()
+            ens = ens_form.save(commit=False)
+            ens.user = user
+            ens.save()
+            return HttpResponseRedirect('../enseignant')
+        else:
+            err1 = user_form.errors
+            err2 = ens_form.errors
+            context = {'ens_form':ens_form, 'user_form':user_form, 'err1':err1, 'err2':err2}
+            return render(request, 'emploi/edit_enseignant.html', context)
+    context = {'ens_form':ens_form, 'user_form':user_form}
+    return render(request, 'emploi/edit_enseignant.html', context)
+
+
+# supprimer un enseignant
+
+def supp_enseignant(request, id_e):
+    ens = Enseignant.objects.get(id=id_e)
+    user = User.objects.get(id=ens.user.id)
+    supp = True
+    if request.method == 'POST':
+        user.delete()
+        ens.delete()
+        return HttpResponseRedirect('../enseignant')
+    context = {'ens':ens, 'supp':supp}
+    return render(request, 'emploi/supp_enseignant.html', context)
 
 
 
 # page d'accueil de UEs
 
 def unite_enseignements(request):
-    return render(request, 'emploi/ue.html')
+    ueList = UniteEnseignement.objects.all()
+    ue_form = UeForm()
+    if request.method == 'POST':
+        ue_form = UeForm(data=request.POST)
+        if ue_form.is_valid():
+            ue = ue_form.save()
+            ue.save()
+            return HttpResponseRedirect('../unite_enseignements')
+    context = {
+        'ueList':ueList, 'ue_form':ue_form
+    }        
+    return render(request, 'emploi/ue.html', context)
 
 
 
 # page d'accueil des filieres
 
 def filieres(request):
-    return render(request, 'emploi/filieres.html')
+    filList = Filiere.objects.all()
+    fil_form = FilereForm()
+    if request.method == 'POST':
+        fil_form = FilereForm(data=request.POST)
+        if fil_form.is_valid():
+            fil = fil_form.save()
+            fil.save()
+            return HttpResponseRedirect('../filieres')
+    context = {
+        'filList':filList, 'fil_form':fil_form
+    }        
+    return render(request, 'emploi/filieres.html', context)
 
 
 
 # page d'accueil des specialites
 
 def specialites(request):
-    return render(request, 'emploi/specialite.html')
+    speList = Specialite.objects.all()
+    spe_form = SpeForm()
+    if request.method == 'POST':
+        spe_form = SpeForm(data=request.POST)
+        if spe_form.is_valid():
+            spe = spe_form.save()
+            spe.save()
+            return HttpResponseRedirect('../specialite')
+    context = {
+        'speList':speList, 'spe_form':spe_form
+    }        
+    return render(request, 'emploi/specialite.html', context)
 
 
 
 # page d'accueil des niveaux
 
 def niveaux(request):
-    return render(request, 'emploi/niveaux.html')
+    nivList = Niveau.objects.all()
+    niv_form = NiveauForm()
+    if request.method == 'POST':
+        niv_form = NiveauForm(data=request.POST)
+        if niv_form.is_valid():
+            niv = niv_form.save()
+            niv.save()
+            return HttpResponseRedirect('../niveaux')
+    context = {
+        'nivList':nivList, 'niv_form':niv_form
+    }        
+    return render(request, 'emploi/niveaux.html', context)
 
 
 

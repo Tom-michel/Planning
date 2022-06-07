@@ -378,7 +378,10 @@ tbody td:hover::before{
 
 /* ======= modal ============= */
 
-select{
+select,
+input[type="text"],
+input[type="password"],
+input[type="email"]{
     border: none !important;
     border-bottom: #FF0036 solid 1px !important;
     font-size: 0.9rem !important;
@@ -386,7 +389,13 @@ select{
 }
 
 select:hover,
-select:focus{
+select:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="email"]:hover{
     border: none !important;
     border-bottom: #FF0036 solid 2px !important;
     box-shadow: none !important;
@@ -395,7 +404,10 @@ select:focus{
 select optgroup{
     color: #000 !important;
 }
-select option{
+select option,
+input[type="text"],
+input[type="password"],
+input[type="email"]{
     font-size: 0.95rem !important;
     color: rgb(85, 85, 85) !important;
     /* color: rgb(34, 34, 34) !important; */

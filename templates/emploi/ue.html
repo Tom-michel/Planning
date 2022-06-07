@@ -4,10 +4,170 @@
 {% block title %} SPLANNING | Liste des UEs {% endblock %}
 
 {% block content %}
-  <h1>Liste des UEs</h1>
 
+
+<style>
+        /* ============= TABLEAUX RENCENTS ============== */
+
+        .col-tab {
+        border-radius: var(--card-border-radius);
+        /* width: 100%; */
+    }
+
+    .col-con{
+        width: 100%;
+    }
+
+
+    .hearder{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hearder p, .connect-title p{
+        margin-bottom: 0;
+        color: #FF0036;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    .hearder a span{
+        font-size: 1rem;
+    }
+
+    .btn-rouge, .btn-bleu {
+        border: none;
+        color: #fff;
+        padding: 7px 15px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        border-radius: 50rem !important;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .btn-rouge{
+        background: #FF0036;
+    }
+    .btn-bleu{
+        background: #0b5ed7;
+    }
+
+    .btn-rouge:hover, .btn-bleu:hover{
+        opacity: 0.8;
+        color: #fff;
+    }
+
+
+</style>
+
+
+<div class="row">
+    <div class="col-lg-10 mx-auto col-tab mt-5 shadow py-3 px-2">
+        <div class="hearder">
+            <p class="mb-4">Liste des UEs</p>
+            <p class="mb-4">
+                <a class="btn-rouge" class="btn-rouge" data-bs-toggle="modal" data-bs-target="#ajoutUE" href="">
+                    Ajouter 
+                    <span>+</span>
+                </a>
+            </p>
+        </div>
+        
+        {% for err in ue_form.intitule.errors %}
+        <p class="errornotes text-center my-4">{{err}}</p>
+        {% endfor %}
+        {% for err in ue_form.enseignant.errors %}
+        <p class="errornotes text-center my-4">{{err}}</p>
+        {% endfor %}
+
+        <div class=" tresp table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Intitulé</th>
+                        <th scope="col">Enseignant</th>
+                        <th scope="col">Date de création</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ue in ueList %}
+        
+                    <tr>
+                        <td scope="row">{{ue.intitule}}</td>
+                        <td>{{ue.enseignant}}</td>
+                        <td>{{ue.date}}</td>
+                        <td>
+                            <a href=""><i class="uil uil-trash-alt"></i></a>
+                            <a href=""><i class="uil uil-edit"></i></a>
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>
+
+  <!-- Modal ajout -->
+<div class="modal fade" id="ajoutUE" data-bs-backdrop="static" tabindex="-1" aria-labelledby="ajoutUELabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ajoutUELabel" style="color: #0b5ed7;">Ajouter une UE</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form onsubmit="return envoyer()" action="" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 my-3 offset-md-3">
+                                <div class="form-group">
+                                    {{ue_form.intitule}}
+                                </div>
+                            </div>
+                            <div class="col-md-6 offset-md-3 my-3">
+                                <div class="form-group">
+                                    {{ue_form.enseignant}}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3" style="display: none;">
+                                <div class="form-group">
+                                    {{ue_form.date}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-bleu" data-bs-dismiss="modal">Annuler</button>
+                    <input id="btn-sub" onclick="return envoyer();" class="btn-rouge" type="submit" value="Enregistrer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <script>
+
+    champs = document.getElementsByTagName('input');
+    for (let i = 0; i < (champs.length-1); i++) {
+        champs[i].classList.add('form-control');
+        champs[i].addEventListener("keypress", function(event) {
+			if (event.key === "Enter") {
+			    event.preventDefault();
+			    document.getElementById("btn-sub").click();
+			}
+		});
+    }
+    champs[1].placeholder = "UE";
+    champs[2].placeholder = "enseignant";
 
     // Rendre le lien actif
     

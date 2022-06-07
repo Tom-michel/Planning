@@ -4,218 +4,220 @@
 {% block title %} SPLANNING | Liste des Enseignants {% endblock %}
 
 {% block content %}
-  
+
 <style>
-    fieldset{
-        position: relative;
-        width: 50%;
-        /* margin: 70px auto; */
-        border-color: #FF0036;
-        border-radius: 20px;
-    }
-    button{
-        font-size: 14px;
-    }
-    #fle{
-        color: #FF0036;
-        width: 20px;
-        height: 20px;
-        margin-right: 5px;
-        margin-left: 5px;
-    }
-    legend{
-        display: inline-block;
-        font-size: 20px;
-    }
-    .btn{
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        color: #fff;
-        text-decoration: bold;
-        margin-top: 20px;
-        margin-left: 450px;
-        border-radius: 20px;
-        background-color: #FF0036;
-        height: 35px;
-        width: auto;
-    }
-    tbody{
-        color:rgb(0, 0, 0) ;
-    }
-    table{
-        color: #fff;
-        text-align: center;
-        width: 800px;
-        border: 0px solid #FF0036;
-        border-radius: 10px 10px 0px 0px;
-        background-color: #FF0036;
-    }
-    tbody tr:nth-child(odd){
-      background-color: #fad5dd ; 
-    }
-    tbody tr:nth-child(even){
-      background-color: #ffffff ; 
-    }
-    .icon-supp{
-        color: #FF0036;
-    }
-    .icon-mod{
-        color: #00B94A;
+        /* ============= TABLEAUX RENCENTS ============== */
+
+        .col-tab {
+        border-radius: var(--card-border-radius);
+        /* width: 100%; */
     }
 
-    a {
-      text-decoration: none !important;
+    .col-con{
+        width: 100%;
     }
-    
+
+
+    .hearder{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hearder p, .connect-title p{
+        margin-bottom: 0;
+        color: #FF0036;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    .hearder a span{
+        font-size: 1rem;
+    }
+
+    .btn-rouge, .btn-bleu {
+        border: none;
+        color: #fff;
+        padding: 7px 15px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        border-radius: 50rem !important;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .btn-rouge{
+        background: #FF0036;
+    }
+    .btn-bleu{
+        background: #0b5ed7;
+    }
+
+    .btn-rouge:hover, .btn-bleu:hover{
+        opacity: 0.8;
+        color: #fff;
+    }
+
+
 </style>
 
-<fieldset>
-    <legend>   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16 " id="fle">
-        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
-      </svg> Listes des ENSEIGNANTS</legend>
-      <p class="resultat"> 6 resultat</p>
-      <table class="tab table-striped ">
-        <thead class="tete rounded-pill">
-            <tr>
-                <th>Matricule</th>
-                <th>Noms & Prenoms</th>
-                <th>Téléphone</th>
-                <th>Supprimer & Modifier</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>31M0012</th>
-                <td>EBANDA</td>
-                <td>657787665</td>
-                <td>
-                    <a href="#" class="icon-supp">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-x" viewBox="0 0 16 16">
-                            <path d="M6.146 7.146a.5.5 0 0 1 .708 0L8 8.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 9l1.147 1.146a.5.5 0 0 1-.708.708L8 9.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 9 6.146 7.854a.5.5 0 0 1 0-.708z"/>
-                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                        </svg>
-                    </a> 
-                    <a href="#" class="icon-mod">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                        </svg> 
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <th>11M0012</th>
-                <td>Jacob</td>
-                <td>659909321</td>
-                <td>
-                    <a href="#" class="icon-supp">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-x" viewBox="0 0 16 16">
-                            <path d="M6.146 7.146a.5.5 0 0 1 .708 0L8 8.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 9l1.147 1.146a.5.5 0 0 1-.708.708L8 9.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 9 6.146 7.854a.5.5 0 0 1 0-.708z"/>
-                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                        </svg>
-                    </a> 
-                    <a href="#" class="icon-mod">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                        </svg> 
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <th>21M0012</th>
-                <td >Larry the Bird</td>
-                <td>667456323</td>
-                <td>
-                    <a href="#" class="icon-supp">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-x" viewBox="0 0 16 16">
-                            <path d="M6.146 7.146a.5.5 0 0 1 .708 0L8 8.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 9l1.147 1.146a.5.5 0 0 1-.708.708L8 9.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 9 6.146 7.854a.5.5 0 0 1 0-.708z"/>
-                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                        </svg>
-                    </a> 
-                    <a href="#" class="icon-mod">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                        </svg> 
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <th>21M0012</th>
-                <td >Larry the Bird</td>
-                <td>667456323</td>
-                <td>
-                    <a href="#" class="icon-supp">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-x" viewBox="0 0 16 16">
-                            <path d="M6.146 7.146a.5.5 0 0 1 .708 0L8 8.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 9l1.147 1.146a.5.5 0 0 1-.708.708L8 9.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 9 6.146 7.854a.5.5 0 0 1 0-.708z"/>
-                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                        </svg>
-                    </a> 
-                    <a href="#" class="icon-mod">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                        </svg> 
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <th>21M0012</th>
-                <td >Larry the Bird</td>
-                <td>667456323</td>
-                <td>
-                    <a href="#" class="icon-supp">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-x" viewBox="0 0 16 16">
-                            <path d="M6.146 7.146a.5.5 0 0 1 .708 0L8 8.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 9l1.147 1.146a.5.5 0 0 1-.708.708L8 9.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 9 6.146 7.854a.5.5 0 0 1 0-.708z"/>
-                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                        </svg>
-                    </a> 
-                    <a href="#" class="icon-mod">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                        </svg> 
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <th>21M0012</th>
-                <td >Larry the Bird</td>
-                <td>667456323</td>
-                <td>
-                    <a href="#" class="icon-supp">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-x" viewBox="0 0 16 16">
-                            <path d="M6.146 7.146a.5.5 0 0 1 .708 0L8 8.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 9l1.147 1.146a.5.5 0 0 1-.708.708L8 9.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 9 6.146 7.854a.5.5 0 0 1 0-.708z"/>
-                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                        </svg>
-                    </a> 
-                    <a href="#" class="icon-mod">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                        </svg> 
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-      </table>
-      <button type="button" class="btn btn-danger ">Ajouter un enseignants + </button>
 
-</fieldset>
+<div class="row">
+    <div class="col-lg-10 mx-auto col-tab mt-5 shadow py-3 px-2">
+        <div class="hearder">
+            <p class="mb-4">Liste des enseignants</p>
+            <p class="mb-4">
+                <a class="btn-rouge" class="btn-rouge" data-bs-toggle="modal" data-bs-target="#ajoutEns" href="">
+                    Ajouter 
+                    <span>+</span>
+                </a>
+            </p>
+        </div>
+        
+        {% for err in user_form.username.errors %}
+        <p class="errornotes text-center my-4">{{err}}</p>
+        {% endfor %}
+        {% for err in user_form.password2.errors %}
+        <p class="errornotes text-center my-4">{{err}}</p>
+        {% endfor %}
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <div class=" tresp table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Matricule</th>
+                        <th scope="col">Addresse mail</th>
+                        <th scope="col">Date de création</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ens in ensList %}
+        
+                    <tr>
+                        <td scope="row">{{ens.matricule}}</td>
+                        <td>{{ens.user.username}}</td>
+                        <td>{{ens.date}}</td>
+                        <td>
+                            <a href="{% url 'supp_enseignant' ens.id %}"><i class="uil uil-trash-alt"></i></a>
+                            <a href="{% url 'edit_enseignant' ens.id %}"><i class="uil uil-edit"></i></a>
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>
+
+  <!-- Modal ajout -->
+<div class="modal fade" id="ajoutEns" data-bs-backdrop="static" tabindex="-1" aria-labelledby="ajoutEnsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ajoutEnsLabel" style="color: #0b5ed7;">Ajouter un enseignant</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form onsubmit="return envoyer()" action="" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    {{ens_form.matricule}}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    <input type="email" name="username" maxlength="150" autofocus="" required="" id="id_username" class="form-control" placeholder="addresse mail">
+                                </div>
+                            </div>
+                            <span  style="display: none;">
+                                <div class="col-md-6 mt-3">
+                                    <div class="form-group">
+                                        {{user_form.password1}}
+                                        {{user_form.password2}}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <div class="form-group">
+                                        {{ens_form.date}}
+                                    </div>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-bleu" data-bs-dismiss="modal">Annuler</button>
+                    <input id="btn-sub" onclick="return envoyer();" class="btn-rouge" type="submit" value="Enregistrer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 
 
 <script>
 
+    // ajouter la class form-control aux champs
+
+    champs = document.getElementsByTagName('input');
+    for (let i = 0; i < (champs.length-1); i++) {
+        champs[i].classList.add('form-control');
+        champs[i].addEventListener("keypress", function(event) {
+			if (event.key === "Enter") {
+			    event.preventDefault();
+			    document.getElementById("btn-sub").click();
+			}
+		});
+    }
+    champs[1].placeholder = "matricule";
+    champs[2].placeholder = "addresse mail";
+    // document.getElementById("btn-sub").classList.remove('form-control');
+
+
+    // controler et envoyer le formulair
+
+    pwd1 = document.getElementById('id_password1');
+    pwd2 = document.getElementById('id_password2');
+    mat = document.getElementById('id_matricule');
+
+    const remplirMdp = () =>{
+        pwd1.value = 'FACSCIENCES-'+mat.value
+        pwd2.value = 'FACSCIENCES-'+mat.value
+    }
+
+    // remplir les mdp lors de la saisie du matricule
+    mat.addEventListener('keyup', remplirMdp);
+
+    function envoyer() {
+        if (mat.value.length != 7) {
+            alert("Veuillez entrer un matricule correct (7 caractères)");
+            mat.focus();
+            return false;
+        } else {
+            pwd1.value = 'FACSCIENCES-'+mat.value
+            pwd2.value = 'FACSCIENCES-'+mat.value
+        }
+        return true;
+    }
+
+
     // Rendre le lien actif
     
     let list = document.getElementsByClassName('list');
-    for (let i = 0; i < list.length; i++) {
+    for (let i = 0; i < (list.length-1); i++) {
         list[i].className = 'list';
     }
     document.getElementById('enseignant').className = 'list active';
+
 </script>
 
 
