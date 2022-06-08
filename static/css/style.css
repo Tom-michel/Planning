@@ -45,7 +45,18 @@
     overflow-wrap: break-word;
     /* width: 80%; */
     margin: auto;
-  }
+}
+
+.errorlist {
+    padding: 3px 0 8px !important;
+    margin: 0 !important;
+}
+.errorlist >li {
+    display: block;
+    color: #e35f5f !important;
+    font-weight: 700;
+    font-size: 13px !important;
+}
 
 
 /* les boutons */

@@ -146,7 +146,7 @@
                                     <input type="email" name="username" maxlength="150" autofocus="" required="" id="id_username" class="form-control" placeholder="addresse mail">
                                 </div>
                             </div>
-                            <span  style="display: none;">
+                            <span style="display: none;">
                                 <div class="col-md-6 mt-3">
                                     <div class="form-group">
                                         {{user_form.password1}}
@@ -201,8 +201,8 @@
     mat = document.getElementById('id_matricule');
 
     const remplirMdp = () =>{
-        pwd1.value = 'FACSCIENCES-'+mat.value
-        pwd2.value = 'FACSCIENCES-'+mat.value
+        pwd1.value = 'FACUY1-'+mat.value
+        pwd2.value = 'FACUY1-'+mat.value
     }
 
     // remplir les mdp lors de la saisie du matricule
@@ -213,9 +213,6 @@
             alert("Veuillez entrer un matricule correct (7 caractères)");
             mat.focus();
             return false;
-        } else {
-            pwd1.value = 'FACSCIENCES-'+mat.value
-            pwd2.value = 'FACSCIENCES-'+mat.value
         }
         return true;
     }

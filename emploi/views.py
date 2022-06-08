@@ -1,6 +1,8 @@
 from multiprocessing import context
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from .forms import *
 from .models import *
 
@@ -64,7 +66,7 @@ def ajout_planning(request, id_clas):
         if cours_form.is_valid():
             cours = cours_form.save()
             cours.save()
-            return HttpResponseRedirect('ajout_planning')
+            # return HttpResponseRedirect('ajout_planning')
         else:
             err = cours_form.errors
             context = {
@@ -157,12 +159,11 @@ def edit_enseignant(request, id_e):
 def supp_enseignant(request, id_e):
     ens = Enseignant.objects.get(id=id_e)
     user = User.objects.get(id=ens.user.id)
-    supp = True
     if request.method == 'POST':
         user.delete()
         ens.delete()
-        return HttpResponseRedirect('../enseignant')
-    context = {'ens':ens, 'supp':supp}
+        return HttpResponseRedirect('../../enseignant')
+    context = {'ens':ens}
     return render(request, 'emploi/supp_enseignant.html', context)
 
 
@@ -275,10 +276,9 @@ def classes(request):
 
 
 
-# page d'accueil des groupes
-
-def groupes(request):
-    return render(request, 'emploi/groupes.html')
-
+# @login_required(login_url='connexion')
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/')
 
 # ========================== DASHBOARD FIN =======================

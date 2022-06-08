@@ -97,14 +97,6 @@
                                 <span class="title">Classes</span>
                             </a>
                         </li>
-                        <li id="groupe" class="list">
-                            <b></b>
-                            <b></b>
-                            <a href="{% url 'groupes' %}">
-                                <span class="icon"><i class="uil uil-users-alt"></i></span>
-                                <span class="title">Groupes</span>
-                            </a>
-                        </li>
                     </div>
                 </ul>
             </div>
@@ -125,10 +117,13 @@
                         {% endif %}
                     </div>
                     <div class="user">
+
+                        {% if user.is_authenticated %}
                         <div class="photo">
                             <img src="{% static 'img/pp.jpg' %}" alt="">
                         </div>
-                        <a href="" style="color: #FF0036;">logout</span></a>
+                        <a href="{% url 'user_logout' %}" style="color: #FF0036;">logout</span></a>
+                        {% endif %}
                     </div>
                 </div>
 

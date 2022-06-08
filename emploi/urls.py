@@ -23,5 +23,5 @@ urlpatterns = [
     path('niveaux/', niveaux, name="niveaux"),
     path('salles/', salles, name="salles"),
     path('classes/', classes, name="classes"),
-    path('groupes/', groupes, name="groupes"),
+    path('user_logout/', user_logout, name="user_logout"),
 ]

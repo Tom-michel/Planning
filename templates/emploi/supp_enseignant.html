@@ -21,8 +21,10 @@
                 <h5 class="modal-title" id="suppEnsLabel" style="color: #0b5ed7;">Modifier un enseignant</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form onsubmit="return envoyer()" action="" method="post">
-                <input type="hidden" name="csrfmiddlewaretoken" value="xUCyJorh8QDPZXgWFIOgATGtlRRM4fEbvPsNDWmIpLBFuyjfhmD2QSTLUPul1zMS" class="form-control">
+
+            <form action="" method="post">
+                {% csrf_token %} 
+                
                 <div class="modal-body">
                     <div class="container">
                         <div class="row">
@@ -37,13 +39,10 @@
                     <a class="btn-bleu" href="{% url 'enseignant' %}">Annuler</a>
                     <input id="btn-sub" class="btn-rouge" type="submit" value="Valider">
                 </div>
+
             </form>
         </div>
     </div>
 </div>
-
-<script>
-    //document.getElementById("btn-sub").classList.remove('form-control');
-</script>
 
 {% endblock %}

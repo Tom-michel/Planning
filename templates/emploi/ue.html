@@ -87,6 +87,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th scope="col">Code</th>
                         <th scope="col">Intitulé</th>
                         <th scope="col">Classe</th>
                         <th scope="col">Enseignant</th>
@@ -98,9 +99,10 @@
                     {% for ue in ueList %}
         
                     <tr>
+                        <td scope="row">{{ue.code}}</td>
                         <td scope="row">{{ue.intitule}}</td>
                         <td>{{ue.classe}}</td>
-                        <td>{{ue.enseignant}}</td>
+                        <td>{{ue.enseignant.user.last_name}}</td>
                         <td>{{ue.date}}</td>
                         <td>
                             <a href=""><i class="uil uil-trash-alt"></i></a>

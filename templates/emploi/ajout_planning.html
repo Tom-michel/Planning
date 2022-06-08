@@ -25,7 +25,8 @@
 
 <div class=" tresp table-responsive">
 
-    <p class="errornotes text-center my-4">{{err}}</p>
+    <!-- erreurs -->
+    <p class="">{{err}}</p>
 
     <table class="table table-striped table-bordered">
         <thead>
@@ -46,59 +47,404 @@
                 <td id="lun_1">
                     {% for cours in coursList %}
                         {% if cours.jour == "lundi" and cours.heure == "7h-9h55" %}
-                            {{cours.type}}
-                            {{cours.ue.intitule}} <br>
-                            {{cours.salle}} <br>
-                            {{cours.ue.enseignant.user.last_name}} <br>
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
                         {% endif %}
                     {% endfor %}
                 </td>
-                <td id="mard_1"></td>
-                <td id="mer_1"></td>
-                <td id="jeu_1"></td>
-                <td id="ven_1"></td>
-                <td id="sam_1"></td>
-                <td id="dim_1"></td>
+                <td id="mard_1">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "mardi" and cours.heure == "7h-9h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="mer_1">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "mercredi" and cours.heure == "7h-9h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="jeu_1">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "jeudi" and cours.heure == "7h-9h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="ven_1">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "vendredi" and cours.heure == "7h-9h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="sam_1">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "samedi" and cours.heure == "7h-9h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="dim_1">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "dimanche" and cours.heure == "7h-9h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
             </tr>
+            <tr><td colspan="8">Pause 10 min</td></tr>
             <tr>
                 <th id="h_2">10h05-12h55</th>
-                <td id="lun_2"></td>
-                <td id="mard_2"></td>
-                <td id="mer_2"></td>
-                <td id="jeu_2"></td>
-                <td id="ven_2"></td>
-                <td id="sam_2"></td>
-                <td id="dim_2"></td>
+                <td id="lun_2">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "lundi" and cours.heure == "10h05-12h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="mard_2">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "mardi" and cours.heure == "10h05-12h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="mer_2">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "mercredi" and cours.heure == "10h05-12h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="jeu_2">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "jeudi" and cours.heure == "10h05-12h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="ven_2">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "vendredi" and cours.heure == "10h05-12h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="sam_2">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "samedi" and cours.heure == "10h05-12h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="dim_2">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "dimanche" and cours.heure == "10h05-12h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
             </tr>
+            <tr><td colspan="8">Pause 10 min</td></tr>
             <tr>
                 <th id="h_3">13h05-15h55</th>
-                <td id="lun_3"></td>
-                <td id="mard_3"></td>
-                <td id="mer_3"></td>
-                <td id="jeu_3"></td>
-                <td id="ven_3"></td>
-                <td id="sam_3"></td>
-                <td id="dim_3"></td>
+                <td id="lun_3">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "lundi" and cours.heure == "13h05-15h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="mard_3">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "mardi" and cours.heure == "13h05-15h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="mer_3">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "mercredi" and cours.heure == "13h05-15h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="jeu_3">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "jeudi" and cours.heure == "13h05-15h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="ven_3">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "vendredi" and cours.heure == "13h05-15h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="sam_3">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "samedi" and cours.heure == "13h05-15h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="dim_3">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "dimanche" and cours.heure == "13h05-15h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
             </tr>
+            <tr><td colspan="8">Pause 10 min</td></tr>
             <tr>
                 <th id="h_4">16h05-18h55</th>
-                <td id="lun_4"></td>
-                <td id="mard_4"></td>
-                <td id="mer_4"></td>
-                <td id="jeu_4"></td>
-                <td id="ven_4"></td>
-                <td id="sam_4"></td>
-                <td id="dim_4"></td>
+                <td id="lun_4">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "lundi" and cours.heure == "16h05-18h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="mard_4">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "mardi" and cours.heure == "16h05-18h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="mer_4">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "mercredi" and cours.heure == "16h05-18h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="jeu_4">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "jeudi" and cours.heure == "16h05-18h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="ven_4">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "vendredi" and cours.heure == "16h05-18h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="sam_4">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "samedi" and cours.heure == "16h05-18h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="dim_4">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "dimanche" and cours.heure == "16h05-18h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
             </tr>
+            <tr><td colspan="8">Pause 10 min</td></tr>
             <tr>
                 <th id="h_5">19h05-21h55</th>
-                <td id="lun_5"></td>
-                <td id="mard_5"></td>
-                <td id="mer_5"></td>
-                <td id="jeu_5"></td>
-                <td id="ven_5"></td>
-                <td id="sam_5"></td>
-                <td id="dim_5"></td>
+                <td id="lun_5">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "lundi" and cours.heure == "19h05-21h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="mard_5">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "mardi" and cours.heure == "19h05-21h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="mer_5">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "mercredi" and cours.heure == "19h05-21h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="jeu_5">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "jeudi" and cours.heure == "19h05-21h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="ven_5">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "vendredi" and cours.heure == "19h05-21h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="sam_5">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "samedi" and cours.heure == "19h05-21h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td id="dim_5">
+                    {% for cours in coursList %}
+                        {% if cours.jour == "dimanche" and cours.heure == "19h05-21h55" %}
+                            {% for group in cours.groupe %}
+                                <b>{{cours.type}},</b> {{cours.ue.intitule}} <br>
+                                <b>{{cours.salle}}, {{group}}</b>, {{cours.ue.enseignant.user.last_name}} <br>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </td>
             </tr>
         </tbody>
     </table>
@@ -216,10 +562,22 @@
                                     </p>
                                 </div>
                             </div>
+
+                            <style>
+                                #id_groupe{
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    margin: 5px 0 15px;
+                                }
+                                #id_groupe label {
+                                    margin: 0 5px;
+                                    cursor: pointer;
+                                }
+                            </style>
                             <div class="col-md-6 mt-3">
                                 <div class="form-group">
                                     <p>
-                                        <label for="id_groupe">Nombre_groupe&nbsp;:</label>
+                                        <label for="id_groupe">Groupes&nbsp;:</label>
                                         {{cours_form.groupe}}
                                     </p>
                                 </div>
@@ -248,16 +606,16 @@
 
 <script>
 
-    champs = document.getElementsByTagName('input');
-      for (let i = 0; i < (champs.length-1); i++) {
-          champs[i].classList.add('form-control');
-          champs[i].addEventListener("keypress", function(event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            document.getElementById("btn-sub").click();
-        }
-      });
-    }
+    // champs = document.getElementsByTagName('input');
+    //   for (let i = 0; i < (champs.length-1); i++) {
+    //       champs[i].classList.add('form-control');
+    //       champs[i].addEventListener("keypress", function(event) {
+    //     if (event.key === "Enter") {
+    //         event.preventDefault();
+    //         document.getElementById("btn-sub").click();
+    //     }
+    //   });
+    // }
     champSel = document.getElementsByTagName('select');
         for (let i = 0; i < (champSel.length); i++) {
             champSel[i].classList.add('form-select');

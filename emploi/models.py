@@ -26,16 +26,7 @@ class Niveau(models.Model):
     date = models.DateField(default=timezone.now)
     
     def __str__(self) :
-        return self.nom_niveau
-    
-
-class Groupe(models.Model):
-    nom_groupe = models.CharField(max_length=20)
-    date = models.DateField(default=timezone.now)
-    
-    def __str__(self):
-        return self.nom_groupe
-    
+        return self.nom_niveau 
 
 class Classe(models.Model):
     effectif_classe = models.IntegerField('Effectif')
@@ -69,6 +60,7 @@ class Salle(models.Model):
 
  
 class UniteEnseignement(models.Model):
+    code = models.CharField(max_length=100, unique=True)
     intitule = models.CharField(max_length=100, unique=True)
     date = models.DateField(default=timezone.now)
     enseignant = models.ForeignKey(Enseignant, on_delete=models.SET_NULL, null=True)
@@ -83,13 +75,13 @@ from multiselectfield import MultiSelectField
 
 class Cours(models.Model):
     JOURS = [
-        ('lundi', 'lundi'),
-        ('mardi', 'mardi'),
-        ('mercredi', 'mercredi'),
-        ('jeudi', 'jeudi'),
-        ('vendredi', 'vendredi'),
-        ('samedi', 'samedi'),
-        ('dimanche', 'dimanche')
+        ('Lundi', 'Lundi'),
+        ('Mardi', 'Mardi'),
+        ('Mercredi', 'Mercredi'),
+        ('Jeudi', 'Jeudi'),
+        ('Vendredi', 'Vendredi'),
+        ('Samedi', 'Samedi'),
+        ('Dimanche', 'Dimanche')
     ]
     TYPES = [
         ('CM', 'CM'),
@@ -112,5 +104,5 @@ class Cours(models.Model):
     
     
     def __str__(self):
-        return f'self.salle lieux du cours'
+        return f'{self.type}-{self.salle}-{self.jour}-{self.heure}'
     
