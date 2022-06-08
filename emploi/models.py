@@ -1,63 +1,42 @@
-from operator import mod
-from re import M
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
 # Create your models here.
 
+
+    
+ 
 class Enseignant(models.Model):
-    telephone = models.CharField(max_length=14)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-
+    matricule = models.CharField(max_length=7, unique=True)
+    date = models.DateField(default=timezone.now)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='enseignant')
     def __str__(self):
-
-        return self.user.username
-
-    
- 
- 
-class UniteEnseignement(models.Model):
-    
-    nom_ue = models.CharField(max_length=40)
-    intitule = models.CharField(max_length=100, blank=True)
-    enseignant = models.ForeignKey(Enseignant, on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return self.nom_ue
-    
+        return f'{self.user.username}'   
     
 
 class  Filiere(models.Model):
-    nom_filiere = models.CharField(max_length=30)
+    nom_filiere = models.CharField(max_length=30, unique=True)
+    date = models.DateField(default=timezone.now)
     
     def __str__(self):
         return self.nom_filiere
     
     
 class Niveau(models.Model):
-    nom_niveau = models.CharField(max_length=10)
+    nom_niveau = models.CharField(max_length=10, unique=True)
+    date = models.DateField(default=timezone.now)
     
     def __str__(self) :
         return self.nom_niveau
     
-
-class Groupe(models.Model):
-    
-    nom_groupe = models.CharField(max_length=20)
-    
-    def __str__(self):
-        return self.nom_groupe
     
 
-class Classes(models.Model):
-    
+class Classe(models.Model):
+    nom_classe = models.CharField(max_length=20, blank=True)
     effectif_classe = models.IntegerField('Effectif')
-    
-    nom_classe = models.CharField(max_length=20)
-    
+    date = models.DateField(default=timezone.now)  
     filiere = models.ForeignKey(Filiere, on_delete=models.CASCADE)
-    
     niveau = models.ForeignKey(Niveau, on_delete=models.CASCADE)
     
     def __str__(self):
@@ -66,25 +45,41 @@ class Classes(models.Model):
 
 
 class Specialite(models.Model):
-    
-    nom_specialite = models.CharField(max_length=30)
-    
-    classe = models.ForeignKey(Classes, on_delete=models.CASCADE)
+    nom_specialite = models.CharField(max_length=30, unique=True)
+    date = models.DateField(default=timezone.now)
+    classe = models.ForeignKey(Classe, on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.nom_specialite
+        return f'{self.classe}-{self.nom_specialite}-{self.nom_specialite}'
 
 
  
 class Salle(models.Model):
-    nom_salle = models.CharField(max_length=50, blank=True)
+    nom_salle = models.CharField(max_length=50, unique=True)
     capacite_salle = models.IntegerField('capacite')
+    date = models.DateField(default=timezone.now)
 
     def __str__(self):
         return self.nom_salle
-    
-class Cours(models.Model):
 
+
+ 
+class UniteEnseignement(models.Model):
+    code_ue = models.CharField(max_length=200, unique=True)
+    intitule = models.CharField(max_length=100, unique=True)
+    date = models.DateField(default=timezone.now)
+    enseignant = models.ForeignKey(Enseignant, on_delete=models.SET_NULL, null=True)
+    classe = models.ForeignKey(Classe, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return self.code_ue
+    
+
+
+from multiselectfield import MultiSelectField
+
+class Cours(models.Model):
+    
     JOURS = [
         ('Lundi', 'Lundi'),
         ('Mardi', 'Mardi'),
@@ -95,7 +90,7 @@ class Cours(models.Model):
         ('Dimanche', 'Dimanche'),
     ]
 
-    HEURE = [
+    HEURES = [
             ('7h-9h55', '7h-9h55'),
             ('10h05-12h55', '10h05-12h55'),
             ('13h05-15h55', '13h05-15h55'),
@@ -103,23 +98,25 @@ class Cours(models.Model):
             ('19h05-21h55', '19h05-21h55'),
 
     ]
+    TYPES = [
+        ('CM', 'CM'),
+        ('TD', 'TD')
+    ]
 
+    jour = models.CharField(max_length=20, choices=JOURS)
+    type = models.CharField(max_length=20, choices=TYPES)
+    heure = models.CharField(max_length=12, choices=HEURES)
+    date = models.DateField(default=timezone.now)
+    
     salle = models.ForeignKey(Salle, on_delete=models.CASCADE)
     
-    groupe = models.ForeignKey(Groupe, on_delete=models.CASCADE)
-    
-    classe = models.ForeignKey(Classes, on_delete=models.CASCADE)
-    
+    GROUPES = (
+        ('G1','G1'), ('G2','G2'), ('G3','G3'), ('G4','G4'),
+    )
+    groupe = MultiSelectField(choices=GROUPES, blank=True)
+        
     ue = models.ForeignKey(UniteEnseignement, on_delete=models.CASCADE)
-    
-    jour = models.CharField(max_length=20, choices=JOURS, default="Lundi", blank=True)
-    heure = models.CharField(max_length=12, choices=HEURE, default="7h-9h55", blank=True)
     
     
     def __str__(self):
-        return self.ue.nom_ue
-    
-
-
-
-    
+        return f'self.salle lieux du cours'
