@@ -5,15 +5,28 @@
 
 {% block content %}
 <style>
+   legend{
+      position: absolute;
+      top: 175px;
+      left: 130px;
+      display: inline-block;
+      max-width: 230px;
+      
+      font-size: 20px;
+      background-color: #ffffff !important;
+  }
   fieldset{
-      position: relative;
-      width: 50%;
-      margin: 70px auto;
-      border-color: #FF0036;
+      position: absolute;
+      max-width: 90%;
+      margin: 100px auto;
+      padding: 30px;
+      margin-left: 80px;
+      border: 2px solid #FF0036;
       border-radius: 20px;
   }
   button{
       font-size: 14px;
+      padding: auto;
   }
   #fle{
       color: #FF0036;
@@ -22,20 +35,17 @@
       margin-right: 5px;
       margin-left: 5px;
   }
-  legend{
-      display: inline-block;
-      font-size: 20px;
-  }
+  
   .btn{
       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
       color: #fff;
       text-decoration: bold;
-      margin-top: 20px;
-      margin-left: 450px;
+      margin-top: 30px;
+      margin-left: 550px;
       border-radius: 20px;
       background-color: #FF0036;
       height: 35px;
-      width: auto;
+      width: 185px;
   }
   tbody{
       color:rgb(0, 0, 0) ;
@@ -44,8 +54,8 @@
       color: #fff;
       text-align: center;
       width: 800px;
-      border: 0px solid #FF0036;
       border-collapse: collapse;
+      border: 0px solid #FF0036;
       border-radius: 10px 10px 0px 0px;
       background-color: #FF0036;
   }
@@ -64,9 +74,7 @@
   </style>
 
 <fieldset>
-  <legend>   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16 " id="fle">
-      <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
-    </svg> Listes des Classes</legend>
+  
     <p class="resultat"> 6 resultat</p>
     <table class="tab table-striped ">
       <thead class="tete rounded-pill">
@@ -211,4 +219,8 @@
     <button type="button" class="btn btn-danger ">Ajouter une Classe + </button>
 
 </fieldset>
+<legend>   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16 " id="fle">
+    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+  </svg> Listes des Classes
+</legend>
 {% endblock %}
