@@ -46,8 +46,10 @@
  </style>
 
  <h2 class="text-center" style="margin-top: 25px; font-size: 2.5rem;"> Planning Scolaire</h2>
+ {% if search %}
  <h5 class="text-center" style="color: #0b5ed7;"><em> Resulat: {{nb}} <strong>Emploi de temps</strong></em></h5>
- <a href="{% url 'planning' %}">telecharger</a>
+ {% endif %}
+ <!--<a href="{% url 'planning' %}">telecharger</a> -->
 
 
 
@@ -76,64 +78,129 @@
                 <th id="h_1">7h-9h55</th>
                 <td id="lun_1">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Lundi" and cour.heure == "7h-9h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Lundi" and cour.heure == "7h-9h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
-                      {{cour.ue.enseignant.user.username}}<br>
+                      {{cour.ue.enseignant.user.username}}<br><br>
+                    {% endif %}
+                  {% endfor %}
+
+                  <!-- prendre en charge les td -->
+                  {% for cour in cours %}
+                    {% if cour.ue.classe == classe and cour.jour == "Lundi" and cour.heure == "8h-10h" %}
+                      {{cour.type}} {{cour.ue}} {{cour.groupe}}<br>
+                      ({{cour.heure}})<br>
+                      {{cour.salle}}<br><br>
                     {% endif %}
                   {% endfor %}
                 </td>
                 <td id="mard_1">
                    {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Mardi" and cour.heure == "7h-9h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Mardi" and cour.heure == "7h-9h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
-                      {{cour.ue.enseignant.user.username}}<br>
+                      {{cour.ue.enseignant.user.username}}<br><br>
+                    {% endif %}
+                  {% endfor %}
+
+                  <!-- prendre en charge les td -->
+                  {% for cour in cours %}
+                    {% if cour.ue.classe == classe and cour.jour == "Mardi" and cour.heure == "8h-10h" %}
+                      {{cour.type}} {{cour.ue}} {{cour.groupe}}<br>
+                      ({{cour.heure}})<br>
+                      {{cour.salle}}<br><br>
                     {% endif %}
                   {% endfor %}
                 </td>
                 <td id="mer_1">
                    {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Mercredi" and cour.heure == "7h-9h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Mercredi" and cour.heure == "7h-9h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
-                      {{cour.ue.enseignant.user.username}}<br>
+                      {{cour.ue.enseignant.user.username}}<br><br>
+                    {% endif %}
+                  {% endfor %}
+
+                  <!-- prendre en charge les td -->
+                  {% for cour in cours %}
+                    {% if cour.ue.classe == classe and cour.jour == "Mercredi" and cour.heure == "8h-10h" %}
+                      {{cour.type}} {{cour.ue}} {{cour.groupe}}<br>
+                      ({{cour.heure}})<br>
+                      {{cour.salle}}<br><br>
                     {% endif %}
                   {% endfor %}
                 </td>
                 <td id="jeu_1">
                    {% for cour in cours %}
                     {% if cour.classe == classe and cour.jour == "Jeudi" and cour.heure == "7h-9h55" %}
-                      {{cour.ue}}<br>
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
-                      {{cour.ue.enseignant.user.username}}<br>
+                      {{cour.ue.enseignant.user.username}}<br><br>
                     {% endif %}
                   {% endfor %}
+
+                  <!-- prendre en charge les td -->
+                  {% for cour in cours %}
+                    {% if cour.ue.classe == classe and cour.jour == "Jeudi" and cour.heure == "8h-10h" %}
+                      {{cour.type}} {{cour.ue}} {{cour.groupe}}<br>
+                      ({{cour.heure}})<br>
+                      {{cour.salle}}<br><br>
+                    {% endif %}
+                  {% endfor %}
+
+
                 </td>
                 <td id="ven_1">
                    {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Vendredi" and cour.heure == "7h-9h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Vendredi" and cour.heure == "7h-9h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
-                      {{cour.ue.enseignant.user.username}}<br>
+                      {{cour.ue.enseignant.user.username}}<br><br>
+                    {% endif %}
+                  {% endfor %}
+
+                  <!-- prendre en charge les td -->
+                  {% for cour in cours %}
+                    {% if cour.ue.classe == classe and cour.jour == "Vendredi" and cour.heure == "8h-10h" %}
+                      {{cour.type}} {{cour.ue}} {{cour.groupe}}<br>
+                      ({{cour.heure}})<br>
+                      {{cour.salle}}<br><br>
                     {% endif %}
                   {% endfor %}
                 </td>
                 <td id="sam_1">
                    {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Samedi" and cour.heure == "7h-9h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Samedi" and cour.heure == "7h-9h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
-                      {{cour.ue.enseignant.user.username}}<br>
+                      {{cour.ue.enseignant.user.username}}<br><br>
+                    {% endif %}
+                  {% endfor %}
+
+                  <!-- prendre en charge les td -->
+                  {% for cour in cours %}
+                    {% if cour.ue.classe == classe and cour.jour == "Samedi" and cour.heure == "8h-10h" %}
+                      {{cour.type}} {{cour.ue}} {{cour.groupe}}<br>
+                      ({{cour.heure}})<br>
+                      {{cour.salle}}<br><br>
                     {% endif %}
                   {% endfor %}
                 </td>
                 <td id="dim_1">
                    {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Dimanche" and cour.heure == "7h-9h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Dimanche" and cour.heure == "7h-9h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
-                      {{cour.ue.enseignant.user.username}}<br>
+                      {{cour.ue.enseignant.user.username}}<br><br>
+                    {% endif %}
+                  {% endfor %}
+
+                  <!-- prendre en charge les td -->
+                  {% for cour in cours %}
+                    {% if cour.ue.classe == classe and cour.jour == "Dimanche" and cour.heure == "8h-10h" %}
+                      {{cour.type}} {{cour.ue}} {{cour.groupe}}<br>
+                      ({{cour.heure}})<br>
+                      {{cour.salle}}<br><br>
                     {% endif %}
                   {% endfor %}
                 </td>
@@ -145,53 +212,101 @@
                 <th id="h_2">10h05-12h55</th>
                 <td id="lun_2">
                    {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Lundi" and cour.heure == "10h05-12h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Lundi" and cour.heure == "10h05-12h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
-                      {{cour.ue.enseignant.user.username}}<br>
+                      {{cour.ue.enseignant.user.username}}<br><br>
+                    {% endif %}
+                  {% endfor %}
+
+                  <!-- prendre en charge les td -->
+                  {% for cour in cours %}
+                    {% if cour.ue.classe == classe and cour.jour == "Lundi" and cour.heure == "10h-12h" %}
+                      {{cour.type}} {{cour.ue}} {{cour.groupe}}<br>
+                      ({{cour.heure}})<br>
+                      {{cour.salle}}<br><br>
                     {% endif %}
                   {% endfor %}
                 </td>
                 <td id="mard_2">
                      {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Mardi" and cour.heure == "10h05-12h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Mardi" and cour.heure == "10h05-12h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
-                      {{cour.ue.enseignant.user.username}}<br>
+                      {{cour.ue.enseignant.user.username}}<br><br>
+                    {% endif %}
+                  {% endfor %}
+
+                   <!-- prendre en charge les td -->
+                  {% for cour in cours %}
+                    {% if cour.ue.classe == classe and cour.jour == "Mardi" and cour.heure == "10h-12h" %}
+                      {{cour.type}} {{cour.ue}} {{cour.groupe}}<br>
+                      ({{cour.heure}})<br>
+                      {{cour.salle}}<br><br>
                     {% endif %}
                   {% endfor %}
                 </td>
                 <td id="mer_2">
                      {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Mercredi" and cour.heure == "10h05-12h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Mercredi" and cour.heure == "10h05-12h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
-                      {{cour.ue.enseignant.user.username}}<br>
+                      {{cour.ue.enseignant.user.username}}<br><br>
                     {% endif %}
                   {% endfor %}
+
+                    <!-- prendre en charge les td -->
+                  {% for cour in cours %}
+                    {% if cour.ue.classe == classe and cour.jour == "Mercredi" and cour.heure == "10h-12h" %}
+                      {{cour.type}} {{cour.ue}} {{cour.groupe}}<br>
+                      ({{cour.heure}})<br>
+                      {{cour.salle}}<br><br>
+                    {% endif %}
+                  {% endfor %}
+
                 </td>
                 <td id="jeu_2">
                      {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Jeudi" and cour.heure == "10h05-12h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Jeudi" and cour.heure == "10h05-12h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
-                      {{cour.ue.enseignant.user.username}}<br>
+                      {{cour.ue.enseignant.user.username}}<br><br>
                     {% endif %}
                   {% endfor %}
+
+                    <!-- prendre en charge les td -->
+                  {% for cour in cours %}
+                    {% if cour.ue.classe == classe and cour.jour == "Jeudi" and cour.heure == "10h-12h" %}
+                      {{cour.type}} {{cour.ue}} {{cour.groupe}}<br>
+                      ({{cour.heure}})<br>
+                      {{cour.salle}}<br><br>
+                    {% endif %}
+                  {% endfor %}
+
                 </td>
                 <td id="ven_2">
                      {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Vendredi" and cour.heure == "10h05-12h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Vendredi" and cour.heure == "10h05-12h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
-                      {{cour.ue.enseignant.user.username}}<br>
+                      {{cour.ue.enseignant.user.username}}<br><br>
                     {% endif %}
                   {% endfor %}
+
+                    <!-- prendre en charge les td -->
+                  {% for cour in cours %}
+                    {% if cour.ue.classe == classe and cour.jour == "Vendredi" and cour.heure == "10h-12h" %}
+                      {{cour.type}} {{cour.ue}} {{cour.groupe}}<br>
+                      ({{cour.heure}})<br>
+                      {{cour.salle}}<br><br>
+                    {% endif %}
+                  {% endfor %}
+
                 </td>
                 <td id="sam_2">
                      {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Samedi" and cour.heure == "10h05-12h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Samedi" and cour.heure == "10h05-12h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignant.user.username}}<br>
                     {% endif %}
@@ -199,12 +314,22 @@
                 </td>
                 <td id="dim_2">
                      {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Dimanche" and cour.heure == "10h05-12h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Dimanche" and cour.heure == "10h05-12h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignant.user.username}}<br>
                     {% endif %}
                   {% endfor %}
+
+                    <!-- prendre en charge les td -->
+                  {% for cour in cours %}
+                    {% if cour.ue.classe == classe and cour.jour == "Dimanche" and cour.heure == "10h-12h" %}
+                      {{cour.type}} {{cour.ue}} {{cour.groupe}}<br>
+                      ({{cour.heure}})<br>
+                      {{cour.salle}}<br><br>
+                    {% endif %}
+                  {% endfor %}
+
                 </td>
             </tr>
             <tr class="pause"> 
@@ -214,8 +339,8 @@
                 <th id="h_3">13h05-15h55</th>
                 <td id="lun_3">
                    {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Lundi" and cour.heure == "13h05-15h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Lundi" and cour.heure == "13h05-15h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignant.user.username}}<br>
                     {% endif %}
@@ -223,8 +348,8 @@
                 </td>
                 <td id="mard_3">
                    {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Mardi" and cour.heure == "13h05-15h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Mardi" and cour.heure == "13h05-15h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignant.user.username}}<br>
                     {% endif %}
@@ -232,8 +357,8 @@
                 </td>
                 <td id="mer_3">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Mercredi" and cour.heure == "13h05-15h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Mercredi" and cour.heure == "13h05-15h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignant.user.username}}<br>
                     {% endif %}
@@ -241,8 +366,8 @@
                 </td>
                 <td id="jeu_3">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Jeudi" and cour.heure == "13h05-15h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Jeudi" and cour.heure == "13h05-15h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignant.user.username}}<br>
                     {% endif %}
@@ -250,8 +375,8 @@
                 </td>
                 <td id="ven_3">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Vendredi" and cour.heure == "13h05-15h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Vendredi" and cour.heure == "13h05-15h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignant.user.username}}<br>
                     {% endif %}
@@ -259,8 +384,8 @@
                 </td>
                 <td id="sam_3">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Samedi" and cour.heure == "13h05-15h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Samedi" and cour.heure == "13h05-15h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignant.user.username}}<br>
                     {% endif %}
@@ -268,8 +393,8 @@
                 </td>
                 <td id="dim_3">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Dimanche" and cour.heure == "13h05-15h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Dimanche" and cour.heure == "13h05-15h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignant.user.username}}<br>
                     {% endif %}
@@ -283,8 +408,8 @@
                 <th id="h_4">16h05-18h55</th>
                 <td id="lun_4">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Lundi" and cour.heure == "16h05-18h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Lundi" and cour.heure == "16h05-18h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignant.user.username}}<br>
                     {% endif %}
@@ -292,8 +417,8 @@
                 </td>
                 <td id="mard_4">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Mardi" and cour.heure == "16h05-18h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Mardi" and cour.heure == "16h05-18h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignant.user.username}}<br>
                     {% endif %}
@@ -301,8 +426,8 @@
                 </td>
                 <td id="mer_4">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Mercredi" and cour.heure == "16h05-18h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Mercredi" and cour.heure == "16h05-18h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignant.user.username}}<br>
                     {% endif %}
@@ -310,8 +435,8 @@
                 </td>
                 <td id="jeu_4">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Jeudi" and cour.heure == "16h05-18h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Jeudi" and cour.heure == "16h05-18h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignantuser.username}}<br>
                     {% endif %}
@@ -319,26 +444,27 @@
                 </td>
                 <td id="ven_4">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Vendredi" and cour.heure == "16h05-18h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Vendredi" and cour.heure == "16h05-18h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
-                      {{cour.ue.enseignantuser.username}}<br>
+                      {{cour.ue.enseignant.user.username}}
+                      <br><br>
+
                     {% endif %}
                   {% endfor %}
                 </td>
                 <td id="sam_4">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Samedi" and cour.heure == "16h05-18h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Samedi" and cour.heure == "16h05-18h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
-                      {{cour.ue.enseignantuser.username}}<br>
-                    {% endif %}
+                      {{cour.ue.enseignantuser.username}}<br>                    {% endif %}
                   {% endfor %}
                 </td>
                 <td id="dim_4">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Dimanche" and cour.heure == "16h05-18h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Dimanche" and cour.heure == "16h05-18h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignantuser.username}}<br>
                     {% endif %}
@@ -349,8 +475,8 @@
                 <th id="h_5">19h05-21h55</th>
                 <td id="lun_5">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Lundi" and cour.heure == "19h05-21h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Lundi" and cour.heure == "19h05-21h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignantuser.username}}<br>
                     {% endif %}
@@ -358,8 +484,8 @@
                 </td>
                 <td id="mard_5">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Mardi" and cour.heure == "19h05-21h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Mardi" and cour.heure == "19h05-21h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignantuser.username}}<br>
                     {% endif %}
@@ -367,8 +493,8 @@
                 </td>
                 <td id="mer_5">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Mercredi" and cour.heure == "19h05-21h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Mercredi" and cour.heure == "19h05-21h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignantuser.username}}<br>
                     {% endif %}
@@ -376,8 +502,8 @@
                 </td>
                 <td id="jeu_5">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Jeudi" and cour.heure == "19h05-21h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Jeudi" and cour.heure == "19h05-21h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignantuser.username}}<br>
                     {% endif %}
@@ -385,8 +511,8 @@
                 </td>
                 <td id="ven_5">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Vendredi" and cour.heure == "19h05-21h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Vendredi" and cour.heure == "19h05-21h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignantuser.username}}<br>
                     {% endif %}
@@ -394,8 +520,8 @@
                 </td>
                 <td id="sam_5">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Samedi" and cour.heure == "19h05-21h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Samedi" and cour.heure == "19h05-21h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignant.user.username}}<br>
                     {% endif %}
@@ -403,8 +529,8 @@
                 </td>
                 <td id="dim_5">
                   {% for cour in cours %}
-                    {% if cour.classe == classe and cour.jour == "Dimanche" and cour.heure == "19h05-21h55" %}
-                      {{cour.ue}}<br>
+                    {% if cour.ue.classe == classe and cour.jour == "Dimanche" and cour.heure == "19h05-21h55" %}
+                      {{cour.ue}} {{cour.groupe}}<br>
                       {{cour.salle}}<br>
                       {{cour.ue.enseignant.user.username}}<br>
                     {% endif %}

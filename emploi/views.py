@@ -38,17 +38,17 @@ def planning(request):
     new_list_class = []
 
     cours = Cours.objects.all()
-    classes = Classes.objects.all()
+    classes = Classe.objects.all()
     specialites = Specialite.objects.all()
 
     for classe in classes:
         for spec in specialites:
             for cour in cours:
-                if spec.classe == cour.classe:
+                if spec.classe == cour.ue.classe:
                     list_spec.append(spec)
                     list_class_spec.append(spec.classe)
         for cou in cours:
-            if cou.classe == classe:
+            if cou.ue.classe == classe:
                 list_class.append(classe)
                 list_cours.append(cou)
 
@@ -103,7 +103,7 @@ def accueil(request):
     list_cours = []
     
     
-    classes = Classes.objects.all()
+    classes = Classe.objects.all()
     filieres = Filiere.objects.all()
     niveaux = Niveau.objects.all()
     cours = Cours.objects.all()
@@ -121,8 +121,8 @@ def accueil(request):
             nb = 0
             for cour in cours:
                 list_cours.append(cour)
-                if cour.classe.filiere.nom_filiere == filiere:
-                    list_class.append(cour.classe)
+                if cour.ue.classe.filiere.nom_filiere == filiere:
+                    list_class.append(cour.ue.classe)
  
 
             for i in list_class:
@@ -138,8 +138,8 @@ def accueil(request):
             niveau = request.POST.get('niveau1')
             for cour in cours:
                 list_cours.append(cour)
-                if cour.classe.filiere.nom_filiere == filiere and cour.classe.niveau.nom_niveau == niveau:
-                    list_class.append(cour.classe)
+                if cour.ue.classe.filiere.nom_filiere == filiere and cour.ue.classe.niveau.nom_niveau == niveau:
+                    list_class.append(cour.ue.classe)
 
             for i in list_class:
                 if i not in new_list_class:
@@ -155,8 +155,8 @@ def accueil(request):
 
             for cour in cours:
                 list_cours.append(cour)
-                if cour.classe.nom_classe == classe and cour.salle.nom_salle == salle:
-                    list_class.append(cour.classe)
+                if cour.ue.classe.nom_classe == classe and cour.salle.nom_salle == salle:
+                    list_class.append(cour.ue.classe)
 
             for i in list_class:
                 if i not in new_list_class:
@@ -173,8 +173,8 @@ def accueil(request):
             salle = request.POST.get('salle2')
             for cour in cours:
                 list_cours.append(cour)
-                if cour.classe.filiere.nom_filiere == filiere and cour.classe.niveau.nom_niveau == niveau and cour.salle.nom_salle == salle and cour.classe.nom_classe == classe:
-                    list_class.append(cour.classe)
+                if cour.ue.classe.filiere.nom_filiere == filiere and cour.ue.classe.niveau.nom_niveau == niveau and cour.salle.nom_salle == salle and cour.ue.classe.nom_classe == classe:
+                    list_class.append(cour.ue.classe)
 
             for i in list_class:
                 if i not in new_list_class:
@@ -187,17 +187,17 @@ def accueil(request):
     
 
     for c in cours:
-        if c.classe.filiere not in list_filiere:
-            list_filiere.append(c.classe.filiere)
-        if c.classe.niveau not in list_niveau:
-            list_niveau.append(c.classe.niveau)
+        if c.ue.classe.filiere not in list_filiere:
+            list_filiere.append(c.ue.classe.filiere)
+        if c.ue.classe.niveau not in list_niveau:
+            list_niveau.append(c.ue.classe.niveau)
 
         if c.salle not in list_salle:
             list_salle.append(c.salle)
 
 
-        if c.classe not in list_class:
-            list_class.append(c.classe)
+        if c.ue.classe not in list_class:
+            list_class.append(c.ue.classe)
         
 
         

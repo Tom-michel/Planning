@@ -66,7 +66,7 @@ class Salle(models.Model):
  
 class UniteEnseignement(models.Model):
     code_ue = models.CharField(max_length=200, unique=True)
-    intitule = models.CharField(max_length=100, unique=True)
+    intitule = models.CharField(max_length=100, blank=True)
     date = models.DateField(default=timezone.now)
     enseignant = models.ForeignKey(Enseignant, on_delete=models.SET_NULL, null=True)
     classe = models.ForeignKey(Classe, on_delete=models.SET_NULL, null=True)
@@ -96,6 +96,13 @@ class Cours(models.Model):
             ('13h05-15h55', '13h05-15h55'),
             ('16h05-18h55', '16h05-18h55'),
             ('19h05-21h55', '19h05-21h55'),
+
+            ('8h-10h', '8h-10h'),
+            ('10h-12h', '10h-12h'),
+            ('12h-14h', '12h-14h'),
+            ('14h-16h', '14h-16h'),
+            ('16h-18h', '16h-18h'),
+            
 
     ]
     TYPES = [
