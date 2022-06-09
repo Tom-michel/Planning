@@ -44,7 +44,7 @@ def connexion(request):
                 login(request, user)
                 return HttpResponseRedirect('dashboard')
         else:
-            msg = messages.info(request, "votre Adresse mail ou votre Mot de passe est incorrect, veuillez réessayer !")
+            msg = messages.info(request, "votre login ou votre Mot de passe est incorrect, veuillez réessayer !")
             context = {
                 'msg':msg
             }
@@ -343,10 +343,10 @@ def enseignant(request):
 def edit_enseignant(request, id_e):
     ens = Enseignant.objects.get(id=id_e)
     ens_form = EnsForm(instance=ens)
-    user_form = UpdateUserForm(instance=ens.user)
+    user_form = UserForm(instance=ens.user)
     if request.method == 'POST':
         ens_form = EnsForm(data=request.POST, instance=ens)
-        user_form = UpdateUserForm(data=request.POST, instance=ens.user)
+        user_form = UserForm(data=request.POST, instance=ens.user)
         if user_form.is_valid() and ens_form.is_valid():
             user = user_form.save()
             user.save()

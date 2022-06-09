@@ -79,8 +79,58 @@
                 <h5 class="modal-title" id="suppEnsLabel" style="color: #0b5ed7;">Modifier un enseignant</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form onsubmit="return envoyer()" action="" method="post">
-                <input type="hidden" name="csrfmiddlewaretoken" value="xUCyJorh8QDPZXgWFIOgATGtlRRM4fEbvPsNDWmIpLBFuyjfhmD2QSTLUPul1zMS" class="form-control">
+                <!-- <input type="hidden" name="csrfmiddlewaretoken" value="xUCyJorh8QDPZXgWFIOgATGtlRRM4fEbvPsNDWmIpLBFuyjfhmD2QSTLUPul1zMS" class="form-control"> -->
+                <div class="modal-body">
+                    {% comment %} <div class="container">
+                        <div class="row">
+                            {{err1}}
+                            {{err2}}
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    {{ens_form.matricule}}
+                                    {% for err in ens_form.matricule.errors %}
+                                    <p class="errorform">{{err}}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    {{user_form.last_name}}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    {{user_form.username}}
+                                    {% for err in user_form.username.errors %}
+                                    <p class="errorform">{{err}}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <span style="">
+                                <div class="col-md-6 mt-3">
+                                    <div class="form-group">
+                                        {{user_form.password1}}
+                                        {{user_form.password2}}
+                                        <input type="text" id="test">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <div class="form-group">
+                                        {{ens_form.date}}
+                                    </div>
+                                </div>
+                            </span>
+                        </div>
+                    </div> {% endcomment %}
+                </div>
+                {% comment %} <div class="modal-footer">
+                    <a class="btn-bleu" href="{% url 'enseignant' %}">Annuler</a>
+                    <input id="btn-sub" onclick="return envoyer();" class="btn-rouge" type="submit" value="Enregistrer">
+                </div> {% endcomment %}
+                
+            <form action="" method="post">
+                {% csrf_token %}
+                <!-- <input type="text"> -->
                 <div class="modal-body">
                     <div class="container">
                         <div class="row">
@@ -107,11 +157,19 @@
                                     {% endfor %}
                                 </div>
                             </div>
-                            <div class="col-md-6 mt-3" style="display: none;">
-                                <div class="form-group">
-                                    {{ens_form.date}}
+                            <span style="display: none;">
+                                <div class="col-md-6 mt-3">
+                                    <div class="form-group">
+                                        {{user_form.password1}}
+                                        {{user_form.password2}}
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="col-md-6 mt-3">
+                                    <div class="form-group">
+                                        {{ens_form.date}}
+                                    </div>
+                                </div>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -146,7 +204,17 @@
 
     // controler et envoyer le formulair
 
+    pwd1 = document.getElementById('id_password1');
+    pwd2 = document.getElementById('id_password2');
     mat = document.getElementById('id_matricule');
+
+    const remplirMdp = () =>{
+        pwd1.value = mat.value+'-FACSCIENCE'
+        pwd2.value = mat.value+'-FACSCIENCE'
+    }
+
+    // remplir les mdp lors de la saisie du matricule
+    mat.addEventListener('keyup', remplirMdp);
 
     function envoyer() {
         if (mat.value.length != 7) {

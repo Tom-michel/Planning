@@ -15,14 +15,14 @@ class UserForm(UserCreationForm):
             'password2'
         ]
 
-class UpdateUserForm(forms.ModelForm):
+# class UpdateUserForm(forms.ModelForm):
 
-    class Meta():
-        model = User
-        fields = [
-            'username',
-            'last_name'
-        ]
+#     class Meta():
+#         model = User
+#         fields = [
+#             'username',
+#             'last_name'
+#         ]
 
 
 # formulaire pour Enseignant
