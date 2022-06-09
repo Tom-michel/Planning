@@ -64,10 +64,15 @@
 
 
 <div class="row">
-    <div class="col-lg-10 mx-auto col-tab mt-5 shadow py-3 px-2">
+    <div id="to-print" class="col-lg-10 mx-auto col-tab mt-5 shadow py-3 px-2">
         <div class="hearder">
             <p class="mb-4">Liste des enseignants</p>
             <p class="mb-4">
+                <button id="btn_tel" class="btn-bleu" 
+                    onclick="imprimer(document.getElementById('btn_tel'),
+                    document.getElementById('to-print'))">
+                    Télécarger
+                </button>
                 <a class="btn-rouge" class="btn-rouge" data-bs-toggle="modal" data-bs-target="#ajoutEns" href="">
                     Ajouter 
                     <span>+</span>
@@ -216,7 +221,7 @@
         }
         return true;
     }
-
+  
 
     // Rendre le lien actif
     
