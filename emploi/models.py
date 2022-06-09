@@ -29,6 +29,7 @@ class Niveau(models.Model):
         return self.nom_niveau 
 
 class Classe(models.Model):
+    nom_classe = models.CharField(max_length=20, blank=True)
     effectif_classe = models.IntegerField('Effectif')
     date = models.DateField(default=timezone.now)  
     filiere = models.ForeignKey(Filiere, on_delete=models.CASCADE)
@@ -60,14 +61,14 @@ class Salle(models.Model):
 
  
 class UniteEnseignement(models.Model):
-    code = models.CharField(max_length=100, unique=True)
+    code_ue = models.CharField(max_length=200, unique=True)
     intitule = models.CharField(max_length=100, unique=True)
     date = models.DateField(default=timezone.now)
     enseignant = models.ForeignKey(Enseignant, on_delete=models.SET_NULL, null=True)
     classe = models.ForeignKey(Classe, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return self.intitule
+        return self.code_ue
     
 
 

@@ -41,7 +41,7 @@ class UeForm(forms.ModelForm):
     class Meta():
         model = UniteEnseignement
         fields = [
-            'code',
+            'code_ue',
             'intitule',
             'classe',
             'enseignant',

@@ -7,6 +7,8 @@ urlpatterns = [
     path('', accueil, name="accueil"),
     path('mon_planning', mon_planning, name="mon_planning"),
     path('planning', planning, name="planning"),
+    path('resulta', resultat_recherche, name="resultat"),
+    path('connexion', connexion, name="connexion"),
 
 
     # ======= PAGES DU DASBOARD =================
