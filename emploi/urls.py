@@ -11,17 +11,18 @@ urlpatterns = [
 
 
     # ======= PAGES DU DASBOARD =================
-    path('dasboard/', dashboard, name="dashboard"),
-    path('ajout_planning/', ajout_planning, name="ajout_planning"),
+    path('dashboard/', dashboard, name="dashboard"),
+    path('ajout_planning/<str:id_clas>', ajout_planning, name="ajout_planning"),
+    path('modifier_planning/', modifier_planning, name="modifier_planning"),
+    path('enseignant/', enseignant, name="enseignant"),
+    path('edit_enseignant/<str:id_e>', edit_enseignant, name="edit_enseignant"),
+    path('supp_enseignant/<str:id_e>', supp_enseignant, name="supp_enseignant"),
     path('unite_enseignements/', unite_enseignements, name="unite_enseignements"),
     path('unite_enseignements/', unite_enseignements, name="unite_enseignements"),
     path('filieres/', filieres, name="filieres"),
-    path('specialite/', specialite, name="specialite"),
+    path('specialites/', specialites, name="specialites"),
     path('niveaux/', niveaux, name="niveaux"),
     path('salles/', salles, name="salles"),
     path('classes/', classes, name="classes"),
-    path('groupes/', groupes, name="groupes"),
-    path('unite_enseignements/', unite_enseignements, name="unite_enseignements"),
-    path('unite_enseignements/', unite_enseignements, name="unite_enseignements"),
-    path('unite_enseignements/', unite_enseignements, name="unite_enseignements"),
+    path('user_logout/', user_logout, name="user_logout"),
 ]

@@ -4,6 +4,229 @@
 {% block title %} SPLANNING | Liste des Enseignants {% endblock %}
 
 {% block content %}
-  <h1>Liste des Enseignants</h1>
+
+<style>
+        /* ============= TABLEAUX RENCENTS ============== */
+
+        .col-tab {
+        border-radius: var(--card-border-radius);
+        /* width: 100%; */
+    }
+
+    .col-con{
+        width: 100%;
+    }
+
+
+    .hearder{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hearder p, .connect-title p{
+        margin-bottom: 0;
+        color: #FF0036;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    .hearder a span{
+        font-size: 1rem;
+    }
+
+    .btn-rouge, .btn-bleu {
+        border: none;
+        color: #fff;
+        padding: 7px 15px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        border-radius: 50rem !important;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .btn-rouge{
+        background: #FF0036;
+    }
+    .btn-bleu{
+        background: #0b5ed7;
+    }
+
+    .btn-rouge:hover, .btn-bleu:hover{
+        opacity: 0.8;
+        color: #fff;
+    }
+
+
+</style>
+
+
+<div class="row">
+    <div class="col-lg-10 mx-auto col-tab mt-5 shadow py-3 px-2">
+        <div class="hearder">
+            <p class="mb-4">Liste des enseignants</p>
+            <p class="mb-4">
+                <a class="btn-rouge" class="btn-rouge" data-bs-toggle="modal" data-bs-target="#ajoutEns" href="">
+                    Ajouter 
+                    <span>+</span>
+                </a>
+            </p>
+        </div>
+        
+        {% for err in user_form.username.errors %}
+        <p class="errornotes text-center my-4">{{err}}</p>
+        {% endfor %}
+        {% for err in user_form.password2.errors %}
+        <p class="errornotes text-center my-4">{{err}}</p>
+        {% endfor %}
+        {% for err in ens_form.matricule.errors %}
+        <p class="errornotes text-center my-4">{{err}}</p>
+        {% endfor %}
+
+        <div class=" tresp table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Matricule</th>
+                        <th scope="col">Nom_Prénom</th>
+                        <th scope="col">Addresse mail</th>
+                        <th scope="col">Date de création</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ens in ensList %}
+        
+                    <tr>
+                        <td scope="row">{{ens.matricule}}</td>
+                        <td scope="row">{{ens.user.last_name}}</td>
+                        <td>{{ens.user.username}}</td>
+                        <td>{{ens.date}}</td>
+                        <td>
+                            <a href="{% url 'supp_enseignant' ens.id %}"><i class="uil uil-trash-alt"></i></a>
+                            <a href="{% url 'edit_enseignant' ens.id %}"><i class="uil uil-edit"></i></a>
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>
+
+  <!-- Modal ajout -->
+<div class="modal fade" id="ajoutEns" data-bs-backdrop="static" tabindex="-1" aria-labelledby="ajoutEnsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ajoutEnsLabel" style="color: #0b5ed7;">Ajouter un enseignant</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form onsubmit="return envoyer()" action="" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    {{ens_form.matricule}}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    {{user_form.last_name}}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    <input type="email" name="username" maxlength="150" autofocus="" required="" id="id_username" class="form-control" placeholder="addresse mail">
+                                </div>
+                            </div>
+                            <span style="display: none;">
+                                <div class="col-md-6 mt-3">
+                                    <div class="form-group">
+                                        {{user_form.password1}}
+                                        {{user_form.password2}}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <div class="form-group">
+                                        {{ens_form.date}}
+                                    </div>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-bleu" data-bs-dismiss="modal">Annuler</button>
+                    <input id="btn-sub" onclick="return envoyer();" class="btn-rouge" type="submit" value="Enregistrer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+
+    // ajouter la class form-control aux champs
+
+    champs = document.getElementsByTagName('input');
+    for (let i = 0; i < (champs.length-1); i++) {
+        champs[i].classList.add('form-control');
+        champs[i].addEventListener("keypress", function(event) {
+			if (event.key === "Enter") {
+			    event.preventDefault();
+			    document.getElementById("btn-sub").click();
+			}
+		});
+    }
+    champs[1].placeholder = "matricule";
+    champs[2].placeholder = "Nom et Prénom";
+    champs[3].placeholder = "addresse mail";
+    // document.getElementById("btn-sub").classList.remove('form-control');
+
+
+    // controler et envoyer le formulair
+
+    pwd1 = document.getElementById('id_password1');
+    pwd2 = document.getElementById('id_password2');
+    mat = document.getElementById('id_matricule');
+
+    const remplirMdp = () =>{
+        pwd1.value = 'FACUY1-'+mat.value
+        pwd2.value = 'FACUY1-'+mat.value
+    }
+
+    // remplir les mdp lors de la saisie du matricule
+    mat.addEventListener('keyup', remplirMdp);
+
+    function envoyer() {
+        if (mat.value.length != 7) {
+            alert("Veuillez entrer un matricule correct (7 caractères)");
+            mat.focus();
+            return false;
+        }
+        return true;
+    }
+
+
+    // Rendre le lien actif
+    
+    let list = document.getElementsByClassName('list');
+    for (let i = 0; i < (list.length-1); i++) {
+        list[i].className = 'list';
+    }
+    document.getElementById('enseignant').className = 'list active';
+
+</script>
+
 
 {% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'dash.html' %}
+{% load static %}
+
+{% block title %} SPLANNING | Supprimer un Enseignant {% endblock %}
+
+{% block content %}
+
+
+<style>
+    #suppEns{
+        background: rgba(0, 0, 0, 0.5) !important;
+    }
+</style>
+
+
+  <!-- Modal suppression -->
+<div class="modal fade show" id="suppEns" data-bs-backdrop="static" tabindex="-1" aria-labelledby="suppEnsLabel" aria-modal="true" role="dialog" style="display: block;">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="suppEnsLabel" style="color: #0b5ed7;">Modifier un enseignant</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form action="" method="post">
+                {% csrf_token %} 
+                
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <p class="errornotes text-center my-4">
+                                Voulez-vous supprimer l'enseignant <br> "{{ens.matricule}} 
+                                {{ens.user.username}}" ?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn-bleu" href="{% url 'enseignant' %}">Annuler</a>
+                    <input id="btn-sub" class="btn-rouge" type="submit" value="Valider">
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -4,6 +4,188 @@
 {% block title %} SPLANNING | Liste des Spécialités {% endblock %}
 
 {% block content %}
-  <h1>Liste des Spécialités</h1>
+
+<style>
+        /* ============= TABLEAUX RENCENTS ============== */
+
+        .col-tab {
+        border-radius: var(--card-border-radius);
+        /* width: 100%; */
+    }
+
+    .col-con{
+        width: 100%;
+    }
+
+
+    .hearder{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hearder p, .connect-title p{
+        margin-bottom: 0;
+        color: #FF0036;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    .hearder a span{
+        font-size: 1rem;
+    }
+
+    .btn-rouge, .btn-bleu {
+        border: none;
+        color: #fff;
+        padding: 7px 15px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        border-radius: 50rem !important;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .btn-rouge{
+        background: #FF0036;
+    }
+    .btn-bleu{
+        background: #0b5ed7;
+    }
+
+    .btn-rouge:hover, .btn-bleu:hover{
+        opacity: 0.8;
+        color: #fff;
+    }
+
+
+</style>
+
+
+<div class="row">
+    <div class="col-lg-10 mx-auto col-tab mt-5 shadow py-3 px-2">
+        <div class="hearder">
+            <p class="mb-4">Liste des Spécialités</p>
+            <p class="mb-4">
+                <a class="btn-rouge" class="btn-rouge" data-bs-toggle="modal" data-bs-target="#ajoutSpe" href="">
+                    Ajouter 
+                    <span>+</span>
+                </a>
+            </p>
+        </div>
+        
+        {% for err in spe_form.nom_specialite.errors %}
+        <p class="errornotes text-center my-4">{{err}}</p>
+        {% endfor %}
+
+        <div class=" tresp table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Classe</th>
+                        <th scope="col">Date de création</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for spe in speList %}
+        
+                    <tr>
+                        <td scope="row">{{spe.nom_specialite}}</td>
+                        <td scope="row">{{spe.classe}}</td>
+                        <td>{{spe.date}}</td>
+                        <td>
+                            <a href=""><i class="uil uil-trash-alt"></i></a>
+                            <a href=""><i class="uil uil-edit"></i></a>
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>
+
+  <!-- Modal ajout -->
+<div class="modal fade" id="ajoutSpe" data-bs-backdrop="static" tabindex="-1" aria-labelledby="ajoutSpeLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ajoutSpeLabel" style="color: #0b5ed7;">Ajouter une Spécialité</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 my-3 offset-md-3">
+                                <div class="form-group">
+                                    <p>
+                                        {{spe_form.nom_specialite}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 my-3 offset-md-3">
+                              <div class="form-group">
+                                  <p>
+                                    <label for="id_classe">Classe</label>
+                                    {{spe_form.classe}}
+                                  </p>
+                              </div>
+                            </div>
+                            <div class="col-md-6 mt-3" style="display: none;">
+                                <div class="form-group">
+                                    {{spe_form.date}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-bleu" data-bs-dismiss="modal">Annuler</button>
+                    <input id="btn-sub" onclick="return envoyer();" class="btn-rouge" type="submit" value="Enregistrer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    champs = document.getElementsByTagName('input');
+    for (let i = 0; i < (champs.length-1); i++) {
+        champs[i].classList.add('form-control');
+        champs[i].addEventListener("keypress", function(event) {
+			if (event.key === "Enter") {
+			    event.preventDefault();
+			    document.getElementById("btn-sub").click();
+			}
+		});
+    }
+    champSel = document.getElementsByTagName('select');
+        for (let i = 0; i < (champSel.length); i++) {
+            champSel[i].classList.add('form-select');
+            champSel[i].addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("btn-sub").click();
+            }
+        });
+    }
+    champs[1].placeholder = "Nom de la spécialité";
+
+    // Rendre le lien actif
+    
+    let list = document.getElementsByClassName('list');
+    for (let i = 0; i < list.length; i++) {
+        list[i].className = 'list';
+    }
+    document.getElementById('specialite').className = 'list active';
+</script>
 
 {% endblock %}

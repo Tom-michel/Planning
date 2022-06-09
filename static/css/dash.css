@@ -144,13 +144,13 @@ body{
 .navigation ul .lien li:hover a{
     border-radius: 30px;
     background: #f55678e1;
-    transition: .3s;
+    /* transition: .3s; */
     z-index: 12;
 }
 .navigation ul li.active:hover a{
     border-radius: 30px;
     background: none;
-    transition: .3s;
+    /* transition: .3s; */
 }
 
 
@@ -305,9 +305,6 @@ body{
     .main {
         width: calc(100% - 293px);
         left: 293px;
-        overflow: hidden;
-        visibility: hidden;
-        transition: none;
     }
     .main.active {
         width: calc(100% - 45px);
@@ -334,4 +331,88 @@ body{
 
 .contenu{
     padding: 20px;
+}
+
+
+
+
+
+/* ========= tableau =============== */
+
+tbody th{
+    border-right: #212529 solid 2px !important;
+}
+
+tbody tr td a i{
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.uil-trash-alt {
+    color: red;
+}
+
+.uil-edit{
+    color: green;
+}
+
+/* tbody td::before{
+    position: relative;
+    content: "+";
+    font-size: 1.7rem;
+    color: rgba(0, 0, 0, 0.096);
+    justify-content: center;
+    align-items: center;
+    left: 34%;
+    top: 0.3rem;
+    padding: 0;
+    margin: 0;
+    transition: 0.5s;
+}
+
+tbody td:hover::before{
+    color: #fff;
+    transition: 0.3s;
+    font-size: 2rem;
+} */
+
+/* ======= modal ============= */
+
+select,
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"]{
+    border: none !important;
+    border-bottom: #FF0036 solid 1px !important;
+    font-size: 0.9rem !important;
+    /* color: rgb(34, 34, 34) !important; */
+}
+
+select:hover,
+select:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="number"]:hover,
+input[type="email"]:hover{
+    border: none !important;
+    border-bottom: #FF0036 solid 2px !important;
+    box-shadow: none !important;
+
+}
+select optgroup{
+    color: #000 !important;
+}
+select option,
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"]{
+    font-size: 0.95rem !important;
+    color: rgb(85, 85, 85) !important;
+    /* color: rgb(34, 34, 34) !important; */
 }

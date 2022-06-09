@@ -4,6 +4,178 @@
 {% block title %} SPLANNING | Liste des Salles {% endblock %}
 
 {% block content %}
-  <h1>Liste des Salles</h1>
+
+
+<style>
+        /* ============= TABLEAUX RENCENTS ============== */
+
+        .col-tab {
+        border-radius: var(--card-border-radius);
+        /* width: 100%; */
+    }
+
+    .col-con{
+        width: 100%;
+    }
+
+
+    .hearder{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hearder p, .connect-title p{
+        margin-bottom: 0;
+        color: #FF0036;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    .hearder a span{
+        font-size: 1rem;
+    }
+
+    .btn-rouge, .btn-bleu {
+        border: none;
+        color: #fff;
+        padding: 7px 15px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        border-radius: 50rem !important;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .btn-rouge{
+        background: #FF0036;
+    }
+    .btn-bleu{
+        background: #0b5ed7;
+    }
+
+    .btn-rouge:hover, .btn-bleu:hover{
+        opacity: 0.8;
+        color: #fff;
+    }
+
+
+</style>
+
+
+<div class="row">
+    <div class="col-lg-10 mx-auto col-tab mt-5 shadow py-3 px-2">
+        <div class="hearder">
+            <p class="mb-4">Liste des Salle</p>
+            <p class="mb-4">
+                <a class="btn-rouge" class="btn-rouge" data-bs-toggle="modal" data-bs-target="#ajoutFil" href="">
+                    Ajouter 
+                    <span>+</span>
+                </a>
+            </p>
+        </div>
+        
+        {% for err in sal_form.nom_salle.errors %}
+        <p class="errornotes text-center my-4">{{err}}</p>
+        {% endfor %}
+        {% for err in sal_form.capacite_salle.errors %}
+        <p class="errornotes text-center my-4">{{err}}</p>
+        {% endfor %}
+
+        <div class=" tresp table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom de la salle</th>
+                        <th scope="col">Capacité</th>
+                        <th scope="col">Date de création</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sal in salList %}
+        
+                    <tr>
+                        <td scope="row">{{sal.nom_salle}}</td>
+                        <td scope="row">{{sal.capacite_salle}}</td>
+                        <td>{{sal.date}}</td>
+                        <td>
+                            <a href=""><i class="uil uil-trash-alt"></i></a>
+                            <a href=""><i class="uil uil-edit"></i></a>
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>
+
+  <!-- Modal ajout -->
+<div class="modal fade" id="ajoutFil" data-bs-backdrop="static" tabindex="-1" aria-labelledby="ajoutFilLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ajoutFilLabel" style="color: #0b5ed7;">Ajouter une Salle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 my-3 offset-md-3">
+                                <div class="form-group">
+                                    {{sal_form.nom_salle}}
+                                </div>
+                            </div>
+                            <div class="col-md-6 my-3 offset-md-3">
+                                <div class="form-group">
+                                    {{sal_form.capacite_salle}}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3" style="display: none;">
+                                <div class="form-group">
+                                    {{sal_form.date}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-bleu" data-bs-dismiss="modal">Annuler</button>
+                    <input id="btn-sub" class="btn-rouge" type="submit" value="Enregistrer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    champs = document.getElementsByTagName('input');
+    for (let i = 0; i < (champs.length-1); i++) {
+        champs[i].classList.add('form-control');
+        champs[i].addEventListener("keypress", function(event) {
+			if (event.key === "Enter") {
+			    event.preventDefault();
+			    document.getElementById("btn-sub").click();
+			}
+		});
+    }
+    champs[1].placeholder = "Nom de la salle";
+    champs[2].placeholder = "capcité";
+
+    // Rendre le lien actif
+    
+    let list = document.getElementsByClassName('list');
+    for (let i = 0; i < list.length; i++) {
+        list[i].className = 'list';
+    }
+    document.getElementById('salle').className = 'list active';
+</script>
 
 {% endblock %}

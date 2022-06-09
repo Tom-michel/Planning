@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'emploi',
-
-    'easy_pdf',
+    'multiselectfield',
 ]
 
 MIDDLEWARE = [

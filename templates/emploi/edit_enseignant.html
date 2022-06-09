@@ -1,0 +1,172 @@
+{% extends 'dash.html' %}
+{% load static %}
+
+{% block title %} SPLANNING | Modifier un Enseignant {% endblock %}
+
+{% block content %}
+
+<style>
+        /* ============= TABLEAUX RENCENTS ============== */
+
+        .col-tab {
+        border-radius: var(--card-border-radius);
+        /* width: 100%; */
+    }
+
+    .col-con{
+        width: 100%;
+    }
+
+
+    .hearder{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hearder p, .connect-title p{
+        margin-bottom: 0;
+        color: #FF0036;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    .hearder a span{
+        font-size: 1rem;
+    }
+
+    .btn-rouge, .btn-bleu {
+        border: none;
+        color: #fff;
+        padding: 7px 15px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        border-radius: 50rem !important;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .btn-rouge{
+        background: #FF0036;
+    }
+    .btn-bleu{
+        background: #0b5ed7;
+    }
+
+    .btn-rouge:hover, .btn-bleu:hover{
+        opacity: 0.8;
+        color: #fff;
+    }
+
+
+</style>
+
+
+
+<!-- Modal modification-->
+
+<style>
+    #suppEns{
+        background: rgba(0, 0, 0, 0.5) !important;
+    }
+</style>
+
+<div class="modal fade show" id="suppEns" data-bs-backdrop="static" tabindex="-1" aria-labelledby="suppEnsLabel" aria-modal="true" role="dialog" style="display: block;">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="suppEnsLabel" style="color: #0b5ed7;">Modifier un enseignant</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form onsubmit="return envoyer()" action="" method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value="xUCyJorh8QDPZXgWFIOgATGtlRRM4fEbvPsNDWmIpLBFuyjfhmD2QSTLUPul1zMS" class="form-control">
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            {{err1}}
+                            {{err2}}
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    {{ens_form.matricule}}
+                                    {% for err in ens_form.matricule.errors %}
+                                    <p class="errorform">{{err}}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    {{user_form.last_name}}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    {{user_form.username}}
+                                    {% for err in user_form.username.errors %}
+                                    <p class="errorform">{{err}}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3" style="display: none;">
+                                <div class="form-group">
+                                    {{ens_form.date}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn-bleu" href="{% url 'enseignant' %}">Annuler</a>
+                    <input id="btn-sub" onclick="return envoyer();" class="btn-rouge" type="submit" value="Enregistrer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    // ajouter la class form-control aux champs
+
+    champs = document.getElementsByTagName('input');
+    for (let i = 0; i < (champs.length-1); i++) {
+        champs[i].classList.add('form-control');
+        champs[i].addEventListener("keypress", function(event) {
+			if (event.key === "Enter") {
+			    event.preventDefault();
+			    document.getElementById("btn-sub").click();
+			}
+		});
+    }
+    champs[1].placeholder = "matricule";
+    champs[2].placeholder = "Nom et Prénom";
+    champs[3].placeholder = "addresse mail";
+
+
+    // controler et envoyer le formulair
+
+    mat = document.getElementById('id_matricule');
+
+    function envoyer() {
+        if (mat.value.length != 7) {
+            alert("Veuillez entrer un matricule correct (7 caractères)");
+            mat.focus();
+            return false;
+        }
+        return true;
+    }
+
+
+    // Rendre le lien actif
+    
+    let list = document.getElementsByClassName('list');
+    for (let i = 0; i < (list.length-1); i++) {
+        list[i].className = 'list';
+    }
+    document.getElementById('enseignant').className = 'list active';
+
+</script>
+
+
+{% endblock %}

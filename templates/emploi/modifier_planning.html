@@ -1,0 +1,94 @@
+{% extends 'dash.html' %}
+{% load static %}
+
+{% block title %} SPLANNING | Liste des Filières {% endblock %}
+
+{% block content %}
+
+
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modifierCoursLabel" style="color: #0b5ed7;">Modifier un cours</h5>
+        </div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 mt-3">
+                            <div class="form-group">
+                                <!-- <label for="jour">Jour</label> -->
+                                <select class="form-select jour" name="jour" id="jour" disabled>
+                                    <option id="ini" value="">Jour</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <div class="form-group">
+                                <!-- <label for="jour">Plage horaire</label> -->
+                                <select class="form-select heure" name="heure" id="heure" disabled>
+                                    <option value="">Plage horaire</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <div class="form-group">
+                                <!-- <label for="ue">Intitulé</label> -->
+                                <select class="form-select" name="ue" id="ue">
+                                    <optgroup label="Licence 1">
+                                        <option value="">Intitulé</option>
+                                    </optgroup>
+                                    <optgroup label="Licence 2">
+                                        <option value="">Intitulé</option>
+                                    </optgroup>
+                                    <optgroup label="Licence 3">
+                                        <option value="">Intitulé</option>
+                                    </optgroup>
+                                    <optgroup label="Master 1">
+                                        <option value="">Intitulé</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <div class="form-group">
+                                <!-- <label for="type">Type</label> -->
+                                <select class="form-select" name="type" id="type">
+                                    <option value="">Type de cours</option>
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <div class="form-group">
+                                <!-- <label for="salle">Salle</label> -->
+                                <select class="form-select" name="salle" id="salle">
+                                    <option value="">Salle</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'dashboard' %}" class="btn-bleu"><i class="uil uil-arrow-left"></i> Retour</a>
+                <input class="btn-rouge" type="submit" value="Modifier">
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+
+    // Rendre le lien actif
+    
+    let list = document.getElementsByClassName('list');
+    for (let i = 0; i < list.length; i++) {
+        list[i].className = 'list';
+    }
+    document.getElementById('dash').className = 'list active';
+</script>
+
+{% endblock %}

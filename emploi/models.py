@@ -126,4 +126,5 @@ class Cours(models.Model):
     
     
     def __str__(self):
-        return f'self.salle lieux du cours'
+        return f'{self.type}-{self.salle}-{self.jour}-{self.heure}'
+    

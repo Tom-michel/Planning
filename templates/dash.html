@@ -9,23 +9,6 @@
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
 
 
-        <!-- Font Awesome -->
-        <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        rel="stylesheet"
-        />
-        <!-- Google Fonts -->
-        <link
-        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-        rel="stylesheet"
-        />
-        <!-- MDB -->
-        <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.css"
-        rel="stylesheet"
-        />
-
-
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
 
         <link rel="stylesheet" type="text/css" href="{% static 'css/dash.css' %}">
@@ -114,14 +97,6 @@
                                 <span class="title">Classes</span>
                             </a>
                         </li>
-                        <li id="groupe" class="list">
-                            <b></b>
-                            <b></b>
-                            <a href="{% url 'groupes' %}">
-                                <span class="icon"><i class="uil uil-users-alt"></i></span>
-                                <span class="title">Groupes</span>
-                            </a>
-                        </li>
                     </div>
                 </ul>
             </div>
@@ -136,13 +111,19 @@
                 <div class="topbar shadow">
                     <div></div>
                     <div class="welcome">
-                        <h5>Bienvenue, <span style="color: #FF0036;">Michel</span></h5>
+                        <h5>Bienvenue, 
+                        {% if user.is_authenticated %}
+                        <span style="color: #FF0036;">{{request.user.username}}</span></h5>
+                        {% endif %}
                     </div>
                     <div class="user">
+
+                        {% if user.is_authenticated %}
                         <div class="photo">
                             <img src="{% static 'img/pp.jpg' %}" alt="">
                         </div>
-                        <a href="" style="color: #FF0036;">logout</span></a>
+                        <a href="{% url 'user_logout' %}" style="color: #FF0036;">logout</span></a>
+                        {% endif %}
                     </div>
                 </div>
 
@@ -176,11 +157,6 @@
         <script src="../static/js/clipboard.min.js"></script>
         <script src="../static/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-        <!-- MDB -->
-<script
-  type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.js"
-></script>
 
         <script>
 
