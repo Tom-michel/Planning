@@ -99,7 +99,7 @@
                     {% for ue in ueList %}
         
                     <tr>
-                        <td scope="row">{{ue.code}}</td>
+                        <td scope="row">{{ue.code_ue}}</td>
                         <td scope="row">{{ue.intitule}}</td>
                         <td>{{ue.classe}}</td>
                         <td>{{ue.enseignant.user.last_name}}</td>
@@ -131,6 +131,14 @@
                 <div class="modal-body">
                     <div class="container">
                         <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <p>
+                                        <label for="id_code">Code&nbsp;:</label>
+                                        {{ue_form.code_ue}}
+                                    </p>
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <p>

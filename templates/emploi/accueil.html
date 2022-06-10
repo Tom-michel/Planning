@@ -200,7 +200,7 @@
    padding: 30px 20px;
    background: #fff;
    border-radius: 10px;
-   border-bottom: #ff0036e solid 4px;
+   border-bottom: #ff0036 solid 4px;
  }
 
  #about .about-desc p{
@@ -239,6 +239,47 @@
 
  /* footer FIN */
 
+/* ======= modal ============= */
+
+select,
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"]{
+    border: none !important;
+    border-bottom: #FF0036 solid 1px !important;
+    font-size: 0.9rem !important;
+    /* color: rgb(34, 34, 34) !important; */
+}
+
+select:hover,
+select:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="number"]:hover,
+input[type="email"]:hover{
+    border: none !important;
+    border-bottom: #FF0036 solid 2px !important;
+    box-shadow: none !important;
+
+}
+select optgroup{
+    color: #000 !important;
+}
+select option,
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"]{
+    font-size: 0.95rem !important;
+    color: rgb(85, 85, 85) !important;
+    /* color: rgb(34, 34, 34) !important; */
+}
+
 </style>
 
 <!-- baniere -->
@@ -246,14 +287,14 @@
 <section id="hero" class="img-fluid bg-secondary" style="background-image:url(../../static/img/baniere.JPG); background-attachment: fixed; background-repeat:no-repeat; background-size: cover;">
  <div class="hero-container">
  <div class="ban-text">
-   <h1 class="text-center">Recherche d'emploi de temps pour étudiant, enseignant, salle, ue...</h1>
-   <p class="text-center text-white pb-2">SPLANNING est une plateforme qui permet aux étudiants et aux enseignants de rechercher un emploi de temps par niveau, filière , salle .... 
+   <h1 class="text-center">Gestion des plannings scolaires de l'Université de Yaoundé 1</h1>
+   <p class="text-center text-white pb-2">SPLANNING est une plateforme qui permet aux étudiants et aux enseignants de consulter facilement et rapidement des emplois de temps d'enseignement de l'université 
      
    </p>
    </div>
-   <p>
+   {% comment %} <p>
      <a href="/#inscription" class="btn-get-started mt-3">Commencer</a>&emsp;
-   </p>
+   </p> {% endcomment %}
  </div>
 </section>
 
@@ -265,10 +306,9 @@
      <div class="col-md-6 my-auto brand">
        <h3 class="mb-4 title-text"><b>Bienvenu sur</b></h3>
        <h1 class="mb-0 text-uppercase" style="font-weight: 700; opacity: .8;">SPLANNING</h1>
-       <p class="mt-0">Plateforme de recherche d'emploide temps pour étudiants et enseignants.</p>
+       <p class="mt-0">Application de gestion des emplois de temps de l'Universté de Yaoundé 1</p>
        <div class="">
          <div class="d-flex flex-row flex-wrap">
-           <a class="btn me-4 mb-3 border-2 border-primary text-uppercase px-5 py-3 rounded-pill active bout" href="/#inscription">Inscription</a>
            <a class="btn mb-3 border-2 border-warning text-uppercase px-5 py-3 rounded-pill active bout" href="">Connexion</a>
          </div>
        </div>
@@ -293,7 +333,7 @@
      </div>
      <div class="col-lg-6 mb-3 about-desc my-auto mx-auto">
        <p>
-         <b style="color: #ff0036;">&emsp;&emsp;SPLANNING</b> est une plateforme regroupant des <b>étudiants</b> et des <b>enseignants</b> qui auront la possibilité de rechercher des emploi de temps de leur faculté.
+         <b style="color: #ff0036;">&emsp;&emsp;SPLANNING</b> est une plateforme réservée aux <b>étudiants</b> et <b>enseignants</b> de l'univervité de Yaoundé 1. Ils auront la possibilité de consulter des emploi de temps de leur faculté.
        </p>
      </div>
    </div>
@@ -316,7 +356,7 @@
            </h2>
          </div>
          <p style="color: rgba(255, 255, 255, 0.3);">
-           Application de recherche d'emploi de temps
+           Application de gestion des emplois de temps
             de l'<b>UNIVERSITÉ DE YAOUNDÉ 1.</b>
          </p>
        </div>
@@ -334,14 +374,12 @@
          <ul>
            <li><a  style="text-decoration: none;color: #ff0036; " href="/#hero">Acceuil</a></li>
            <li><a style="text-decoration: none; color: #ff0036;" href="">Connexion</a></li>
-           <li><a style="text-decoration: none; color: #ff0036;" href="/#inscription">Inscription</a></li>
          </ul>
        </div>
        <div class="col-lg-4 col-md-8 py-3">
          <h4 style="text-decoration: none; color: white;">Rejoignez nous</h4>
          <p style="color: rgba(255, 255, 255, 0.3);">
-           Vous êtes un étudiant ou enseignant qui souhaite rechercher un emploi de temps
-            ? <a  style="text-decoration: none; color: #ff0036;" href="/#inscription" class="btn-orange">Je m'inscris</a>
+           Vous êtes un étudiant ou enseignant qui souhaite être à jour sur avec son emploi de temps ?
          </p>
        </div>
      </div>
@@ -353,8 +391,8 @@
    </div>
    </div>
 </footer>
-<script src="script.js" ></script>
-             <style>
+
+<style>
                 /* The Modal (background) */
         .modal {
           display: none; /* Hidden by default */
@@ -448,16 +486,17 @@
                 margin-left: 430px;
             }
         }
- </style>
+</style>
 
-<!-- la div  Modal -->
+
+<!-- la div  Modal recherche-->
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
     <div class="close"><span>x</span></div>
-    <h3 class="titre_modal"> rechercher</h3>
-    <div class="trait"></div>
+        <h3 class="titre_modal"> rechercher</h3>
+        <div class="trait"></div>
         <div class="form">
             <form action="" method="post">
                 {% csrf_token %}
@@ -603,105 +642,110 @@
                       </style>
 
                   <input class="btn-connexion" type="submit" value="Rechercher" >
-                </div>
-              </form>
-              
-        </div>
+            </form>
+        </div>              
+    </div>
   </div>
 
 
-<script>
+  
 
-
-
-// obtenir le modal
-var modal = document.getElementById("myModal");
-
-// obtnenir le bouton qui ouvre le modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// quand l'utilisateur click sur le bouton le modal s'ouvre 
-btn.onclick = function() {
-  modal.style.display = "block";
-
-}
-
-
-// quans l'utilisateur clic sur le span x ou sur annuler le modals se ferme
-span.onclick = function() {
-  modal.style.display = "none";
-}
-btn2.onclick = function(){
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
- </script>
- <script>
-            var form2 = document.getElementById('form2');
-            var form3 = document.getElementById('form3');
-            var form4 = document.getElementById('form4');
-            var form5 = document.getElementById('form5');
-            var indication = document.getElementById('indication');
-
-            form2.style.display = "none";
-            form3.style.display = "none";
-            form4.style.display = "none";
-            form5.style.display = "none";
-            indication.style.display = "none";
-
-            document.getElementById('typeRech').addEventListener('change', function(e) {
-            var selectUser = e.target.value;
-            if (selectUser == 1) {
-              form2.style.display = "none";
-              form3.style.display = "none";
-              form4.style.display = "none";
-              form5.style.display = "none";
-              indication.style.display = "none";
-            }
-            if (selectUser == 2) {
-              form2.style.display = "";
-              form3.style.display = "none";
-              form4.style.display = "none";
-              form5.style.display = "none";
-              indication.style.display = "";
-            }
-            if (selectUser == 3) {
-              form2.style.display = "none";
-              form3.style.display = "";
-              form4.style.display = "none";
-              form5.style.display = "none";
-              indication.style.display = "";
-            }
-            if (selectUser == 4) {
-              form2.style.display = "none";
-              form3.style.display = "none";
-              form4.style.display = "";
-              form5.style.display = "none";
-              indication.style.display = "";
-            }
-            if (selectUser == 5) {
-              form2.style.display = "none";
-              form3.style.display = "none";
-              form4.style.display = "none";
-              form5.style.display = "";
-              indication.style.display = "";
-            }
-          });
-
-</script>
-  <!--  Jquery js file  -->
-   
+<script src="script.js" ></script>
+   <!--  Jquery js file  -->
 
    <!--  Bootstrap js file  -->
  <script src="bootstrap.min.js"></script>
  <script src="bootstrap.bundle.min.js"></script>
+
+ <script>
+
+
+
+    // obtenir le modal
+    var modal = document.getElementById("myModal");
+    
+    // obtnenir le bouton qui ouvre le modal
+    var btn = document.getElementById("myBtn");
+    
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    
+    // quand l'utilisateur click sur le bouton le modal s'ouvre 
+    btn.onclick = function() {
+      modal.style.display = "block";
+    
+    }
+    
+    
+    // quans l'utilisateur clic sur le span x ou sur annuler le modals se ferme
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    btn2.onclick = function(){
+      modal.style.display = "none";
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+</script>
+
+<script>
+    var form2 = document.getElementById('form2');
+    var form3 = document.getElementById('form3');
+    var form4 = document.getElementById('form4');
+    var form5 = document.getElementById('form5');
+    var indication = document.getElementById('indication');
+
+    form2.style.display = "none";
+    form3.style.display = "none";
+    form4.style.display = "none";
+    form5.style.display = "none";
+    indication.style.display = "none";
+
+    document.getElementById('typeRech').addEventListener('change', function(e) {
+    var selectUser = e.target.value;
+    if (selectUser == 1) {
+      form2.style.display = "none";
+      form3.style.display = "none";
+      form4.style.display = "none";
+      form5.style.display = "none";
+      indication.style.display = "none";
+    }
+    if (selectUser == 2) {
+      form2.style.display = "";
+      form3.style.display = "none";
+      form4.style.display = "none";
+      form5.style.display = "none";
+      indication.style.display = "";
+    }
+    if (selectUser == 3) {
+      form2.style.display = "none";
+      form3.style.display = "";
+      form4.style.display = "none";
+      form5.style.display = "none";
+      indication.style.display = "";
+    }
+    if (selectUser == 4) {
+      form2.style.display = "none";
+      form3.style.display = "none";
+      form4.style.display = "";
+      form5.style.display = "none";
+      indication.style.display = "";
+    }
+    if (selectUser == 5) {
+      form2.style.display = "none";
+      form3.style.display = "none";
+      form4.style.display = "none";
+      form5.style.display = "";
+      indication.style.display = "";
+    }
+  });
+
+</script>
+
+
 {% endblock %}
